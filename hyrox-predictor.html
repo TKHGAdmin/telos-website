@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyrox Time Predictor — Telos Fitness</title>
+  <meta name="description" content="Predict your Hyrox finish time based on your fitness benchmarks. Free tool from Telos Fitness.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=2">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>T</text></svg>">
+
+  <style>
+    /* ===== HYROX PREDICTOR SPECIFIC STYLES ===== */
+    .hyrox-page {
+      min-height: 100vh;
+      padding-top: 70px;
+    }
+
+    .hyrox-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .hyrox-header {
+      text-align: center;
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .hyrox-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hyrox-header p {
+      color: var(--color-text-muted-light);
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* Form styles */
+    .hyrox-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .form-group label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .form-group select,
+    .form-group input {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-md);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      padding: 14px 16px;
+      width: 100%;
+      transition: border-color var(--transition-base);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--color-accent-gold);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    @media (max-width: 580px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-hint {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--color-border-card);
+      margin: var(--spacing-md) 0;
+    }
+
+    .form-section-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* Results section */
+    .hyrox-results {
+      display: none;
+      margin-top: var(--spacing-3xl);
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .hyrox-results.visible {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Big time display */
+    .predicted-time-display {
+      text-align: center;
+      padding: var(--spacing-2xl) 0;
+      margin-bottom: var(--spacing-xl);
+      position: relative;
+    }
+
+    .predicted-time-display::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 1px;
+      background: rgba(201, 168, 76, 0.3);
+    }
+
+    .predicted-time-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .predicted-time-value {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 10vw, 5.5rem);
+      color: var(--color-accent-gold);
+      line-height: 1;
+      letter-spacing: 3px;
+    }
+
+    .predicted-tier {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-text-muted-light);
+      margin-top: var(--spacing-md);
+    }
+
+    /* Donut chart */
+    .time-split-chart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--spacing-2xl);
+      margin-bottom: var(--spacing-2xl);
+      flex-wrap: wrap;
+    }
+
+    .donut-container {
+      position: relative;
+      width: 180px;
+      height: 180px;
+    }
+
+    .donut-center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .donut-center-text .split-pct {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+
+    .donut-center-text .split-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    .split-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .split-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .split-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .split-legend-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-text-muted-light);
+    }
+
+    .split-legend-time {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--color-text-primary);
+      font-weight: 600;
+    }
+
+    /* Station breakdown (email-gated) */
+    .station-breakdown-wrapper {
+      position: relative;
+      margin-top: var(--spacing-2xl);
+    }
+
+    .station-breakdown-wrapper.gated .station-breakdown-content {
+      filter: blur(8px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .station-gate-overlay {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-2xl);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .station-breakdown-wrapper.gated .station-gate-overlay {
+      display: block;
+    }
+
+    .station-gate-overlay h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .station-gate-overlay p {
+      color: var(--color-text-muted-light);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .station-gate-overlay input {
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-md);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      padding: 12px 16px;
+      width: 100%;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .station-gate-overlay input:focus {
+      outline: none;
+      border-color: var(--color-accent-gold);
+    }
+
+    /* Station bars */
+    .station-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 16px;
+    }
+
+    .station-bar-icon {
+      width: 28px;
+      font-size: 16px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .station-bar-name {
+      width: 130px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-text-muted-light);
+      flex-shrink: 0;
+      padding-right: 10px;
+    }
+
+    .station-bar-track {
+      flex: 1;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .station-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+      min-width: 50px;
+    }
+
+    .station-bar-time {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #fff;
+      white-space: nowrap;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .station-bar-detail {
+      width: 55px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--color-text-muted);
+      text-align: right;
+      flex-shrink: 0;
+      padding-left: 8px;
+    }
+
+    /* Training priority */
+    .training-priority {
+      margin-top: var(--spacing-2xl);
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(201, 168, 76, 0.02));
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-left: 3px solid var(--color-accent-gold);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-xl) var(--spacing-lg);
+    }
+
+    .training-priority h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--color-accent-gold);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .training-priority p {
+      color: var(--color-text-muted-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Sources */
+    .hyrox-sources {
+      margin-top: var(--spacing-3xl);
+      padding-top: var(--spacing-xl);
+      border-top: 1px solid var(--color-border-card);
+    }
+
+    .hyrox-sources h4 {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hyrox-sources ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .hyrox-sources li {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .hyrox-sources a {
+      color: var(--color-text-muted-light);
+      font-size: 0.85rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .hyrox-sources a:hover {
+      color: var(--color-accent-gold);
+    }
+
+    /* CTA section */
+    .hyrox-cta {
+      text-align: center;
+      margin-top: var(--spacing-2xl);
+      padding-top: var(--spacing-xl);
+    }
+
+    .hyrox-cta p {
+      color: var(--color-text-muted-light);
+      font-size: 0.9rem;
+      margin-bottom: var(--spacing-lg);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">TELOS FITNESS</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="protein-calculator.html">Protein Calc</a></li>
+        <li><a href="hyrox-predictor.html" style="color: var(--color-accent-gold);">Hyrox Predictor</a></li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary nav-cta">Book a Call</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="protein-calculator.html">Protein Calc</a></li>
+        <li><a href="hyrox-predictor.html">Hyrox Predictor</a></li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="hyrox-page">
+    <div class="hyrox-container">
+
+      <!-- Header -->
+      <div class="hyrox-header">
+        <span class="section-label">Free Tool</span>
+        <h1>Hyrox Time Predictor</h1>
+        <p>Enter your fitness benchmarks below. We'll estimate your Hyrox finish time — station by station.</p>
+      </div>
+
+      <!-- Form -->
+      <form class="hyrox-form" id="hyroxForm">
+
+        <!-- Basics -->
+        <div class="form-section-title">Your Profile</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sex">Sex</label>
+            <select id="sex" required>
+              <option value="" disabled selected>Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="weight">Body Weight</label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="number" id="weight" placeholder="175" required min="80" max="400" style="flex:1;">
+              <select id="weightUnit" style="width:70px;padding:14px 8px;">
+                <option value="lbs">lbs</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="experience">Hyrox Race Experience</label>
+          <select id="experience" required>
+            <option value="" disabled selected>Select</option>
+            <option value="0">Never raced Hyrox</option>
+            <option value="1">1–2 races</option>
+            <option value="2">3+ races</option>
+          </select>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Running -->
+        <div class="form-section-title">Running</div>
+
+        <div class="form-group">
+          <label for="fiveKTime">5K Run Time</label>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input type="number" id="fiveKMin" placeholder="25" required min="12" max="60" style="flex:1;">
+            <span style="color:var(--color-text-muted);font-size:13px;">min</span>
+            <input type="number" id="fiveKSec" placeholder="00" min="0" max="59" style="flex:1;">
+            <span style="color:var(--color-text-muted);font-size:13px;">sec</span>
+          </div>
+          <span class="form-hint">Your best recent 5K time (outdoor or treadmill)</span>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Machines -->
+        <div class="form-section-title">Machines</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rowPace">500m Row Pace</label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="number" id="rowMin" placeholder="1" required min="1" max="5" style="flex:1;">
+              <span style="color:var(--color-text-muted);font-size:13px;">min</span>
+              <input type="number" id="rowSec" placeholder="50" min="0" max="59" style="flex:1;">
+              <span style="color:var(--color-text-muted);font-size:13px;">sec</span>
+            </div>
+            <span class="form-hint">Your typical 500m split</span>
+          </div>
+          <div class="form-group">
+            <label for="skiErg">SkiErg Familiarity</label>
+            <select id="skiErg" required>
+              <option value="" disabled selected>Select</option>
+              <option value="none">Never used one</option>
+              <option value="some">Used a few times</option>
+              <option value="regular">Use regularly</option>
+              <option value="strong">Strong on SkiErg</option>
+            </select>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Strength -->
+        <div class="form-section-title">Strength & Endurance</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="strength">Functional Strength Level</label>
+            <select id="strength" required>
+              <option value="" disabled selected>Select</option>
+              <option value="beginner">Beginner — New to lifting</option>
+              <option value="intermediate">Intermediate — Consistent 1+ year</option>
+              <option value="advanced">Advanced — Strong compound lifts</option>
+              <option value="elite">Elite — Competitive strength</option>
+            </select>
+            <span class="form-hint">Affects sled push/pull, farmer carry, sandbag lunges</span>
+          </div>
+          <div class="form-group">
+            <label for="wallBalls">Wall Balls Unbroken</label>
+            <input type="number" id="wallBalls" placeholder="20" required min="1" max="100">
+            <span class="form-hint">Max reps without stopping (6kg/14lb ball)</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="burpees">Burpee Broad Jump Fitness</label>
+          <select id="burpees" required>
+            <option value="" disabled selected>Select</option>
+            <option value="low">Low — I hate burpees</option>
+            <option value="moderate">Moderate — Can sustain short sets</option>
+            <option value="high">High — Can maintain pace for minutes</option>
+            <option value="elite">Very High — Barely slow down</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:var(--spacing-md);">
+          Predict My Time
+        </button>
+      </form>
+
+      <!-- Results -->
+      <div class="hyrox-results" id="hyroxResults">
+
+        <!-- Big predicted time -->
+        <div class="predicted-time-display">
+          <div class="predicted-time-label">Predicted Finish Time</div>
+          <div class="predicted-time-value" id="predictedTime">--:--:--</div>
+          <div class="predicted-tier" id="predictedTier"></div>
+        </div>
+
+        <!-- Run / Station / Transition split donut -->
+        <div class="time-split-chart">
+          <div class="donut-container">
+            <svg viewBox="0 0 100 100" id="donutChart"></svg>
+            <div class="donut-center-text">
+              <div class="split-pct" id="runPct">--</div>
+              <div class="split-label">Running</div>
+            </div>
+          </div>
+          <div class="split-legend" id="splitLegend"></div>
+        </div>
+
+        <!-- Station-by-station breakdown (gated) -->
+        <div class="station-breakdown-wrapper gated" id="stationWrapper">
+          <div class="station-gate-overlay" id="stationGate">
+            <h3>Unlock Your Full Breakdown</h3>
+            <p>See your predicted time for every station, identify where you're losing the most time, and get a training priority plan.</p>
+            <input type="email" id="gateEmail" placeholder="Enter your email" required>
+            <button class="btn btn-primary" id="gateUnlock" style="width:100%;">Show My Breakdown</button>
+          </div>
+
+          <div class="station-breakdown-content" id="stationContent">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="hyrox-cta">
+          <p>Want a coach-built training plan designed around your weakest stations?</p>
+          <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary" style="max-width:360px;width:100%;">Book a Free Consultation</a>
+        </div>
+
+        <!-- Sources -->
+        <div class="hyrox-sources">
+          <h4>Race Format &amp; Data Sources</h4>
+          <ul>
+            <li><a href="https://hyrox.com/the-fitness-race/" target="_blank">HYROX Official Race Format — hyrox.com</a></li>
+            <li><a href="https://www.pace-club.com/blog/hyrox-weights" target="_blank">HYROX Weights by Station — Pace Club</a></li>
+            <li><a href="https://hyroxdatalab.com/articles/what-is-a-good-hyrox-time" target="_blank">HYROX Time Benchmarks by Division — HyroxDataLab</a></li>
+            <li><a href="https://www.redbull.com/us-en/hyrox-exercise-stations-guide" target="_blank">Complete Station Guide — Red Bull</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // ===== HYROX RACE CONSTANTS (Open Division 2025/26) =====
+    const RACE = {
+      runSegments: 8,
+      runDistanceKm: 1, // each segment
+      stations: [
+        { name: '1km SkiErg',          key: 'skierg',   icon: '🎿', distance: '1,000m' },
+        { name: '50m Sled Push',        key: 'sled_push', icon: '🛷', distance: '50m' },
+        { name: '50m Sled Pull',        key: 'sled_pull', icon: '🪢', distance: '50m' },
+        { name: '80m Burpee Broad Jump', key: 'burpee',  icon: '🏃', distance: '80m' },
+        { name: '1km Rowing',           key: 'rowing',   icon: '🚣', distance: '1,000m' },
+        { name: '200m Farmers Carry',   key: 'farmers',  icon: '🏋', distance: '200m' },
+        { name: '100m Sandbag Lunges',  key: 'lunges',   icon: '🎒', distance: '100m' },
+        { name: 'Wall Balls',           key: 'wallballs', icon: '🎯', distance: '100 reps' }
+      ],
+      // Weights (Open division)
+      weights: {
+        male: {
+          sled_push: '152 kg total', sled_pull: '103 kg total',
+          farmers: '2×24 kg', lunges: '20 kg', wallballs: '6 kg → 3m target'
+        },
+        female: {
+          sled_push: '102 kg total', sled_pull: '78 kg total',
+          farmers: '2×16 kg', lunges: '10 kg', wallballs: '4 kg → 2.7m target'
+        }
+      }
+    };
+
+    // ===== PREDICTION ENGINE =====
+
+    function predictTimes(inputs) {
+      const { sex, weightKg, experience, fiveKSeconds, rowPaceSeconds,
+              skiErg, strength, wallBallsUnbroken, burpees } = inputs;
+
+      const isMale = sex === 'male';
+      const results = {};
+
+      // --- RUNNING (8 × 1km) ---
+      // Derive pace per km from 5K time
+      const pacePerKm = fiveKSeconds / 5;
+      // Hyrox fatigue multiplier: running between stations is harder
+      // Experience reduces fatigue (better pacing, less time in RoxZone)
+      const fatigueMult = experience === '2' ? 1.12 : experience === '1' ? 1.17 : 1.22;
+      // Each km gets progressively slower (0-8% degradation across 8 segments)
+      let totalRunSeconds = 0;
+      const runSplits = [];
+      for (let i = 0; i < 8; i++) {
+        const degradation = 1 + (i / 7) * 0.08;
+        const segmentTime = pacePerKm * fatigueMult * degradation;
+        runSplits.push(Math.round(segmentTime));
+        totalRunSeconds += segmentTime;
+      }
+      results.running = Math.round(totalRunSeconds);
+
+      // --- STATION 1: SkiErg 1km ---
+      const skiBase = { none: isMale ? 300 : 360, some: isMale ? 260 : 310,
+                        regular: isMale ? 230 : 270, strong: isMale ? 200 : 240 };
+      results.skierg = skiBase[skiErg] || skiBase.some;
+
+      // --- STATION 2: Sled Push 50m ---
+      // Heavily influenced by body weight AND strength
+      const pushBase = { beginner: isMale ? 240 : 270, intermediate: isMale ? 165 : 195,
+                         advanced: isMale ? 110 : 135, elite: isMale ? 75 : 95 };
+      let sledPush = pushBase[strength] || pushBase.intermediate;
+      // Lighter athletes struggle more with sled (relative strength matters)
+      if (weightKg < 75) sledPush *= 1.12;
+      else if (weightKg > 95) sledPush *= 0.92;
+      results.sled_push = Math.round(sledPush);
+
+      // --- STATION 3: Sled Pull 50m ---
+      const pullBase = { beginner: isMale ? 200 : 230, intermediate: isMale ? 140 : 170,
+                         advanced: isMale ? 95 : 120, elite: isMale ? 65 : 85 };
+      let sledPull = pullBase[strength] || pullBase.intermediate;
+      if (weightKg < 75) sledPull *= 1.10;
+      else if (weightKg > 95) sledPull *= 0.93;
+      results.sled_pull = Math.round(sledPull);
+
+      // --- STATION 4: Burpee Broad Jumps 80m ---
+      const burpeeBase = { low: isMale ? 360 : 400, moderate: isMale ? 270 : 310,
+                           high: isMale ? 200 : 240, elite: isMale ? 150 : 180 };
+      results.burpee = burpeeBase[burpees] || burpeeBase.moderate;
+
+      // --- STATION 5: Rowing 1km ---
+      // Double the 500m pace + fatigue factor (already been through 5 stations)
+      const rowFatigue = experience === '2' ? 1.08 : experience === '1' ? 1.12 : 1.16;
+      results.rowing = Math.round(rowPaceSeconds * 2 * rowFatigue);
+
+      // --- STATION 6: Farmers Carry 200m ---
+      const farmBase = { beginner: isMale ? 150 : 180, intermediate: isMale ? 110 : 135,
+                         advanced: isMale ? 80 : 100, elite: isMale ? 60 : 75 };
+      let farmTime = farmBase[strength] || farmBase.intermediate;
+      if (weightKg < 75) farmTime *= 1.08;
+      results.farmers = Math.round(farmTime);
+
+      // --- STATION 7: Sandbag Lunges 100m ---
+      const lungeBase = { beginner: isMale ? 390 : 360, intermediate: isMale ? 280 : 260,
+                          advanced: isMale ? 200 : 190, elite: isMale ? 150 : 145 };
+      results.lunges = lungeBase[strength] || lungeBase.intermediate;
+
+      // --- STATION 8: Wall Balls (100 reps men, 100 reps women Open) ---
+      // Estimate: total time = (100 / reps_per_set) × (time_per_set + rest_between)
+      const repsPerSet = Math.min(wallBallsUnbroken, 100);
+      const sets = Math.ceil(100 / repsPerSet);
+      const timePerRep = isMale ? 3.0 : 3.2; // seconds per rep including squat + throw
+      const restPerBreak = repsPerSet >= 30 ? 10 : repsPerSet >= 15 ? 15 : 20; // more breaks = more rest each
+      results.wallballs = Math.round(100 * timePerRep + Math.max(0, sets - 1) * restPerBreak);
+
+      // --- TRANSITIONS (RoxZone) ---
+      // Time between finishing a run and starting a station (×16 transitions total)
+      const transBase = experience === '2' ? 12 : experience === '1' ? 18 : 25;
+      results.transitions = transBase * 16;
+
+      // --- TOTAL ---
+      let stationTotal = 0;
+      RACE.stations.forEach(s => { stationTotal += results[s.key]; });
+      results.stationTotal = stationTotal;
+      results.total = results.running + stationTotal + results.transitions;
+      results.runSplits = runSplits;
+
+      return results;
+    }
+
+    // ===== FORMAT HELPERS =====
+    function formatTime(totalSec) {
+      const h = Math.floor(totalSec / 3600);
+      const m = Math.floor((totalSec % 3600) / 60);
+      const s = Math.round(totalSec % 60);
+      if (h > 0) {
+        return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      }
+      return `${m}:${String(s).padStart(2,'0')}`;
+    }
+
+    function formatMinSec(totalSec) {
+      const m = Math.floor(totalSec / 60);
+      const s = Math.round(totalSec % 60);
+      return `${m}:${String(s).padStart(2,'0')}`;
+    }
+
+    function getTier(totalSec, sex) {
+      const mins = totalSec / 60;
+      if (sex === 'male') {
+        if (mins < 60) return 'Elite';
+        if (mins < 75) return 'Advanced';
+        if (mins < 90) return 'Intermediate';
+        if (mins < 110) return 'Average';
+        return 'Beginner';
+      } else {
+        if (mins < 70) return 'Elite';
+        if (mins < 85) return 'Advanced';
+        if (mins < 100) return 'Intermediate';
+        if (mins < 120) return 'Average';
+        return 'Beginner';
+      }
+    }
+
+    // ===== RENDER RESULTS =====
+    function renderResults(results, sex) {
+      const resultsEl = document.getElementById('hyroxResults');
+      resultsEl.classList.add('visible');
+
+      // Predicted time
+      document.getElementById('predictedTime').textContent = formatTime(results.total);
+      const tier = getTier(results.total, sex);
+      document.getElementById('predictedTier').textContent = tier + ' Level';
+
+      // Donut chart: Run vs Stations vs Transitions
+      const runPct = Math.round((results.running / results.total) * 100);
+      const stationPct = Math.round((results.stationTotal / results.total) * 100);
+      const transPct = 100 - runPct - stationPct;
+
+      document.getElementById('runPct').textContent = runPct + '%';
+
+      const segments = [
+        { pct: runPct, color: '#C9A84C', label: 'Running', time: formatMinSec(results.running) },
+        { pct: stationPct, color: '#E8D48B', label: 'Stations', time: formatMinSec(results.stationTotal) },
+        { pct: transPct, color: 'rgba(255,255,255,0.12)', label: 'Transitions', time: formatMinSec(results.transitions) }
+      ];
+
+      // Draw donut
+      const svg = document.getElementById('donutChart');
+      svg.innerHTML = '';
+      const r = 40, cx = 50, cy = 50, circumference = 2 * Math.PI * r;
+      let offset = 0;
+
+      segments.forEach(seg => {
+        const dash = (seg.pct / 100) * circumference;
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', cx);
+        circle.setAttribute('cy', cy);
+        circle.setAttribute('r', r);
+        circle.setAttribute('fill', 'none');
+        circle.setAttribute('stroke', seg.color);
+        circle.setAttribute('stroke-width', '8');
+        circle.setAttribute('stroke-dasharray', `${dash} ${circumference - dash}`);
+        circle.setAttribute('stroke-dashoffset', `${-offset}`);
+        circle.setAttribute('transform', `rotate(-90 ${cx} ${cy})`);
+        svg.appendChild(circle);
+        offset += dash;
+      });
+
+      // Legend
+      const legend = document.getElementById('splitLegend');
+      legend.innerHTML = segments.map(seg => `
+        <div class="split-legend-item">
+          <div class="split-legend-dot" style="background:${seg.color};"></div>
+          <div>
+            <div class="split-legend-label">${seg.label}</div>
+            <div class="split-legend-time">${seg.time}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Station breakdown bars
+      renderStationBars(results, sex);
+
+      // Scroll to results
+      setTimeout(() => {
+        resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    function renderStationBars(results, sex) {
+      const container = document.getElementById('stationContent');
+
+      // Find max station time for bar scaling
+      let maxTime = 0;
+      RACE.stations.forEach(s => {
+        if (results[s.key] > maxTime) maxTime = results[s.key];
+      });
+      // Include average run segment for comparison
+      const avgRun = results.running / 8;
+      if (avgRun > maxTime) maxTime = avgRun;
+
+      let html = '';
+
+      // Section header
+      html += '<div style="margin-bottom:20px;"><span style="font-family:\'Space Mono\',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(242,239,233,0.4);">STATION-BY-STATION BREAKDOWN</span></div>';
+
+      // Running row
+      html += buildBarRow('🏃‍♂️', 'Running (avg/km)', avgRun, maxTime, '#C9A84C', '×8 segments');
+
+      // Station rows
+      RACE.stations.forEach((station, i) => {
+        const time = results[station.key];
+        const weight = RACE.weights[sex]?.[station.key] || station.distance;
+        const detailStr = typeof weight === 'string' && weight.includes('kg') ? weight : station.distance;
+        html += buildBarRow(station.icon, station.name, time, maxTime, getBarColor(time, maxTime), detailStr);
+      });
+
+      // Transitions row
+      html += buildBarRow('⏱️', 'Transitions', results.transitions, maxTime, 'rgba(255,255,255,0.2)', '×16');
+
+      container.innerHTML = html;
+
+      // Animate bars in
+      setTimeout(() => {
+        container.querySelectorAll('.station-bar-fill').forEach((bar, i) => {
+          setTimeout(() => {
+            bar.style.width = bar.dataset.width;
+          }, i * 80);
+        });
+      }, 200);
+
+      // Training priority callout
+      let slowestStation = RACE.stations[0];
+      let slowestTime = 0;
+      RACE.stations.forEach(s => {
+        if (results[s.key] > slowestTime) {
+          slowestTime = results[s.key];
+          slowestStation = s;
+        }
+      });
+
+      const priorityHTML = `
+        <div class="training-priority">
+          <h3>Your Biggest Time Sink: ${slowestStation.name}</h3>
+          <p>${getTrainingAdvice(slowestStation.key, results, sex)}</p>
+        </div>
+      `;
+      container.innerHTML += priorityHTML;
+    }
+
+    function buildBarRow(icon, name, timeSec, maxTime, color, detail) {
+      const pct = Math.round((timeSec / maxTime) * 100);
+      return `
+        <div class="station-bar-row">
+          <div class="station-bar-icon">${icon}</div>
+          <div class="station-bar-name">${name}</div>
+          <div class="station-bar-track">
+            <div class="station-bar-fill" data-width="${pct}%" style="width:0%;background:${color};">
+              <span class="station-bar-time">${formatMinSec(timeSec)}</span>
+            </div>
+          </div>
+          <div class="station-bar-detail">${detail}</div>
+        </div>`;
+    }
+
+    function getBarColor(time, maxTime) {
+      const ratio = time / maxTime;
+      if (ratio > 0.8) return '#e74c3c';
+      if (ratio > 0.5) return '#f39c12';
+      return '#C9A84C';
+    }
+
+    function getTrainingAdvice(key, results, sex) {
+      const advice = {
+        skierg: `Your SkiErg is costing you ${formatMinSec(results.skierg)}. Focus on interval work: 8×250m at race pace with 45s rest. Building lat endurance and rhythm here pays off more than raw power. Even 2 sessions per week for 4 weeks can drop 30-45 seconds.`,
+        sled_push: `The sled push is your biggest bottleneck at ${formatMinSec(results.sled_push)}. This station rewards leg drive and body weight — practice heavy prowler pushes at race weight (${RACE.weights[sex].sled_push}). Short, explosive pushes with 10-15m intervals build the specific endurance you need.`,
+        sled_pull: `Your sled pull (${formatMinSec(results.sled_pull)}) is eating clock. Focus on hand-over-hand rope technique and back endurance. Heavy seated cable rows and rope climb variations translate directly. Get comfortable at race weight (${RACE.weights[sex].sled_pull}).`,
+        burpee: `Burpee broad jumps at ${formatMinSec(results.burpee)} is a major time drain. The key is pacing — most athletes go too hard early and die at 40m. Practice 80m efforts at a sustainable rhythm. EMOM burpees (8-10 per minute) build the engine without destroying your legs before the row.`,
+        rowing: `Your rowing is taking ${formatMinSec(results.rowing)} — solid room for improvement. Focus on 1K interval pieces at your target split and learn to settle into pace quickly. The row comes after burpees, so practice rowing on tired legs. Race-specific conditioning beats raw power.`,
+        farmers: `Farmer carry at ${formatMinSec(results.farmers)} — grip endurance is the key. Practice loaded carries at race weight (${RACE.weights[sex].farmers}) for 200m+. If your grip fails, you lose more time setting down and picking back up than you'd save going faster.`,
+        lunges: `Sandbag lunges (${formatMinSec(results.lunges)}) are your time sink. This station is pure quad endurance late in the race. Heavy walking lunges 2-3× per week build the resilience. Practice with ${RACE.weights[sex].lunges} on your back to lock in your race-day rhythm.`,
+        wallballs: `Wall balls at ${formatMinSec(results.wallballs)} are costing you. Your max unbroken set determines how many breaks you take — and breaks compound. Work on 50+ unbroken at race weight with a metronome pace. Front squat endurance and shoulder stamina are the limiter.`
+      };
+      return advice[key] || 'Focus on training this station at race-specific intensity 2-3× per week.';
+    }
+
+    // ===== FORM SUBMISSION =====
+    const form = document.getElementById('hyroxForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const sex = document.getElementById('sex').value;
+      let weightVal = parseFloat(document.getElementById('weight').value);
+      const weightUnit = document.getElementById('weightUnit').value;
+      const weightKg = weightUnit === 'lbs' ? weightVal * 0.4536 : weightVal;
+
+      const fiveKMin = parseInt(document.getElementById('fiveKMin').value) || 0;
+      const fiveKSec = parseInt(document.getElementById('fiveKSec').value) || 0;
+      const fiveKSeconds = fiveKMin * 60 + fiveKSec;
+
+      const rowMin = parseInt(document.getElementById('rowMin').value) || 0;
+      const rowSec = parseInt(document.getElementById('rowSec').value) || 0;
+      const rowPaceSeconds = rowMin * 60 + rowSec;
+
+      const inputs = {
+        sex,
+        weightKg,
+        experience: document.getElementById('experience').value,
+        fiveKSeconds,
+        rowPaceSeconds,
+        skiErg: document.getElementById('skiErg').value,
+        strength: document.getElementById('strength').value,
+        wallBallsUnbroken: parseInt(document.getElementById('wallBalls').value) || 15,
+        burpees: document.getElementById('burpees').value
+      };
+
+      const results = predictTimes(inputs);
+      renderResults(results, sex);
+    });
+
+    // ===== EMAIL GATE =====
+    document.getElementById('gateUnlock').addEventListener('click', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('gateEmail').value;
+      if (!email || !email.includes('@')) {
+        document.getElementById('gateEmail').style.borderColor = '#e74c3c';
+        return;
+      }
+
+      console.log('Hyrox Predictor Lead:', { email });
+
+      // Unlock
+      document.getElementById('stationWrapper').classList.remove('gated');
+
+      // Trigger bar animations now that they're visible
+      setTimeout(() => {
+        document.querySelectorAll('.station-bar-fill').forEach((bar, i) => {
+          setTimeout(() => {
+            bar.style.width = bar.dataset.width;
+          }, i * 80);
+        });
+      }, 100);
+    });
+
+    // ===== MOBILE MENU (shared logic) =====
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  });
+  </script>
+
+</body>
+</html>
