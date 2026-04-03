@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telos Fitness — Structure Builds Discipline</title>
+  <meta name="description" content="Premium 1:1 online coaching for former athletes. Training, nutrition, lifestyle structure, and accountability. You didn't lose your discipline — you lost the structure that created it.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=3">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>T</text></svg>">
+</head>
+<body>
+
+  <!-- =============================================
+       NAVIGATION
+       ============================================= -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="https://www.instagram.com/stories/tomgetshybrid/" target="_blank" class="nav-ig-story" title="View Instagram Stories">
+          <img src="images/ig-profile.png" alt="Thomas Kern" class="nav-ig-avatar">
+          <span class="nav-ig-ring"></span>
+        </a>
+        <a href="#hero" class="nav-logo">TELOS FITNESS</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">System</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle">Tools <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px; vertical-align: middle;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="#quiz">Execution Score Quiz</a></li>
+            <li><a href="protein-calculator.html">Protein Calculator</a></li>
+            <li><a href="hyrox-predictor.html">Hyrox Predictor</a></li>
+          </ul>
+        </li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary nav-cta">Book a Call</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <ul>
+        <li><a href="#how-it-works">System</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle">Tools <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px; vertical-align: middle;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <ul class="mobile-dropdown-menu">
+            <li><a href="#quiz">Execution Score Quiz</a></li>
+            <li><a href="protein-calculator.html">Protein Calculator</a></li>
+            <li><a href="hyrox-predictor.html">Hyrox Predictor</a></li>
+          </ul>
+        </li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- =============================================
+       HERO SECTION
+       ============================================= -->
+  <section id="hero" class="hero">
+    <div class="container hero-content">
+      <span class="section-label animate-on-scroll">Premium 1:1 Online Coaching</span>
+      <h1 class="hero-headline animate-on-scroll" style="font-family: var(--font-display); font-size: clamp(3rem, 8vw, 7rem); letter-spacing: 2px; text-transform: uppercase; line-height: 0.95;">
+        You Didn't Lose<br>Your Discipline
+      </h1>
+      <p class="hero-subheadline animate-on-scroll" style="font-family: var(--font-heading); font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 300; color: var(--color-text-muted-light); max-width: 600px; margin: var(--spacing-lg) auto var(--spacing-2xl); line-height: 1.5;">
+        You lost the structure that created it. Telos installs a daily execution system where every day is scored, non-negotiables are enforced, and momentum is protected.
+      </p>
+      <div class="btn-group animate-on-scroll" style="justify-content: center;">
+        <a href="#quiz" class="btn btn-primary">Find Your Program</a>
+        <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-outline">Book a Free Consultation</a>
+      </div>
+      <a href="https://whop.com/telosfitness" target="_blank" class="hero-free-link animate-on-scroll">Join Free Community &rarr;</a>
+    </div>
+    <!-- Hero background accent -->
+    <div class="hero-bg-accent"></div>
+  </section>
+
+
+  <!-- =============================================
+       INSTAGRAM FEED
+       ============================================= -->
+  <section class="ig-section">
+    <div class="container ig-section-header">
+      <div class="ig-section-brand">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        <a href="https://instagram.com/tomgetshybrid" target="_blank" rel="noopener">@tomgetshybrid</a>
+      </div>
+      <a href="https://instagram.com/tomgetshybrid" target="_blank" rel="noopener" class="ig-section-follow">Follow &rarr;</a>
+    </div>
+    <div class="ig-edge-fade-left"></div>
+    <div class="ig-edge-fade-right"></div>
+    <div class="ig-track">
+      <!-- Original set (8 reels) -->
+      <a href="https://www.instagram.com/reel/DUpEftHDdI4/" target="_blank" rel="noopener" class="ig-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUpEftHDdI4/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWolWeNjSRp/" target="_blank" rel="noopener" class="ig-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWolWeNjSRp/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWoilh_jTzh/" target="_blank" rel="noopener" class="ig-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWoilh_jTzh/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWm-fp_DcsQ/" target="_blank" rel="noopener" class="ig-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWm-fp_DcsQ/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWh0H02jURg/" target="_blank" rel="noopener" class="ig-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWh0H02jURg/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWe1tUqjwqH/" target="_blank" rel="noopener" class="ig-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWe1tUqjwqH/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWeyBncD1e6/" target="_blank" rel="noopener" class="ig-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWeyBncD1e6/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWaJSzrDfZR/" target="_blank" rel="noopener" class="ig-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWaJSzrDfZR/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <!-- Duplicate set for seamless loop -->
+      <a href="https://www.instagram.com/reel/DUpEftHDdI4/" target="_blank" rel="noopener" class="ig-card" aria-hidden="true">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUpEftHDdI4/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWolWeNjSRp/" target="_blank" rel="noopener" class="ig-card" aria-hidden="true">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWolWeNjSRp/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWoilh_jTzh/" target="_blank" rel="noopener" class="ig-card" aria-hidden="true">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWoilh_jTzh/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWm-fp_DcsQ/" target="_blank" rel="noopener" class="ig-card" aria-hidden="true">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWm-fp_DcsQ/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWh0H02jURg/" target="_blank" rel="noopener" class="ig-card" aria-hidden="true">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWh0H02jURg/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWe1tUqjwqH/" target="_blank" rel="noopener" class="ig-card" aria-hidden="true">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWe1tUqjwqH/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWeyBncD1e6/" target="_blank" rel="noopener" class="ig-card" aria-hidden="true">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWeyBncD1e6/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+      <a href="https://www.instagram.com/reel/DWaJSzrDfZR/" target="_blank" rel="noopener" class="ig-card" aria-hidden="true">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DWaJSzrDfZR/" data-instgrm-version="14"></blockquote>
+        <span class="ig-card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       HOW IT WORKS
+       ============================================= -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <span class="section-label animate-on-scroll">The System</span>
+      <h2 class="section-heading animate-on-scroll">How It Works</h2>
+      <p class="section-description animate-on-scroll" style="color: var(--color-text-muted-light); max-width: 640px; margin-bottom: var(--spacing-3xl);">
+        Competitive sport gave you a coach, a schedule, a team, and consequences for missing. Telos rebuilds that infrastructure around your life as it exists now.
+      </p>
+
+      <div class="how-grid animate-on-scroll stagger-children">
+        <!-- Pillar 1 -->
+        <div class="how-card card">
+          <div class="how-number">01</div>
+          <div class="how-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+              <line x1="4" y1="22" x2="4" y2="15"></line>
+            </svg>
+          </div>
+          <h3>Custom Programming</h3>
+          <p style="color: var(--color-text-muted-light); font-size: 0.95rem;">Training built for your schedule, equipment, and athletic background. Progressive overload tracked. Phases structured. Nothing left to guesswork.</p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="how-card card">
+          <div class="how-number">02</div>
+          <div class="how-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3>Daily Execution Scoring</h3>
+          <p style="color: var(--color-text-muted-light); font-size: 0.95rem;">Every day is scored across training, nutrition, recovery, and habits. You see your floor. Your coach enforces it. Momentum becomes visible.</p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="how-card card">
+          <div class="how-number">03</div>
+          <div class="how-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>Momentum Protection</h3>
+          <p style="color: var(--color-text-muted-light); font-size: 0.95rem;">Travel week. Sick kid. Deadline from hell. The system adjusts — scaled-back sessions, nutrition pivots, recovery priorities — so one bad week never kills the month.</p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="how-card card">
+          <div class="how-number">04</div>
+          <div class="how-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>1:1 Coaching + Accountability</h3>
+          <p style="color: var(--color-text-muted-light); font-size: 0.95rem;">Weekly calls. Direct text access. Someone who knows your schedule, your patterns, and what's actually going on — and adjusts the plan accordingly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       ABOUT / ORIGIN STORY
+       ============================================= -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-grid animate-on-scroll">
+
+        <!-- Photo column -->
+        <div class="about-photo-col">
+          <div class="about-photo-frame">
+            <img src="images/thomas.jpeg" alt="Thomas Kern — Telos Fitness founder" class="about-photo">
+            <!-- Corner accents -->
+            <div class="photo-corner photo-corner-tl"></div>
+            <div class="photo-corner photo-corner-br"></div>
+          </div>
+          <!-- Stats row under photo -->
+          <div class="about-stats-row">
+            <div class="stat-inline">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Years Semi-Pro</span>
+            </div>
+            <div class="stat-inline">
+              <span class="stat-number">6</span>
+              <span class="stat-label">Club Trials</span>
+            </div>
+            <div class="stat-inline">
+              <span class="stat-number">1:1</span>
+              <span class="stat-label">Coaching Only</span>
+            </div>
+            <div class="stat-inline">
+              <span class="stat-number">90</span>
+              <span class="stat-label">Day System</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story column -->
+        <div class="about-story">
+          <span class="section-label">About Thomas</span>
+          <h2 class="section-heading">I Know What Structure<br>Looks Like at the Top.</h2>
+          <p style="color: var(--color-text-muted-light); font-size: 1rem; line-height: 1.7; margin-bottom: var(--spacing-lg);">
+            I dropped out of college and spent three years trialing with six professional soccer clubs while playing semi-professionally. I know what competitive athletic structure looks like at the highest level — and what happens when it disappears.
+          </p>
+          <p style="color: var(--color-text-muted-light); font-size: 1rem; line-height: 1.7; margin-bottom: var(--spacing-lg);">
+            Later, I built a personal training business while running a tech startup that eventually failed. That failure clarified one thing: execution — not ideas, not motivation — is the only thing that compounds.
+          </p>
+          <p style="color: var(--color-text-primary); font-size: 1rem; line-height: 1.7;">
+            Telos Fitness exists because I had to reverse-engineer discipline from scratch. Now I install that system for men who once had it — and lost the structure that made it automatic.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       PRICING SECTION
+       ============================================= -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--spacing-3xl);">
+        <span class="section-label animate-on-scroll">Programs</span>
+        <h2 class="section-heading animate-on-scroll" style="text-align: center;">Choose Your Level</h2>
+        <p class="section-description animate-on-scroll" style="color: var(--color-text-muted-light); max-width: 560px; margin: 0 auto;">
+          Three tiers. Three levels of structure. All built on the same principle: external accountability changes everything.
+        </p>
+      </div>
+
+      <div class="pricing-grid animate-on-scroll stagger-children">
+
+        <!-- TIER 1: ATHLETE REBUILD -->
+        <div class="pricing-card card">
+          <div class="pricing-header">
+            <span class="tier-label">Starter</span>
+            <h3 class="tier-name">Rebuild</h3>
+          </div>
+
+          <ul class="feature-list">
+            <li class="feature-item feature-included">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              12-week progressive training program
+            </li>
+            <li class="feature-item feature-included">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              3 phases: Foundation → Strength → Athletic
+            </li>
+            <li class="feature-item feature-included">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Built-in workout tracker
+            </li>
+            <li class="feature-item feature-included">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Gym + home alternatives
+            </li>
+            <li class="feature-item feature-included">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Progression + deload protocols
+            </li>
+            <li class="feature-item feature-excluded">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span style="color: var(--color-text-muted-dark);">Custom programming</span>
+            </li>
+            <li class="feature-item feature-excluded">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span style="color: var(--color-text-muted-dark);">Nutrition protocol</span>
+            </li>
+            <li class="feature-item feature-excluded">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span style="color: var(--color-text-muted-dark);">1:1 coaching calls</span>
+            </li>
+          </ul>
+
+          <a href="https://whop.com/checkout/plan_4XhPpAYVD2xQl" target="_blank" class="btn btn-outline" style="width: 100%; margin-top: var(--spacing-lg);">Get Started</a>
+        </div>
+
+        <!-- TIER 2: GROWTH (DECOY) -->
+        <div class="pricing-card card">
+          <div class="pricing-header">
+            <span class="tier-label">Custom Training</span>
+            <h3 class="tier-name">Growth</h3>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--color-text-muted-light); margin-bottom: var(--spacing-md); font-style: italic;">Everything in Rebuild, plus:</p>
+
+          <ul class="feature-list">
+            <li class="feature-item feature-included">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Fully custom programming
+            </li>
+            <li class="feature-item feature-included">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Text message support (async)
+            </li>
+            <li class="feature-item feature-included">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Progressive program updates
+            </li>
+            <li class="feature-item feature-included">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Delivered via EverFit app
+            </li>
+            <li class="feature-item feature-excluded">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span style="color: var(--color-text-muted-dark);">Custom nutrition protocol</span>
+            </li>
+            <li class="feature-item feature-excluded">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span style="color: var(--color-text-muted-dark);">Daily execution system</span>
+            </li>
+            <li class="feature-item feature-excluded">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span style="color: var(--color-text-muted-dark);">Weekly 1:1 coaching calls</span>
+            </li>
+            <li class="feature-item feature-excluded">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span style="color: var(--color-text-muted-dark);">Direct text access</span>
+            </li>
+          </ul>
+
+          <a href="https://calendly.com/tkern-y-m5/1-1-consultation-call-clone" target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: var(--spacing-lg);">Book a Consultation</a>
+        </div>
+
+        <!-- TIER 3: LIFESTYLE (PRIMARY / FEATURED) -->
+        <div class="pricing-card card card-featured">
+          <div class="pricing-badge">Recommended</div>
+          <div class="pricing-header">
+            <span class="tier-label" style="color: var(--color-accent-gold);">Full System</span>
+            <h3 class="tier-name">Lifestyle</h3>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--color-text-muted-light); margin-bottom: var(--spacing-md); font-style: italic;">Everything in Growth, plus:</p>
+
+          <ul class="feature-list">
+            <li class="feature-item feature-included feature-gold">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Weekly 1:1 coaching calls with Thomas
+            </li>
+            <li class="feature-item feature-included feature-gold">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Custom nutrition protocol
+            </li>
+            <li class="feature-item feature-included feature-gold">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Daily execution system — every day scored
+            </li>
+            <li class="feature-item feature-included feature-gold">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Direct text access (Mon–Fri)
+            </li>
+            <li class="feature-item feature-included feature-gold">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Lifestyle + habit coaching
+            </li>
+            <li class="feature-item feature-included feature-gold">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Busy-week adjustments
+            </li>
+            <li class="feature-item feature-included feature-gold">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Full custom programming via EverFit
+            </li>
+          </ul>
+
+          <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-lg);">Book a Free Consultation</a>
+        </div>
+      </div>
+
+      <!-- 30-Day Guarantee -->
+      <div class="guarantee animate-on-scroll" style="text-align: center; margin-top: var(--spacing-3xl); padding: var(--spacing-2xl); border: 1px solid var(--color-border-card); border-radius: var(--radius-lg); max-width: 700px; margin-left: auto; margin-right: auto;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: var(--spacing-md);">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <h3 style="margin-bottom: var(--spacing-sm);">30-Day Progress Guarantee</h3>
+        <p style="color: var(--color-text-muted-light); font-size: 0.95rem; max-width: 500px; margin: 0 auto;">
+          Follow the system for 30 days. If you don't see measurable progress in your training consistency, body composition, or daily execution scores — you get a full refund. No questions. No conditions.
+        </p>
+      </div>
+
+      <!-- All programs note -->
+      <p class="animate-on-scroll" style="text-align: center; color: var(--color-text-muted); font-size: 0.8rem; margin-top: var(--spacing-xl);">All programs are 3-month commitments.</p>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       EXECUTION SCORE QUIZ
+       ============================================= -->
+  <section id="quiz" class="quiz-section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--spacing-2xl);">
+        <span class="section-label animate-on-scroll">Self-Assessment</span>
+        <h2 class="section-heading animate-on-scroll" style="text-align: center;">What's Your Execution Score?</h2>
+        <p class="section-description animate-on-scroll" style="color: var(--color-text-muted-light); max-width: 560px; margin: 0 auto;">
+          8 questions. 4 pillars. Find out where your system is breaking down — and what to fix first.
+        </p>
+      </div>
+
+      <div class="quiz-container animate-on-scroll" style="max-width: 640px; margin: 0 auto;">
+
+        <!-- Quiz Intro -->
+        <div class="quiz-intro card" style="text-align: center; padding: var(--spacing-2xl);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: var(--spacing-lg);">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+          </svg>
+          <h3 style="margin-bottom: var(--spacing-md);">Execution Score Assessment</h3>
+          <p style="color: var(--color-text-muted-light); margin-bottom: var(--spacing-xl); font-size: 0.95rem;">
+            Rate yourself honestly across Training, Nutrition, Recovery, and Accountability. Your score reveals whether you need a full system overhaul or a targeted fix.
+          </p>
+          <button class="btn btn-primary quiz-start-btn">Start Assessment</button>
+        </div>
+
+        <!-- Question Card -->
+        <div class="quiz-question-card card" style="display: none; padding: var(--spacing-2xl); transition: opacity 0.3s ease;">
+          <!-- Progress bar -->
+          <div style="margin-bottom: var(--spacing-xl);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
+              <span class="quiz-question-counter" style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-text-muted);">Question 1 of 8</span>
+            </div>
+            <div class="quiz-progress-bar" style="width: 100%; height: 3px; background: var(--color-border-card); border-radius: 2px; overflow: hidden;">
+              <div class="quiz-progress-bar-fill" style="width: 12.5%; height: 100%; background: var(--color-accent-gold); transition: width 0.4s ease; border-radius: 2px;"></div>
+            </div>
+          </div>
+
+          <!-- Question text -->
+          <h3 class="quiz-question-text" style="margin-bottom: var(--spacing-xl); font-size: 1.25rem;"></h3>
+
+          <!-- Options container -->
+          <div class="quiz-options" style="display: flex; flex-direction: column; gap: var(--spacing-sm);"></div>
+        </div>
+
+        <!-- Lead Capture -->
+        <div class="quiz-lead-capture card" style="display: none; padding: var(--spacing-2xl); text-align: center;">
+          <h3 style="margin-bottom: var(--spacing-sm);">Your Score Is Ready</h3>
+          <p style="color: var(--color-text-muted-light); margin-bottom: var(--spacing-xl); font-size: 0.95rem;">Enter your details below to see your full Execution Score breakdown and personalized diagnosis.</p>
+          <form style="display: flex; flex-direction: column; gap: var(--spacing-md); max-width: 400px; margin: 0 auto;">
+            <input type="text" name="name" placeholder="First name" required style="padding: 14px 16px; background: var(--color-bg-primary); border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); color: var(--color-text-primary); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+            <input type="email" name="email" placeholder="Email address" required style="padding: 14px 16px; background: var(--color-bg-primary); border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); color: var(--color-text-primary); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+            <input type="tel" name="phone" placeholder="Phone number" style="padding: 14px 16px; background: var(--color-bg-primary); border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); color: var(--color-text-primary); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+            <button type="button" class="btn btn-primary quiz-see-score-btn" style="width: 100%;">See Your Score</button>
+          </form>
+        </div>
+
+        <!-- Results -->
+        <div class="quiz-results card" style="display: none; padding: var(--spacing-2xl) var(--spacing-xl); text-align: center;">
+
+          <!-- Section Label -->
+          <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text-muted); display: block; margin-bottom: var(--spacing-lg);">YOUR EXECUTION SCORE</span>
+
+          <!-- Score Ring -->
+          <div style="position: relative; width: 180px; height: 180px; margin: 0 auto var(--spacing-xl);">
+            <!-- Glow effect -->
+            <div style="position: absolute; top: 50%; left: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+            <svg width="180" height="180" viewBox="0 0 100 100" style="transform: rotate(-90deg);">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="5"></circle>
+              <circle class="quiz-score-ring" cx="50" cy="50" r="42" fill="none" stroke="url(#goldGradient)" stroke-width="5" stroke-linecap="round" stroke-dasharray="263.89" stroke-dashoffset="263.89" style="transition: stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1); filter: drop-shadow(0 0 6px rgba(201,168,76,0.4));"></circle>
+              <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#C9A84C"/>
+                  <stop offset="100%" stop-color="#E8D48B"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+              <span class="quiz-score-number" style="font-family: var(--font-display); font-size: 3rem; color: var(--color-accent-gold); line-height: 1; display: block;">0</span>
+              <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; color: var(--color-text-muted); display: block; margin-top: 2px;">/40</span>
+            </div>
+          </div>
+
+          <!-- Tier -->
+          <h3 class="quiz-tier-name"></h3>
+          <p class="quiz-tier-description"></p>
+
+          <!-- Divider -->
+          <div style="width: 40px; height: 1px; background: rgba(201,168,76,0.3); margin: 0 auto var(--spacing-xl);"></div>
+
+          <!-- Pillar Breakdown -->
+          <div style="margin-bottom: var(--spacing-md);">
+            <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text-muted); display: block; margin-bottom: var(--spacing-lg); text-align: left;">PILLAR BREAKDOWN</span>
+          </div>
+          <div class="quiz-pillar-bars"></div>
+
+          <!-- Weakest Link Callout -->
+          <div class="quiz-weakest-link"></div>
+
+          <!-- CTAs -->
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-md); align-items: center;">
+            <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary quiz-cta-btn" style="width: 100%; max-width: 360px;">Book a Free Consultation</a>
+            <button class="btn btn-outline quiz-retake-btn" style="width: 100%; max-width: 360px;">Retake Assessment</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       SOCIAL PROOF / TESTIMONIALS
+       ============================================= -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--spacing-3xl);">
+        <span class="section-label animate-on-scroll">Results</span>
+        <h2 class="section-heading animate-on-scroll" style="text-align: center;">From the Men Inside the System</h2>
+      </div>
+
+      <div class="testimonials-grid animate-on-scroll stagger-children">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card card">
+          <div class="testimonial-quote">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
+          </div>
+          <p class="testimonial-text">I'd been telling myself I just needed a better program. Turns out I needed someone to build the system around my actual life. Three weeks in and I haven't missed a single day.</p>
+          <div class="testimonial-attribution">
+            <div class="testimonial-avatar">M</div>
+            <div>
+              <span class="testimonial-name">Marcus T.</span>
+              <span class="testimonial-role">VP of Sales, Former D1 Lacrosse</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card card">
+          <div class="testimonial-quote">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
+          </div>
+          <p class="testimonial-text">The daily execution scoring changed everything. I can actually see when I'm slipping before the wheels fall off. And knowing Thomas is watching the scores keeps me honest.</p>
+          <div class="testimonial-attribution">
+            <div class="testimonial-avatar">J</div>
+            <div>
+              <span class="testimonial-name">James R.</span>
+              <span class="testimonial-role">Founder/CEO, Former College Baseball</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card card">
+          <div class="testimonial-quote">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
+          </div>
+          <p class="testimonial-text">Travel used to destroy my consistency. Now I have a scaled-back protocol for road weeks and Thomas adjusts the plan before I even leave. No more restarting from zero.</p>
+          <div class="testimonial-attribution">
+            <div class="testimonial-avatar">D</div>
+            <div>
+              <span class="testimonial-name">David K.</span>
+              <span class="testimonial-role">Director of Engineering, Former Club Rugby</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="animate-on-scroll" style="text-align: center; color: var(--color-text-muted); font-size: 0.75rem; margin-top: var(--spacing-xl); font-style: italic;">Placeholder testimonials — real client results coming soon.</p>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       FAQ SECTION
+       ============================================= -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--spacing-3xl);">
+        <span class="section-label animate-on-scroll">Common Questions</span>
+        <h2 class="section-heading animate-on-scroll" style="text-align: center;">FAQ</h2>
+      </div>
+
+      <div class="faq-list animate-on-scroll" style="max-width: 760px; margin: 0 auto;">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>I don't have time to train. Will this still work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>The Lifestyle system is built for people who are busy. Training is 3–4 sessions per week, 45–60 minutes each. Your program is designed around your actual schedule — not an ideal one. Travel weeks, sick kids, deadlines — the plan adjusts. The point isn't perfection. It's protecting your floor so momentum never dies.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>I already know how to train. Why do I need a coach?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Knowing how to train and executing consistently are two different problems. You don't need education — you need external structure. A coach who tracks your execution, enforces your non-negotiables, and adjusts the plan when life gets in the way. That's the infrastructure competitive sport used to provide. Telos reinstalls it.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What's the difference between Growth and Lifestyle?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Growth gives you custom programming and async text support. Lifestyle gives you the full system — weekly 1:1 calls with Thomas, custom nutrition, daily execution scoring, direct text access, and busy-week adjustments. Growth is a program. Lifestyle is the complete operating system. If you're serious about rebuilding the structure that used to make execution automatic, Lifestyle is the tier.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Why is this a 3-month commitment?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Because changing your body and rebuilding your identity as someone who executes isn't a 4-week project. Month one installs the system. Month two builds the habit. Month three locks it in and starts compounding. Shorter timelines produce short-term results. This is about building something that lasts.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What if I don't see results?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Follow the system for 30 days. If you don't see measurable progress in your training consistency, body composition, or daily execution scores — you get a full refund. No questions, no conditions. The system works. But you have to do the work.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How is this different from other online coaching?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Most online coaches give you a program and check in once a week. Telos doesn't just program your training — it scores your daily execution, enforces your floor, adjusts for real life in real time, and treats fitness as the entry point to rebuilding the structure that drives everything else. The program is the least important part. The system is everything.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do I need a gym?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Ideally, yes — a standard gym with dumbbells, barbells, cables, and a pull-up bar. But every exercise in your program includes home alternatives. If you're traveling or your gym access changes, your coach adjusts the plan. No excuses, no dead weeks.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer id="footer" class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <span style="font-family: var(--font-display); font-size: 1.25rem; letter-spacing: 1px; text-transform: uppercase;">TELOS FITNESS</span>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-top: var(--spacing-md); max-width: 280px; line-height: 1.6;">
+            Premium 1:1 online coaching for former athletes. Structure builds discipline. Discipline builds identity.
+          </p>
+        </div>
+
+        <!-- Links column -->
+        <div class="footer-links">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Quick Links</span>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm);">
+            <li><a href="#how-it-works" style="color: var(--color-text-muted); font-size: 0.9rem;">How It Works</a></li>
+            <li><a href="#pricing" style="color: var(--color-text-muted); font-size: 0.9rem;">Programs</a></li>
+            <li><a href="#quiz" style="color: var(--color-text-muted); font-size: 0.9rem;">Execution Score Quiz</a></li>
+            <li><a href="#faq" style="color: var(--color-text-muted); font-size: 0.9rem;">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Social column -->
+        <div class="footer-social">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Connect</span>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm);">
+            <li>
+              <a href="https://instagram.com/tomgetshybrid" target="_blank" style="color: var(--color-text-muted); font-size: 0.9rem; display: flex; align-items: center; gap: var(--spacing-xs);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                @tomgetshybrid
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/telos_fitness" target="_blank" style="color: var(--color-text-muted); font-size: 0.9rem; display: flex; align-items: center; gap: var(--spacing-xs);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                @telos_fitness
+              </a>
+            </li>
+            <li>
+              <a href="mailto:telosfitnessllc@gmail.com" style="color: var(--color-text-muted); font-size: 0.9rem; display: flex; align-items: center; gap: var(--spacing-xs);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                telosfitnessllc@gmail.com
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CTA column -->
+        <div class="footer-cta">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Ready?</span>
+          <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Free Consultation</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p style="color: var(--color-text-muted-dark); font-size: 0.75rem; font-family: var(--font-mono); letter-spacing: 1px;">&copy; 2026 Telos Fitness. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/quiz.js?v=2"></script>
+
+  <!-- Instagram Embed SDK -->
+  <script async defer src="https://www.instagram.com/embed.js"></script>
+  <script>
+    // Re-process Instagram embeds after they load
+    window.addEventListener('load', function() {
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
+      }
+    });
+  </script>
+
+
+</body>
+</html>
