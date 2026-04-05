@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - Telos Fitness | Programs & Pricing</title>
+  <meta name="description" content="Three coaching tiers built on one principle: external accountability changes everything. Find the right level of structure for your goals.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pricing - Telos Fitness">
+  <meta property="og:description" content="Three coaching tiers. One system. Pick the level of structure you need.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.telosathleticclub.com/pricing">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.telosathleticclub.com/pricing">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=14">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>T</text></svg>">
+
+  <style>
+    /* ===== QUIZ OVERLAY ===== */
+    .quiz-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(8, 8, 8, 0.97);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .quiz-overlay.hidden {
+      display: none;
+    }
+    .quiz-overlay-inner {
+      max-width: 640px;
+      width: 100%;
+      margin: auto;
+    }
+
+    /* ===== PRICING PAGE ===== */
+    .pricing-page {
+      min-height: 100vh;
+      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 60px;
+    }
+    .pricing-page-container {
+      width: 100%;
+      max-width: 1240px;
+      padding: 0 16px;
+    }
+
+    /* Header */
+    .pricing-page-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .pricing-page-header .header-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C9A84C;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .pricing-page-header h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .pricing-page-header p {
+      color: #777;
+      font-size: 14px;
+      font-weight: 300;
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Cards Grid */
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.08fr 1fr;
+      gap: 14px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    /* Card Base */
+    .p-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 16px;
+      padding: 24px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .p-card.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .p-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.25);
+    }
+    .p-card.animate-in:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Growth Card */
+    .p-card.p-growth {
+      background: #0d0d0d;
+      border: 1px solid #333;
+      padding: 28px 24px 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .p-card.p-growth:hover {
+      border-color: #555;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    }
+    .p-card.p-growth .p-features li .ico svg { stroke: #999; }
+    .p-card.p-growth .p-features li strong { color: #eee; }
+
+    /* Featured Card */
+    .p-card.p-featured {
+      background: #0c0c08;
+      border: 2px solid #C9A84C;
+      padding: 28px 24px 24px;
+      box-shadow: 0 0 50px rgba(201,168,76,0.05), 0 16px 32px rgba(0,0,0,0.25);
+    }
+    .p-card.p-featured:hover {
+      box-shadow: 0 0 60px rgba(201,168,76,0.1), 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Anchor Card */
+    .p-card.p-anchor {
+      background: #0c0c08;
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 28px 24px 24px;
+    }
+    .p-card.p-anchor .p-features li .ico svg { stroke: #C9A84C; }
+    .p-card.p-anchor .p-features li strong { color: #fff; }
+
+    /* Badge */
+    .p-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #080808;
+      background: #C9A84C;
+      padding: 4px 14px;
+      border-radius: 100px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Tier Label */
+    .p-tier {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .p-featured .p-tier { color: #C9A84C; }
+
+    /* Name */
+    .p-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .p-featured .p-name { font-size: 24px; }
+
+    /* Description */
+    .p-desc {
+      color: #666;
+      font-size: 12px;
+      line-height: 1.5;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    /* Divider */
+    .p-divider {
+      height: 1px;
+      background: #1a1a1a;
+      margin-bottom: 16px;
+    }
+    .p-featured .p-divider { background: #252015; }
+
+    /* Price Block */
+    .p-price-block {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .p-price-main {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+    .p-featured .p-price-main {
+      font-size: 44px;
+      color: #C9A84C;
+    }
+    .p-price-term {
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .p-price-pp {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: #777;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid #1e1e1e;
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+    .p-featured .p-price-pp {
+      color: #C9A84C;
+      background: rgba(201,168,76,0.06);
+      border-color: rgba(201,168,76,0.18);
+    }
+    .p-price-pp span { font-weight: 700; }
+
+    /* Features */
+    .p-features {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 18px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .p-features li {
+      font-size: 12.5px;
+      color: #999;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      line-height: 1.35;
+    }
+    .p-features li .ico {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .p-features li .ico svg {
+      width: 16px;
+      height: 16px;
+    }
+    .p-features li strong {
+      color: #ddd;
+      font-weight: 600;
+    }
+    .p-featured .p-features li strong { color: #fff; }
+    .p-featured .p-features li .ico svg { stroke: #C9A84C; }
+    .p-features li.missing { color: #333; }
+    .p-features li.missing .ico svg { stroke: #2a2a2a; }
+    .p-features .stacks {
+      font-size: 11px;
+      font-weight: 500;
+      color: #C9A84C;
+      padding-bottom: 2px;
+    }
+
+    /* CTA Buttons */
+    .p-cta {
+      display: block;
+      width: 100%;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      margin-top: auto;
+    }
+    .p-cta-gold {
+      background: #C9A84C;
+      color: #080808;
+      font-weight: 700;
+      box-shadow: 0 3px 16px rgba(201,168,76,0.18);
+    }
+    .p-cta-gold:hover {
+      background: #b89a42;
+      color: #080808;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(201,168,76,0.25);
+    }
+    .p-cta-outline {
+      background: transparent;
+      color: #bbb;
+      border: 1px solid #2a2a2a;
+    }
+    .p-cta-outline:hover {
+      background: #141414;
+      border-color: #3a3a3a;
+      color: #fff;
+    }
+    .p-cta-muted {
+      background: #151515;
+      color: #bbb;
+      border: 1px solid #222;
+    }
+    .p-cta-muted:hover {
+      background: #1c1c1c;
+      border-color: #333;
+      color: #fff;
+    }
+
+    /* Guarantee */
+    .pricing-guarantee {
+      text-align: center;
+      margin-top: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .pricing-guarantee.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;
+    }
+    .pricing-guarantee .g-line {
+      width: 40px;
+      height: 2px;
+      background: #C9A84C;
+      margin: 0 auto 14px;
+      border-radius: 2px;
+    }
+    .pricing-guarantee h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .pricing-guarantee p {
+      color: #666;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    /* Footer Note */
+    .pricing-footer-note {
+      text-align: center;
+      margin-top: 28px;
+      color: #444;
+      font-size: 12px;
+      font-weight: 300;
+      opacity: 0;
+    }
+    .pricing-footer-note.animate-in {
+      opacity: 1;
+      transition: opacity 0.6s ease 0.8s;
+    }
+    .pricing-footer-note strong { color: #666; font-weight: 500; }
+
+    /* View Pricing Button (in quiz results) */
+    .quiz-view-pricing-btn {
+      background: #C9A84C;
+      color: #080808;
+      font-weight: 700;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 3px 16px rgba(201,168,76,0.18);
+    }
+    .quiz-view-pricing-btn:hover {
+      background: #b89a42;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(201,168,76,0.25);
+    }
+
+    /* Duration Toggle */
+    .duration-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .duration-toggle .toggle-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #555;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .duration-toggle .toggle-label.active {
+      color: #f0f0f0;
+    }
+    .toggle-switch {
+      width: 48px;
+      height: 26px;
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 13px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .toggle-switch:hover {
+      border-color: #C9A84C;
+    }
+    .toggle-switch .toggle-knob {
+      width: 20px;
+      height: 20px;
+      background: #C9A84C;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .toggle-switch.toggled .toggle-knob {
+      transform: translateX(22px);
+    }
+
+    /* Mobile */
+    @media (max-width: 1100px) {
+      .pricing-cards {
+        grid-template-columns: 1fr 1fr;
+        max-width: 700px;
+        gap: 16px;
+      }
+    }
+    @media (max-width: 640px) {
+      .pricing-cards {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        gap: 20px;
+      }
+      .p-card.p-featured {
+        order: -1;
+      }
+      .p-price-main { font-size: 36px; }
+      .p-featured .p-price-main { font-size: 40px; }
+      .pricing-page {
+        padding-top: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       NAVIGATION
+       ============================================= -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">TELOS FITNESS</a>
+      <ul class="nav-links">
+        <li><a href="index.html#how-it-works">System</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="pricing" style="color: var(--color-accent-gold);">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle">Tools <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px; vertical-align: middle;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="protein-calculator">Protein Calculator</a></li>
+            <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
+          </ul>
+        </li>
+        <li><a href="resources">Resources</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary nav-cta">Book a Call</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <ul>
+        <li><a href="index.html#how-it-works">System</a></li>
+        <li><a href="pricing" style="color: var(--color-accent-gold);">Pricing</a></li>
+        <li><a href="protein-calculator">Protein Calc</a></li>
+        <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
+        <li><a href="resources">Resources</a></li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- =============================================
+       QUIZ OVERLAY (shown if quiz not yet completed)
+       ============================================= -->
+  <div class="quiz-overlay" id="quizOverlay">
+    <div class="quiz-overlay-inner">
+      <div class="quiz-container">
+
+        <!-- Quiz Intro -->
+        <div class="quiz-intro card" style="text-align: center; padding: var(--spacing-2xl);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: var(--spacing-lg);">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+          </svg>
+          <h3 style="margin-bottom: var(--spacing-md);">Unlock Your Pricing</h3>
+          <p style="color: var(--color-text-muted-light); margin-bottom: var(--spacing-sm); font-size: 0.95rem;">
+            Take the 2-minute Execution Score Assessment and we'll match you with the right program tier.
+          </p>
+          <p style="color: var(--color-accent-gold); margin-bottom: var(--spacing-xl); font-size: 0.85rem; font-family: var(--font-mono); letter-spacing: 1px;">
+            YOUR PERSONALIZED PRICING UNLOCKS AFTER THE QUIZ
+          </p>
+          <button class="btn btn-primary quiz-start-btn">Start Assessment</button>
+        </div>
+
+        <!-- Question Card -->
+        <div class="quiz-question-card card" style="display: none; padding: var(--spacing-2xl); transition: opacity 0.3s ease;">
+          <div style="margin-bottom: var(--spacing-xl);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
+              <span class="quiz-question-counter" style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-text-muted);">Question 1 of 8</span>
+            </div>
+            <div class="quiz-progress-bar" style="width: 100%; height: 3px; background: var(--color-border-card); border-radius: 2px; overflow: hidden;">
+              <div class="quiz-progress-bar-fill" style="width: 12.5%; height: 100%; background: var(--color-accent-gold); transition: width 0.4s ease; border-radius: 2px;"></div>
+            </div>
+          </div>
+          <h3 class="quiz-question-text" style="margin-bottom: var(--spacing-xl); font-size: 1.25rem;"></h3>
+          <div class="quiz-options" style="display: flex; flex-direction: column; gap: var(--spacing-sm);"></div>
+        </div>
+
+        <!-- Lead Capture -->
+        <div class="quiz-lead-capture card" style="display: none; padding: var(--spacing-2xl); text-align: center;">
+          <h3 style="margin-bottom: var(--spacing-sm);">Your Score Is Ready</h3>
+          <p style="color: var(--color-text-muted-light); margin-bottom: var(--spacing-sm); font-size: 0.95rem;">Enter your details below to see your full Execution Score breakdown and unlock your personalized pricing.</p>
+          <p style="color: var(--color-accent-gold); margin-bottom: var(--spacing-xl); font-size: 0.8rem; font-family: var(--font-mono); letter-spacing: 1px;">PRICING UNLOCKS AFTER THIS STEP</p>
+          <form style="display: flex; flex-direction: column; gap: var(--spacing-md); max-width: 400px; margin: 0 auto;">
+            <input type="text" name="name" placeholder="First name" required style="padding: 14px 16px; background: var(--color-bg-primary); border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); color: var(--color-text-primary); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+            <input type="email" name="email" placeholder="Email address" required style="padding: 14px 16px; background: var(--color-bg-primary); border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); color: var(--color-text-primary); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+            <input type="tel" name="phone" placeholder="Phone number" style="padding: 14px 16px; background: var(--color-bg-primary); border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); color: var(--color-text-primary); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+            <button type="button" class="btn btn-primary quiz-see-score-btn" style="width: 100%;">See Your Score</button>
+          </form>
+        </div>
+
+        <!-- Results -->
+        <div class="quiz-results card" style="display: none; padding: var(--spacing-2xl) var(--spacing-xl); text-align: center;">
+          <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text-muted); display: block; margin-bottom: var(--spacing-lg);">YOUR EXECUTION SCORE</span>
+          <div style="position: relative; width: 180px; height: 180px; margin: 0 auto var(--spacing-xl);">
+            <div style="position: absolute; top: 50%; left: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+            <svg width="180" height="180" viewBox="0 0 100 100" style="transform: rotate(-90deg);">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="5"></circle>
+              <circle class="quiz-score-ring" cx="50" cy="50" r="42" fill="none" stroke="url(#goldGradient)" stroke-width="5" stroke-linecap="round" stroke-dasharray="263.89" stroke-dashoffset="263.89" style="transition: stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1); filter: drop-shadow(0 0 6px rgba(201,168,76,0.4));"></circle>
+              <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#C9A84C"/>
+                  <stop offset="100%" stop-color="#E8D48B"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+              <span class="quiz-score-number" style="font-family: var(--font-display); font-size: 3rem; color: var(--color-accent-gold); line-height: 1; display: block;">0</span>
+              <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; color: var(--color-text-muted); display: block; margin-top: 2px;">/40</span>
+            </div>
+          </div>
+          <h3 class="quiz-tier-name"></h3>
+          <p class="quiz-tier-description"></p>
+          <div style="width: 40px; height: 1px; background: rgba(201,168,76,0.3); margin: 0 auto var(--spacing-xl);"></div>
+          <div style="margin-bottom: var(--spacing-md);">
+            <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text-muted); display: block; margin-bottom: var(--spacing-lg); text-align: left;">PILLAR BREAKDOWN</span>
+          </div>
+          <div class="quiz-pillar-bars"></div>
+          <div class="quiz-weakest-link"></div>
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-md); align-items: center;">
+            <button class="quiz-view-pricing-btn" style="width: 100%; max-width: 360px;">View Your Pricing Recommendation</button>
+            <button class="btn btn-outline quiz-retake-btn" style="width: 100%; max-width: 360px;">Retake Assessment</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       PRICING CONTENT (hidden until quiz completed)
+       ============================================= -->
+  <main class="pricing-page" id="pricingContent" style="display: none;">
+    <div class="pricing-page-container">
+
+      <div class="pricing-page-header">
+        <span class="header-label">Telos Fitness</span>
+        <h1>Stop starting over.<br>Start executing.</h1>
+        <p>Three paths. One system. Pick the level of structure you need to become the man who follows through.</p>
+      </div>
+
+      <!-- Duration Toggle -->
+      <div class="duration-toggle">
+        <span class="toggle-label active" data-duration="3">3 Months</span>
+        <div class="toggle-switch" id="durationToggle">
+          <div class="toggle-knob"></div>
+        </div>
+        <span class="toggle-label" data-duration="6">6 Months</span>
+      </div>
+
+      <div class="pricing-cards">
+
+        <!-- STARTER -->
+        <div class="p-card card-tilt">
+          <span class="p-tier">Starter</span>
+          <h2 class="p-name">Rebuild</h2>
+          <p class="p-desc">A proven 12-week program you run on your own. No coaching - just structure that works.</p>
+          <div class="p-divider"></div>
+          <div class="p-price-block">
+            <div class="p-price-main" data-price-3="1497" data-price-6="2994">$0</div>
+            <div class="p-price-term">3-Month Program</div>
+            <div class="p-price-pp">PP <span data-price-3="1997" data-price-6="3994">$0</span></div>
+          </div>
+          <div class="p-divider"></div>
+          <ul class="p-features">
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 3v18"/></svg></span>
+              <strong>3-Phase Periodized Program</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
+              <strong>The Athlete's Playbook</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
+              <strong>Built-In Progress Tracker</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+              <strong>Gym + Home Alternatives</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+              <strong>Progression + Deload Protocols</strong>
+            </li>
+            <li class="missing">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+              Custom programming
+            </li>
+            <li class="missing">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+              Nutrition coaching
+            </li>
+            <li class="missing">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+              1:1 coaching calls
+            </li>
+            <li class="missing">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+              Direct text access
+            </li>
+          </ul>
+          <a href="https://calendly.com/tkern-y-m5/1on1consultation" target="_blank" class="p-cta p-cta-outline">Book Your Free Consultation</a>
+        </div>
+
+        <!-- GROWTH -->
+        <div class="p-card p-growth card-tilt">
+          <span class="p-badge" style="background: #fff; color: #080808;">Popular</span>
+          <span class="p-tier">Custom Training</span>
+          <h2 class="p-name">Growth</h2>
+          <p class="p-desc">Custom programming with coaching support. For the man who handles nutrition on his own.</p>
+          <div class="p-divider"></div>
+          <div class="p-price-block">
+            <div class="p-price-main" data-price-3="1997" data-price-6="3994">$0</div>
+            <div class="p-price-term">3-Month Program</div>
+            <div class="p-price-pp">PP <span data-price-3="2497" data-price-6="4994">$0</span></div>
+          </div>
+          <div class="p-divider"></div>
+          <ul class="p-features">
+            <li class="stacks">Everything in Rebuild, plus...</li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>
+              <strong>Fully Custom Programming</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+              <strong>Text Message Support</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+              <strong>Progressive Program Updates</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+              <strong>Delivered via EverFit</strong>
+            </li>
+            <li class="missing">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+              Weekly 1:1 coaching calls
+            </li>
+            <li class="missing">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+              Custom nutrition coaching
+            </li>
+            <li class="missing">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+              Daily execution system
+            </li>
+            <li class="missing">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+              Direct text access
+            </li>
+          </ul>
+          <a href="https://calendly.com/tkern-y-m5/1-1-consultation-call-clone" target="_blank" class="p-cta p-cta-muted">Book Your Free Consultation</a>
+        </div>
+
+        <!-- FEATURED - LIFESTYLE -->
+        <div class="p-card p-featured card-tilt">
+          <span class="p-badge">Recommended</span>
+          <span class="p-tier">Full System</span>
+          <h2 class="p-name">Lifestyle</h2>
+          <p class="p-desc">The complete operating system. Training, nutrition, habits, calls, and direct access.</p>
+          <div class="p-divider"></div>
+          <div class="p-price-block">
+            <div class="p-price-main" data-price-3="2497" data-price-6="4994">$0</div>
+            <div class="p-price-term">3-Month Program</div>
+            <div class="p-price-pp">PP <span data-price-3="2997" data-price-6="5994">$0</span></div>
+          </div>
+          <div class="p-divider"></div>
+          <ul class="p-features">
+            <li class="stacks">Everything in Growth, plus...</li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+              <strong>Weekly 1:1 Coaching Calls</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+              <strong>Custom Nutrition Protocol</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+              <strong>Daily Execution System</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+              <strong>Direct Text Access</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0110 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/><path d="M12 6v6"/><circle cx="12" cy="12" r="1"/></svg></span>
+              <strong>Lifestyle + Habit Coaching</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>
+              <strong>Busy-Week Adjustments</strong>
+            </li>
+          </ul>
+          <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="p-cta p-cta-gold">Book Your Free Consultation</a>
+        </div>
+
+        <!-- LIFESTYLE+ (ANCHOR) -->
+        <div class="p-card p-anchor card-tilt">
+          <span class="p-badge" style="background: linear-gradient(135deg, #C9A84C, #E8D48B); letter-spacing: 3px;">ELITE</span>
+          <span class="p-tier" style="color: #C9A84C;">Full System + Performance</span>
+          <h2 class="p-name">Lifestyle+</h2>
+          <p class="p-desc">Everything in Lifestyle plus supplement and peptide coaching through our registered partner.</p>
+          <div class="p-divider" style="background: #252015;"></div>
+          <div class="p-price-block">
+            <div class="p-price-main" data-price-3="6997" data-price-6="13994" style="color: #C9A84C;">$0</div>
+            <div class="p-price-term">3-Month Program</div>
+            <div class="p-price-pp" style="color: #C9A84C; background: rgba(201,168,76,0.06); border-color: rgba(201,168,76,0.18);">Starting at</div>
+          </div>
+          <div class="p-divider" style="background: #252015;"></div>
+          <ul class="p-features">
+            <li class="stacks">Everything in Lifestyle, plus...</li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+              <strong>Supplement Protocol</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+              <strong>Peptide Coaching</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></span>
+              <strong>Performance Optimization</strong>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+              <strong>Priority Direct Access</strong>
+            </li>
+          </ul>
+          <a href="https://calendly.com/tkern-y-m5/1-1-lifestyle-consultation-call-clone" target="_blank" class="p-cta p-cta-gold">Apply for Lifestyle+</a>
+        </div>
+
+      </div>
+
+      <!-- Guarantee -->
+      <div class="pricing-guarantee">
+        <div class="g-line"></div>
+        <h2>30-Day Progress Guarantee</h2>
+        <p>Follow the process and don't see real progress in 30 days? I'll coach you for free until you do. No fine print.</p>
+      </div>
+
+      <p class="pricing-footer-note"><strong>Not sure which is right?</strong> Book a free consultation. I'll tell you.</p>
+
+    </div>
+  </main>
+
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span style="font-family: var(--font-display); font-size: 1.25rem; letter-spacing: 1px; text-transform: uppercase;">TELOS FITNESS</span>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-top: var(--spacing-md); max-width: 280px; line-height: 1.6;">
+            Premium 1:1 online coaching for former athletes. Structure builds discipline. Discipline builds identity.
+          </p>
+        </div>
+        <div class="footer-links">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Quick Links</span>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm);">
+            <li><a href="index.html#how-it-works" style="color: var(--color-text-muted); font-size: 0.9rem;">How It Works</a></li>
+            <li><a href="pricing" style="color: var(--color-text-muted); font-size: 0.9rem;">Programs</a></li>
+            <li><a href="resources" style="color: var(--color-text-muted); font-size: 0.9rem;">Resources</a></li>
+            <li><a href="index.html#faq" style="color: var(--color-text-muted); font-size: 0.9rem;">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Connect</span>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm);">
+            <li><a href="https://instagram.com/tomgetshybrid" target="_blank" style="color: var(--color-text-muted); font-size: 0.9rem;">@tomgetshybrid</a></li>
+            <li><a href="https://instagram.com/telos_fitness" target="_blank" style="color: var(--color-text-muted); font-size: 0.9rem;">@telos_fitness</a></li>
+            <li><a href="mailto:telosfitnessllc@gmail.com" style="color: var(--color-text-muted); font-size: 0.9rem;">telosfitnessllc@gmail.com</a></li>
+          </ul>
+        </div>
+        <div class="footer-cta">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Ready?</span>
+          <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Free Consultation</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p style="color: var(--color-text-muted-dark); font-size: 0.75rem; font-family: var(--font-mono); letter-spacing: 1px;">&copy; 2026 Telos Fitness. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+  <script src="js/quiz.js?v=3"></script>
+
+  <script>
+    // Current duration state
+    var currentDuration = 3;
+
+    // Price count-up animation
+    function animatePrices(duration) {
+      var dur = duration || currentDuration;
+      var attr = 'data-price-' + dur;
+      document.querySelectorAll('[' + attr + ']').forEach(function(el) {
+        var target = parseInt(el.getAttribute(attr));
+        var animDuration = 1200;
+        var start = null;
+
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          var progress = Math.min((timestamp - start) / animDuration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = Math.round(eased * target);
+          el.textContent = '$' + current.toLocaleString();
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+
+    // Update term labels
+    function updateTermLabels(duration) {
+      document.querySelectorAll('.p-price-term').forEach(function(el) {
+        el.textContent = duration + '-Month Program';
+      });
+    }
+
+    // Duration toggle
+    var toggle = document.getElementById('durationToggle');
+    var labels = document.querySelectorAll('.toggle-label');
+
+    toggle.addEventListener('click', function() {
+      var isSix = toggle.classList.toggle('toggled');
+      currentDuration = isSix ? 6 : 3;
+
+      labels.forEach(function(label) {
+        label.classList.toggle('active', label.getAttribute('data-duration') == currentDuration);
+      });
+
+      updateTermLabels(currentDuration);
+      animatePrices(currentDuration);
+    });
+
+    labels.forEach(function(label) {
+      label.addEventListener('click', function() {
+        var dur = parseInt(label.getAttribute('data-duration'));
+        if (dur === currentDuration) return;
+        toggle.click();
+      });
+    });
+
+    // Staggered card entrance + price animation
+    function revealPricing() {
+      var cards = document.querySelectorAll('.p-card');
+      cards.forEach(function(card, i) {
+        setTimeout(function() {
+          card.classList.add('animate-in');
+        }, i * 150);
+      });
+
+      setTimeout(function() { animatePrices(currentDuration); }, 200);
+
+      var guarantee = document.querySelector('.pricing-guarantee');
+      var footerNote = document.querySelector('.pricing-footer-note');
+      if (guarantee) guarantee.classList.add('animate-in');
+      if (footerNote) footerNote.classList.add('animate-in');
+    }
+
+    // Check if returning visitor (quiz already completed)
+    if (localStorage.getItem('telosQuizCompleted') === 'true') {
+      document.getElementById('quizOverlay').classList.add('hidden');
+      document.getElementById('pricingContent').style.display = 'flex';
+      setTimeout(revealPricing, 100);
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+  </script>
+</body>
+</html>

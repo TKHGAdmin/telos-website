@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources - Telos Fitness | Training, Nutrition & Discipline Research</title>
+  <meta name="description" content="Evidence-based articles on training programming, nutrition science, recovery protocols, and building execution systems. Research-backed resources from Telos Fitness.">
+  <meta name="keywords" content="fitness research, training programming, nutrition science, recovery optimization, discipline systems, online coaching, athletic performance">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Resources - Telos Fitness">
+  <meta property="og:description" content="Evidence-based articles on training, nutrition, recovery, and execution systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://telos-website-rho.vercel.app/resources">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://telos-website-rho.vercel.app/resources">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=14">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>T</text></svg>">
+
+  <!-- Structured Data - Blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Telos Fitness Resources",
+    "description": "Evidence-based articles on training programming, nutrition science, recovery protocols, and building execution systems.",
+    "url": "https://telos-website-rho.vercel.app/resources",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Telos Fitness",
+      "url": "https://telos-website-rho.vercel.app"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Thomas Kern"
+    }
+  }
+  </script>
+
+  <style>
+    .resources-page {
+      min-height: 100vh;
+      padding-top: 70px;
+    }
+
+    .resources-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .resources-header {
+      text-align: center;
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .resources-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .resources-header p {
+      color: var(--color-text-muted-light);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Category Filter */
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-pill);
+      background: transparent;
+      color: var(--color-text-muted-light);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--color-accent-gold);
+      color: var(--color-accent-gold);
+    }
+
+    .filter-btn.active {
+      background: var(--color-accent-gold);
+      border-color: var(--color-accent-gold);
+      color: #000;
+    }
+
+    /* Blog Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--spacing-2xl);
+    }
+
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Blog Card */
+    .blog-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .blog-card:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(201, 168, 76, 0.05);
+    }
+
+    .blog-card-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-card-image .card-icon {
+      width: 48px;
+      height: 48px;
+      color: var(--color-accent-gold);
+      opacity: 0.3;
+    }
+
+    .blog-card-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to top, var(--color-bg-card), transparent);
+    }
+
+    .blog-card-body {
+      padding: var(--spacing-xl);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .blog-card-category {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+    }
+
+    .blog-card-date {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
+    }
+
+    .blog-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.3;
+    }
+
+    .blog-card-excerpt {
+      font-size: 0.9rem;
+      color: var(--color-text-muted-light);
+      line-height: 1.6;
+      flex-grow: 1;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .blog-card-read {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      transition: gap 0.3s ease;
+    }
+
+    .blog-card:hover .blog-card-read {
+      gap: var(--spacing-md);
+    }
+
+    /* CTA Section */
+    .resources-cta {
+      text-align: center;
+      margin-top: var(--spacing-4xl);
+      padding: var(--spacing-3xl);
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-lg);
+    }
+
+    .resources-cta h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .resources-cta p {
+      color: var(--color-text-muted-light);
+      margin-bottom: var(--spacing-xl);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">TELOS FITNESS</a>
+      <ul class="nav-links">
+        <li><a href="index.html#how-it-works">System</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="pricing">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle">Tools <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px; vertical-align: middle;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="protein-calculator">Protein Calculator</a></li>
+            <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
+          </ul>
+        </li>
+        <li><a href="resources" style="color: var(--color-accent-gold);">Resources</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary nav-cta">Book a Call</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <ul>
+        <li><a href="index.html#how-it-works">System</a></li>
+        <li><a href="pricing">Pricing</a></li>
+        <li><a href="protein-calculator">Protein Calc</a></li>
+        <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
+        <li><a href="resources">Resources</a></li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="resources-page">
+    <div class="resources-container">
+
+      <div class="resources-header animate-on-scroll">
+        <span class="section-label">Research & Insights</span>
+        <h1>Resources</h1>
+        <p>Evidence-based deep dives into training, nutrition, recovery, and the systems that make execution automatic.</p>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="category-filters animate-on-scroll">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="training">Training</button>
+        <button class="filter-btn" data-category="nutrition">Nutrition</button>
+        <button class="filter-btn" data-category="recovery">Recovery</button>
+        <button class="filter-btn" data-category="mindset">Mindset</button>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="blog-grid">
+
+        <!-- TRAINING -->
+        <a href="blog/progressive-overload-explained" class="blog-card animate-on-scroll" data-category="training">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Training</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Progressive Overload: The Only Training Principle That Actually Matters</h2>
+            <p class="blog-card-excerpt">Most people think progressive overload means adding weight every week. It doesn't. Here's what the research actually says about driving adaptation.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/training-volume-per-week" class="blog-card animate-on-scroll" data-category="training">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Training</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">How Many Sets Per Muscle Group Per Week? The Science of Training Volume</h2>
+            <p class="blog-card-excerpt">Schoenfeld's dose-response research changed everything we thought about volume. Here's what the data actually says about sets per week.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/best-training-split" class="blog-card animate-on-scroll" data-category="training">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Training</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Full Body vs Upper Lower vs PPL: Which Training Split Actually Wins?</h2>
+            <p class="blog-card-excerpt">The best split isn't the one your favorite influencer uses. It's the one that matches your schedule, recovery, and training age.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/training-around-injuries" class="blog-card animate-on-scroll" data-category="training">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Training</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">How to Train Around Injuries Without Losing Progress</h2>
+            <p class="blog-card-excerpt">An injury doesn't mean you stop. The cross-education effect and smart programming mean you can keep building while you heal.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/deload-week-science" class="blog-card animate-on-scroll" data-category="training">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Training</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">The Science of Deload Weeks: When Recovery Becomes the Training</h2>
+            <p class="blog-card-excerpt">Backing off isn't weakness. It's the supercompensation principle in action. Here's when and how to deload for maximum long-term progress.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/rep-ranges-hypertrophy" class="blog-card animate-on-scroll" data-category="training">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Training</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Rep Ranges for Hypertrophy: What 30 Years of Research Actually Shows</h2>
+            <p class="blog-card-excerpt">The "8-12 reps for hypertrophy" rule is outdated. Effort-matched studies reveal a much wider effective range than anyone expected.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/athletic-physique-after-30" class="blog-card animate-on-scroll" data-category="training">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Training</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">How to Build an Athletic Physique After 30</h2>
+            <p class="blog-card-excerpt">Age changes the game but doesn't end it. Recovery takes longer, hormones shift, and programming needs to adapt. Here's how.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- NUTRITION -->
+        <a href="blog/protein-timing-myth" class="blog-card animate-on-scroll" data-category="nutrition">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Nutrition</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">The Protein Timing Myth: What 47 Studies Actually Show</h2>
+            <p class="blog-card-excerpt">The "anabolic window" has been gospel for two decades. A meta-analysis of 47 studies tells a very different story.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/how-much-protein" class="blog-card animate-on-scroll" data-category="nutrition">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Nutrition</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">How Much Protein Do You Actually Need? A Research-Based Answer</h2>
+            <p class="blog-card-excerpt">Morton's 2018 meta-analysis settled the debate: 1.6g/kg is the ceiling for most people. Here's the full picture and what it means for you.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/calorie-deficit-keep-muscle" class="blog-card animate-on-scroll" data-category="nutrition">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Nutrition</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Calorie Deficit Without Losing Muscle: The Evidence-Based Playbook</h2>
+            <p class="blog-card-excerpt">Cutting doesn't have to mean losing muscle. The research on rate of loss, protein intake, and training during a deficit is clear.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/creatine-complete-guide" class="blog-card animate-on-scroll" data-category="nutrition">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Nutrition</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Creatine: The Most Researched Supplement in History (Complete Guide)</h2>
+            <p class="blog-card-excerpt">Over 700 studies. Decades of data. Creatine monohydrate remains the single most effective legal supplement. Here's everything you need to know.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/meal-prep-system" class="blog-card animate-on-scroll" data-category="nutrition">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Nutrition</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Meal Prep for Busy Professionals: A System, Not a Diet</h2>
+            <p class="blog-card-excerpt">Decision fatigue kills more diets than lack of knowledge. Build a batch-cooking system that removes willpower from the equation.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/alcohol-and-fitness" class="blog-card animate-on-scroll" data-category="nutrition">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Nutrition</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Alcohol and Fitness: What the Research Actually Says About Drinking and Gains</h2>
+            <p class="blog-card-excerpt">You don't have to be sober to be fit. But the data on alcohol and muscle protein synthesis is worth understanding.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/intermittent-fasting-athletes" class="blog-card animate-on-scroll" data-category="nutrition">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Nutrition</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Intermittent Fasting for Athletes: Hype vs Evidence</h2>
+            <p class="blog-card-excerpt">IF can work for fat loss. But if you're training for performance or muscle, the research suggests a more nuanced approach.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- RECOVERY -->
+        <a href="blog/sleep-and-muscle-growth" class="blog-card animate-on-scroll" data-category="recovery">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Recovery</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Sleep and Muscle Growth: Why 7 Hours Isn't Enough for Serious Athletes</h2>
+            <p class="blog-card-excerpt">One week of restricted sleep drops testosterone 10-15%. Mah's Stanford study showed what happens when athletes sleep more. The data is brutal.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/active-recovery-guide" class="blog-card animate-on-scroll" data-category="recovery">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Recovery</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Active Recovery: What Actually Works and What's a Waste of Time</h2>
+            <p class="blog-card-excerpt">Dupuy's meta-analysis of 99 studies ranked every recovery modality. Most of what you're doing is theatre. Here's what the evidence supports.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/stress-cortisol-gains" class="blog-card animate-on-scroll" data-category="recovery">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Recovery</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Stress, Cortisol, and Your Gains: The Hidden Training Variable</h2>
+            <p class="blog-card-excerpt">Your boss, your inbox, and your sleep schedule are training variables. Chronic stress tanks your testosterone-to-cortisol ratio and kills adaptation.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/cold-plunge-vs-sauna" class="blog-card animate-on-scroll" data-category="recovery">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Recovery</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Cold Plunge vs Sauna: Cutting Through the Hype With Actual Research</h2>
+            <p class="blog-card-excerpt">Roberts 2015 showed cold water immersion blunts hypertrophy. The Finnish sauna data is compelling. Here's the nuanced answer nobody wants to hear.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- MINDSET -->
+        <a href="blog/discipline-is-a-system" class="blog-card animate-on-scroll" data-category="mindset">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Mindset</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Discipline Is Not a Character Trait - It's a System You Install</h2>
+            <p class="blog-card-excerpt">You didn't lose your discipline. You lost the external structure that made it automatic. Here's the research on why environment beats willpower.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/90-day-rule" class="blog-card animate-on-scroll" data-category="mindset">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Mindset</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">The 90-Day Rule: Why Short-Term Fitness Programs Always Fail</h2>
+            <p class="blog-card-excerpt">Lally's research shows habit formation takes 66 days on average - with a range up to 254. Four-week programs never stood a chance.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/motivation-is-a-lie" class="blog-card animate-on-scroll" data-category="mindset">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Mindset</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">Motivation Is a Lie: Why Systems Beat Willpower Every Time</h2>
+            <p class="blog-card-excerpt">Baumeister's ego depletion theory collapsed in replication. Gollwitzer's implementation intentions work 2-3x better. Systems win.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/former-athlete-identity" class="blog-card animate-on-scroll" data-category="mindset">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Mindset</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">How Former Athletes Can Rebuild Their Identity Through Fitness</h2>
+            <p class="blog-card-excerpt">Brewer's Athletic Identity research explains why retirement hits so hard. Ebaugh's role exit theory shows how to rebuild. It starts with structure.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="blog/accountability-gap" class="blog-card animate-on-scroll" data-category="mindset">
+          <div class="blog-card-image"><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span class="blog-card-category">Mindset</span><span class="blog-card-date">Apr 2026</span></div>
+            <h2 class="blog-card-title">The Accountability Gap: Why You Can't Coach Yourself</h2>
+            <p class="blog-card-excerpt">Having a specific accountability appointment raises follow-through from 10% to 95%. The ASTD data is staggering. Here's why self-coaching fails.</p>
+            <span class="blog-card-read">Read article &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="resources-cta animate-on-scroll">
+        <h3>Reading is step one. Execution is everything.</h3>
+        <p>If you already know what to do but can't stay consistent, the problem isn't information. It's structure.</p>
+        <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary btn-shine">Book a Free Consultation</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span style="font-family: var(--font-display); font-size: 1.25rem; letter-spacing: 1px; text-transform: uppercase;">TELOS FITNESS</span>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-top: var(--spacing-md); max-width: 280px; line-height: 1.6;">
+            Premium 1:1 online coaching for former athletes. Structure builds discipline. Discipline builds identity.
+          </p>
+        </div>
+        <div class="footer-links">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Quick Links</span>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm);">
+            <li><a href="index.html#how-it-works" style="color: var(--color-text-muted); font-size: 0.9rem;">How It Works</a></li>
+            <li><a href="pricing" style="color: var(--color-text-muted); font-size: 0.9rem;">Programs</a></li>
+            <li><a href="resources" style="color: var(--color-text-muted); font-size: 0.9rem;">Resources</a></li>
+            <li><a href="index.html#faq" style="color: var(--color-text-muted); font-size: 0.9rem;">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Connect</span>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm);">
+            <li><a href="https://instagram.com/tomgetshybrid" target="_blank" style="color: var(--color-text-muted); font-size: 0.9rem;">@tomgetshybrid</a></li>
+            <li><a href="https://instagram.com/telos_fitness" target="_blank" style="color: var(--color-text-muted); font-size: 0.9rem;">@telos_fitness</a></li>
+            <li><a href="mailto:telosfitnessllc@gmail.com" style="color: var(--color-text-muted); font-size: 0.9rem;">telosfitnessllc@gmail.com</a></li>
+          </ul>
+        </div>
+        <div class="footer-cta">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Ready?</span>
+          <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Free Consultation</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p style="color: var(--color-text-muted-dark); font-size: 0.75rem; font-family: var(--font-mono); letter-spacing: 1px;">&copy; 2026 Telos Fitness. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+  <script>
+    // Category filter logic
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const category = this.dataset.category;
+        document.querySelectorAll('.blog-card').forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = '';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(16px)';
+            requestAnimationFrame(() => {
+              card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            });
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

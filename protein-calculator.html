@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Protein Calculator — Telos Fitness</title>
+  <title>Protein Calculator - Telos Fitness</title>
   <meta name="description" content="Calculate your daily protein target and get a personalized meal plan to hit it. Free tool from Telos Fitness.">
 
   <!-- Google Fonts -->
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Shared Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=14">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>T</text></svg>">
@@ -483,11 +483,12 @@
       <ul class="nav-links">
         <li><a href="index.html#how-it-works">System</a></li>
         <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="pricing">Pricing</a></li>
         <li><a href="index.html#quiz">Quiz</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
-        <li><a href="protein-calculator.html" style="color: var(--color-accent-gold);">Protein Calc</a></li>
-        <li><a href="hyrox-predictor.html">Hyrox Predictor</a></li>
+        <li><a href="protein-calculator" style="color: var(--color-accent-gold);">Protein Calc</a></li>
+        <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
+        <li><a href="resources">Resources</a></li>
         <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary nav-cta">Book a Call</a></li>
       </ul>
       <button class="hamburger" aria-label="Toggle menu">
@@ -499,9 +500,10 @@
     <div class="mobile-menu">
       <ul>
         <li><a href="index.html#how-it-works">System</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="protein-calculator.html">Protein Calc</a></li>
-        <li><a href="hyrox-predictor.html">Hyrox Predictor</a></li>
+        <li><a href="pricing">Pricing</a></li>
+        <li><a href="protein-calculator">Protein Calc</a></li>
+        <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
+        <li><a href="resources">Resources</a></li>
         <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Call</a></li>
       </ul>
     </div>
@@ -516,7 +518,7 @@
         <span class="section-label">Free Tool</span>
         <h1>Protein Calculator</h1>
         <p style="color: var(--color-text-muted-light); max-width: 500px; margin: 0 auto; font-size: 1.05rem; line-height: 1.5;">
-          Calculate your daily protein target based on your body and goals. Then see exactly what foods — and how much — will get you there.
+          Calculate your daily protein target based on your body and goals. Then see exactly what foods - and how much - will get you there.
         </p>
       </div>
 
@@ -563,7 +565,7 @@
 
           <!-- Body fat (optional) -->
           <div class="form-group">
-            <label>Body Fat % (optional — improves accuracy)</label>
+            <label>Body Fat % (optional - improves accuracy)</label>
             <input type="number" id="bodyFat" placeholder="18" min="4" max="60">
           </div>
 
@@ -572,11 +574,11 @@
             <label>Training Frequency</label>
             <select id="activity" required>
               <option value="" disabled selected>How often do you train?</option>
-              <option value="sedentary">Sedentary — little or no exercise</option>
-              <option value="light">Light — 1-2 days/week</option>
-              <option value="moderate">Moderate — 3-4 days/week</option>
-              <option value="active">Active — 5-6 days/week</option>
-              <option value="very_active">Very Active — daily training or physical job</option>
+              <option value="sedentary">Sedentary - little or no exercise</option>
+              <option value="light">Light - 1-2 days/week</option>
+              <option value="moderate">Moderate - 3-4 days/week</option>
+              <option value="active">Active - 5-6 days/week</option>
+              <option value="very_active">Very Active - daily training or physical job</option>
             </select>
           </div>
 
@@ -677,7 +679,7 @@
         <!-- CTA -->
         <div class="calc-cta">
           <h3>Knowing your number is step one.</h3>
-          <p>Hitting it consistently — day after day, travel weeks included — is the hard part. That's what the Lifestyle system is built for.</p>
+          <p>Hitting it consistently - day after day, travel weeks included - is the hard part. That's what the Lifestyle system is built for.</p>
           <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Free Consultation</a>
         </div>
 
@@ -841,7 +843,7 @@
 
       // --- Step 1: Estimate Lean Body Mass ---
       // If body fat % provided: direct calculation
-      // If not: Boer formula (1984) — validated LBM estimation from weight + height
+      // If not: Boer formula (1984) - validated LBM estimation from weight + height
       //   Men:   LBM = 0.407 × weight(kg) + 0.267 × height(cm) - 19.2
       //   Women: LBM = 0.252 × weight(kg) + 0.473 × height(cm) - 48.3
       let leanMassKg;
@@ -1068,7 +1070,7 @@
 
       const dietFoods = foods[diet] || foods.standard;
 
-      // Split target across 4 meals — give dinner and lunch slightly more, snack less
+      // Split target across 4 meals - give dinner and lunch slightly more, snack less
       const mealSplits = [0.22, 0.30, 0.30, 0.18]; // breakfast, lunch, dinner, snack
       const mealTargets = mealSplits.map(s => Math.round(targetProtein * s));
 
@@ -1142,7 +1144,7 @@
           allocated = Math.round(remaining / (selectedFoods.length - i));
         }
 
-        // Calculate servings — allow fractional for accuracy, then format nicely
+        // Calculate servings - allow fractional for accuracy, then format nicely
         let rawServings = allocated / food.protein;
 
         // Floor instead of round to avoid overshooting. Min 0.5 serving.

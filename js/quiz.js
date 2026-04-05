@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
           { text: 'The week is basically done', points: 1 },
           { text: 'I feel guilty but move on eventually', points: 2 },
           { text: 'I adjust and get back on track within a day', points: 4 },
-          { text: 'It\'s already planned for — I have a system', points: 5 }
+          { text: 'It\'s already planned for - I have a system', points: 5 }
         ]
       }
     ],
@@ -102,19 +102,19 @@ document.addEventListener('DOMContentLoaded', function() {
     resultTiers: [
       {
         name: 'System Offline',
-        description: 'Your structure has collapsed. You\'re running on willpower alone — and it\'s running out. You don\'t need more motivation. You need a system installed from the outside.',
+        description: 'Your structure has collapsed. You\'re running on willpower alone - and it\'s running out. You don\'t need more motivation. You need a system installed from the outside.',
         minScore: 0,
         maxScore: 15
       },
       {
         name: 'Running on Fumes',
-        description: 'You have pieces, but nothing\'s connected. Some weeks look good, then everything falls apart. The issue isn\'t effort — it\'s that no one is enforcing your floor.',
+        description: 'You have pieces, but nothing\'s connected. Some weeks look good, then everything falls apart. The issue isn\'t effort - it\'s that no one is enforcing your floor.',
         minScore: 16,
         maxScore: 25
       },
       {
         name: 'Almost Dialed',
-        description: 'You\'re close. One or two weak links are dragging everything else down. You don\'t need an overhaul — you need someone to identify and fix the gaps.',
+        description: 'You\'re close. One or two weak links are dragging everything else down. You don\'t need an overhaul - you need someone to identify and fix the gaps.',
         minScore: 26,
         maxScore: 32
       },
@@ -129,11 +129,16 @@ document.addEventListener('DOMContentLoaded', function() {
     pillarNames: ['Training', 'Nutrition', 'Recovery', 'Accountability'],
     pillarWeakMessages: {
       0: 'Your training has no structure. A coach-built program with progression is the foundation everything else sits on.',
-      1: 'Your nutrition is undermining your training. A custom protocol — not a meal plan — is what changes this.',
-      2: 'You\'re not recovering. Sleep and wind-down aren\'t luxuries — they\'re where the adaptation happens.',
+      1: 'Your nutrition is undermining your training. A custom protocol - not a meal plan - is what changes this.',
+      2: 'You\'re not recovering. Sleep and wind-down aren\'t luxuries - they\'re where the adaptation happens.',
       3: 'You have no external accountability. That\'s why momentum dies every time life gets busy.'
     }
   };
+
+  // ===== CONTEXT DETECTION =====
+  const quizOverlay = document.querySelector('.quiz-overlay');
+  const pricingContent = document.getElementById('pricingContent');
+  const isOnPricingPage = !!quizOverlay;
 
   // ===== DOM ELEMENTS =====
   const quizContainer = document.querySelector('.quiz-container');
@@ -237,6 +242,17 @@ document.addEventListener('DOMContentLoaded', function() {
         scores: quiz.scores,
         totalScore: getTotalScore()
       });
+
+      // Store quiz completion in localStorage
+      localStorage.setItem('telosQuizCompleted', 'true');
+      localStorage.setItem('telosQuizData', JSON.stringify({
+        name: quiz.userName,
+        email: quiz.userEmail,
+        phone: quiz.userPhone,
+        scores: quiz.scores,
+        totalScore: getTotalScore(),
+        completedAt: new Date().toISOString()
+      }));
 
       // Show results
       quizLeadCapture.style.display = 'none';
@@ -351,18 +367,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const weakestCallout = quizResults.querySelector('.quiz-weakest-link');
     weakestCallout.style.cssText = 'background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.25);border-left:3px solid #C9A84C;border-radius:8px;padding:24px 20px;margin-bottom:40px;text-align:left;';
     weakestCallout.innerHTML = `
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.15rem;color:#C9A84C;margin:0 0 8px 0;">${quiz.pillarNames[weakestPillar]} — Your Weakest Link</h3>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.15rem;color:#C9A84C;margin:0 0 8px 0;">${quiz.pillarNames[weakestPillar]} - Your Weakest Link</h3>
       <p style="color:rgba(242,239,233,0.7);font-size:0.95rem;line-height:1.6;margin:0;">${quiz.pillarWeakMessages[weakestPillar]}</p>
     `;
 
-    // Book consultation CTA
+    // Book consultation CTA (not present on pricing page)
     const ctaBtn = quizResults.querySelector('.quiz-cta-btn');
-    ctaBtn.href = 'https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone';
-    ctaBtn.target = '_blank';
+    if (ctaBtn) {
+      ctaBtn.href = 'https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone';
+      ctaBtn.target = '_blank';
+    }
 
     // Retake quiz button
     const retakeBtn = quizResults.querySelector('.quiz-retake-btn');
     retakeBtn.addEventListener('click', resetQuiz);
+
+    // View Pricing button (pricing page only)
+    if (isOnPricingPage) {
+      const viewPricingBtn = quizResults.querySelector('.quiz-view-pricing-btn');
+      if (viewPricingBtn) {
+        viewPricingBtn.addEventListener('click', function() {
+          quizOverlay.classList.add('hidden');
+          pricingContent.style.display = 'flex';
+          document.body.style.overflow = '';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          // Trigger pricing card animations
+          if (typeof revealPricing === 'function') revealPricing();
+        });
+      }
+    }
   }
 
   // ===== RESET QUIZ =====
@@ -383,5 +416,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Clear form inputs
     const form = quizLeadCapture.querySelector('form');
     form.reset();
+
+    // Pricing page: re-show overlay and hide pricing
+    if (isOnPricingPage) {
+      quizOverlay.classList.remove('hidden');
+      pricingContent.style.display = 'none';
+      document.body.style.overflow = 'hidden';
+      localStorage.removeItem('telosQuizCompleted');
+      localStorage.removeItem('telosQuizData');
+    }
   }
 });
