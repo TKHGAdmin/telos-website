@@ -1,0 +1,14 @@
+{
+  "name": "telos-website",
+  "version": "1.0.0",
+  "description": "Telos Fitness website with Vercel Web Analytics",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "test": "echo 'No tests configured'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.3.1"
+  },
+  "devDependencies": {},
+  "private": true
+}
