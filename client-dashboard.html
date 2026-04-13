@@ -27,8 +27,7 @@
       --gold: #C9A84C; --gold-15: rgba(201,168,76,0.15); --gold-08: rgba(201,168,76,0.08);
       --gold-12: rgba(201,168,76,0.12); --gold-30: rgba(201,168,76,0.3);
       --border: rgba(255,255,255,0.07); --border-s: rgba(255,255,255,0.09); --border-sl: rgba(255,255,255,0.12);
-      --red: #ef5350; --green: #34d399; --blue: #42a5f5; --orange: #fbbf24; --purple: #ab47bc;
-      --cyan: #22d3ee; --cyan-15: rgba(34,211,238,0.15); --cyan-08: rgba(34,211,238,0.08);
+      --red: #ef5350; --green: #34d399; --blue: #42a5f5; --orange: #fbbf24;
       --score-great: #34d399; --score-good: #a3e635; --score-mid: #fbbf24; --score-low: #ef5350;
       --font-d: 'Bebas Neue', sans-serif; --font-h: 'Outfit', sans-serif;
       --font-b: 'DM Sans', sans-serif; --font-m: 'Outfit', sans-serif;
@@ -142,7 +141,7 @@
     /* SCORE DASHBOARD CARD */
     .score-card { background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-top: 2px solid rgba(255,255,255,0.1); border-radius: var(--card-radius); padding: 20px; margin-bottom: 16px; display: flex; gap: 20px; align-items: center; animation: fadeSlideUp 0.5s both; }
     .score-ring { width: 130px; height: 130px; flex-shrink: 0; position: relative; }
-    .score-ring::before { content: ''; position: absolute; inset: -12px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%); pointer-events: none; }
+    .score-ring::before { content: ''; position: absolute; inset: -12px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); pointer-events: none; }
     .ring-svg { width: 100%; height: 100%; }
     .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .ring-value { font-family: var(--font-d); font-size: 2.6rem; color: var(--text); line-height: 1; }
@@ -150,7 +149,7 @@
     .ring-label { font-family: var(--font-h); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); margin-top: 3px; }
     .score-ring-status { font-family: var(--font-h); font-size: 11px; font-weight: 500; color: var(--text-muted); text-align: center; margin-top: 6px; }
     @keyframes ringPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-    .score-ring::after { content: ''; position: absolute; inset: -2px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.06); animation: ringPulse 4s ease-in-out infinite; pointer-events: none; }
+    .score-ring::after { content: ''; position: absolute; inset: -2px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); animation: ringPulse 4s ease-in-out infinite; pointer-events: none; }
 
     .score-metrics { flex: 1; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
     .score-metric { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 6px 8px; margin: 0 -8px; border-radius: 8px; transition: background 0.15s; }
@@ -159,7 +158,7 @@
     .score-metric-label { font-family: var(--font-h); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-dim); margin-bottom: 4px; }
     .score-metric-bar-wrap { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
     .score-metric-bar { height: 100%; border-radius: 3px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); min-width: 2px; }
-    .score-metric-bar.gold { background: var(--gold); }
+    .score-metric-bar.gold { background: var(--score-mid); }
     .score-metric-bar.green { background: var(--green); }
     .score-metric-val { font-family: var(--font-d); font-size: 1.2rem; color: var(--text); min-width: 32px; text-align: right; flex-shrink: 0; }
     .score-metric-arrow { color: var(--text-faint); font-size: 14px; flex-shrink: 0; }
@@ -178,7 +177,7 @@
     .checklist-summary { font-family: var(--font-h); font-size: 11px; font-weight: 500; color: var(--text-dim); }
     .checklist-mini-ring { width: 40px; height: 40px; position: relative; flex-shrink: 0; }
     .checklist-mini-ring svg { width: 100%; height: 100%; }
-    .checklist-mini-pct { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 0.8rem; color: var(--gold); }
+    .checklist-mini-pct { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 0.8rem; color: var(--green); }
     .checklist-item { background: rgba(255,255,255,0.02); border-radius: 10px; padding: 12px; margin-bottom: 6px; display: flex; align-items: center; gap: 12px; border-left: 3px dotted rgba(255,255,255,0.06); cursor: pointer; transition: all 0.15s; animation: fadeSlideUp 0.3s both; }
     .checklist-item:active { background: rgba(255,255,255,0.04); }
     .checklist-item.item-done { border-left: 3px solid var(--score-great); background: rgba(52,211,153,0.03); }
@@ -201,13 +200,13 @@
     .stat-card { background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--card-radius); padding: 14px 12px; text-align: center; transition: border-color 0.2s; }
     .stat-card:hover { border-color: rgba(255,255,255,0.1); }
     .stat-indicator { width: 6px; height: 6px; border-radius: 50%; margin: 0 auto 8px; background: var(--text-dim); }
-    .stat-indicator.gold { background: var(--gold); box-shadow: 0 0 8px rgba(201,168,76,0.3); }
+    .stat-indicator.gold { background: var(--green); box-shadow: 0 0 8px rgba(52,211,153,0.3); }
     .stat-indicator.green { background: var(--green); }
-    .stat-indicator.blue { background: var(--blue); }
+    .stat-indicator.blue { background: var(--score-mid); }
     .stat-indicator.streak { background: var(--gold); width: 16px; height: 4px; border-radius: 2px; }
     .stat-label { font-family: var(--font-h); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 4px; }
     .stat-value { font-family: var(--font-d); font-size: 1.8rem; line-height: 1; letter-spacing: 0.5px; color: var(--text); }
-    .stat-card.gold .stat-value { color: var(--gold); text-shadow: 0 0 20px rgba(201,168,76,0.15); }
+    .stat-card.gold .stat-value { color: var(--text); }
 
     /* ============================================
        WEEKLY BAR CHART
@@ -218,19 +217,19 @@
     .weekly-bars::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(to top, transparent 0px, transparent 24px, rgba(255,255,255,0.03) 24px, rgba(255,255,255,0.03) 25px); pointer-events: none; border-radius: 4px; }
     .weekly-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; position: relative; z-index: 1; }
     .weekly-bar { width: 100%; border-radius: 6px 6px 2px 2px; min-height: 4px; transition: height 0.4s cubic-bezier(0.4,0,0.2,1); }
-    .weekly-bar.today { background: linear-gradient(to top, var(--gold), #d4b55c); box-shadow: 0 0 14px rgba(201,168,76,0.25); }
-    .weekly-bar.past { background: linear-gradient(to top, rgba(201,168,76,0.15), rgba(201,168,76,0.35)); }
+    .weekly-bar.today { background: linear-gradient(to top, var(--green), #5ee8b5); box-shadow: 0 0 14px rgba(52,211,153,0.25); }
+    .weekly-bar.past { background: linear-gradient(to top, rgba(52,211,153,0.15), rgba(52,211,153,0.35)); }
     .weekly-bar.future { background: rgba(255,255,255,0.04); }
     .weekly-bar.empty { height: 4px !important; background: rgba(255,255,255,0.04); box-shadow: none; }
     .weekly-bar-score { font-family: var(--font-d); font-size: 0.65rem; color: var(--text-dim); margin-bottom: 2px; }
     .weekly-bar-label { font-family: var(--font-h); font-size: 10px; font-weight: 600; color: var(--text-dim); }
-    .weekly-bar-label.today { color: var(--gold); }
+    .weekly-bar-label.today { color: var(--green); }
 
     /* ============================================
        RING PULSE
        ============================================ */
     @keyframes ringPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-    .hero-ring::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.08); animation: ringPulse 3s ease-in-out infinite; pointer-events: none; }
+    .hero-ring::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); animation: ringPulse 3s ease-in-out infinite; pointer-events: none; }
 
     /* ============================================
        KPI CARDS
@@ -267,9 +266,9 @@
     .heatmap-title { font-family: var(--font-h); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 10px; }
     .heatmap-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
     .heatmap-cell { aspect-ratio: 1; border-radius: 4px; background: rgba(255,255,255,0.03); position: relative; cursor: default; transition: background 0.2s; }
-    .heatmap-cell.l1 { background: rgba(239,83,80,0.2); }
-    .heatmap-cell.l2 { background: rgba(251,191,36,0.25); }
-    .heatmap-cell.l3 { background: rgba(163,230,53,0.3); }
+    .heatmap-cell.l1 { background: rgba(239,83,80,0.25); }
+    .heatmap-cell.l2 { background: rgba(251,191,36,0.35); }
+    .heatmap-cell.l3 { background: rgba(163,230,53,0.45); }
     .heatmap-cell.l4 { background: var(--score-great); }
     .heatmap-cell.future { background: transparent; border: 1px dashed rgba(255,255,255,0.04); }
     .heatmap-day-labels { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 6px; }
@@ -303,8 +302,8 @@
     .activity-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--bg); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; margin-left: -20px; }
     .activity-icon svg { width: 14px; height: 14px; }
     .activity-icon.gold { color: var(--gold); border-color: rgba(201,168,76,0.25); }
-    .activity-icon.green { color: var(--green); border-color: rgba(76,175,80,0.25); }
-    .activity-icon.blue { color: var(--blue); border-color: rgba(66,165,245,0.25); }
+    .activity-icon.green { color: var(--green); border-color: rgba(52,211,153,0.25); }
+    .activity-icon.blue { color: var(--score-mid); border-color: rgba(251,191,36,0.25); }
     .activity-text { flex: 1; font-size: 13px; color: var(--text-muted); }
     .activity-time { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 400; color: var(--text-dim); white-space: nowrap; letter-spacing: -0.3px; }
 
@@ -414,10 +413,10 @@
     .macro-values .target { color: var(--text-dim); }
     .macro-bar { height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
     .macro-fill { height: 100%; border-radius: 4px; transition: width 0.4s; }
-    .macro-fill.cal { background: var(--gold); }
+    .macro-fill.cal { background: var(--orange); }
     .macro-fill.protein { background: var(--blue); }
     .macro-fill.carbs { background: var(--green); }
-    .macro-fill.fat { background: var(--orange); }
+    .macro-fill.fat { background: var(--red); }
 
     /* ============================================
        MEAL LOG
@@ -553,7 +552,7 @@
     /* Training Progress Bar */
     .training-progress-label { font-family: var(--font-h); font-size: 11px; font-weight: 500; color: var(--text-dim); margin-bottom: 6px; display: flex; justify-content: space-between; }
     .training-progress-wrap { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; margin-bottom: 16px; }
-    .training-progress-bar { height: 100%; background: var(--cyan); border-radius: 2px; transition: width 0.4s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 0 8px rgba(34,211,238,0.3); }
+    .training-progress-bar { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.4s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 0 8px rgba(52,211,153,0.3); }
 
     /* Set Row Completion */
     .set-row.completed { background: rgba(52,211,153,0.04); border-radius: 8px; margin: 0 -6px; padding: 10px 6px; }
@@ -561,14 +560,14 @@
     .set-prev { font-family: var(--font-h); font-size: 10px; font-weight: 400; color: var(--text-dim); display: block; margin-top: 1px; }
 
     /* Exercise Progress Badge */
-    .exercise-progress-badge { font-family: var(--font-h); font-size: 10px; font-weight: 600; color: var(--cyan); background: var(--cyan-08); padding: 2px 8px; border-radius: 8px; margin-left: auto; }
+    .exercise-progress-badge { font-family: var(--font-h); font-size: 10px; font-weight: 600; color: var(--green); background: rgba(52,211,153,0.08); padding: 2px 8px; border-radius: 8px; margin-left: auto; }
 
     /* Rest Timer */
     .rest-timer-overlay { position: fixed; bottom: calc(env(safe-area-inset-bottom, 0) + 72px); left: 16px; right: 16px; z-index: 250; max-width: 600px; margin: 0 auto; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 14px 18px; box-shadow: 0 -4px 24px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 14px; transform: translateY(120%); transition: transform 0.35s cubic-bezier(0.32,0.72,0,1); opacity: 0; pointer-events: none; }
     .rest-timer-overlay.visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
     .rest-timer-ring { width: 56px; height: 56px; flex-shrink: 0; position: relative; }
     .rest-timer-ring svg { width: 100%; height: 100%; }
-    .rest-timer-value { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 1.4rem; color: var(--cyan); }
+    .rest-timer-value { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 1.4rem; color: var(--green); }
     .rest-timer-info { flex: 1; min-width: 0; }
     .rest-timer-label { font-family: var(--font-h); font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
     .rest-timer-exercise { font-size: 12px; color: var(--text-dim); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -640,7 +639,7 @@
     .module-card-lock svg { width: 20px; height: 20px; color: var(--text-dim); }
     .module-card-lock span { font-family: var(--font-h); font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); }
     .module-card-progress { height: 3px; background: rgba(255,255,255,0.06); }
-    .module-card-progress-fill { height: 100%; background: var(--gold); transition: width 0.3s; }
+    .module-card-progress-fill { height: 100%; background: var(--green); transition: width 0.3s; }
     .module-card-body { padding: 10px 12px; }
     .module-card-title { font-family: var(--font-h); font-size: 13px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .module-card-meta { display: flex; align-items: center; gap: 8px; font-family: var(--font-h); font-size: 10px; font-weight: 500; color: var(--text-dim); }
@@ -737,18 +736,18 @@
     .train-header-card { background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--card-radius); padding: 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 16px; animation: fadeSlideUp 0.4s both; }
     .train-header-ring { width: 64px; height: 64px; flex-shrink: 0; position: relative; }
     .train-header-ring svg { width: 100%; height: 100%; }
-    .train-header-ring-pct { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 1.3rem; color: var(--cyan); }
+    .train-header-ring-pct { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 1.3rem; color: var(--green); }
     .train-header-info { flex: 1; min-width: 0; }
     .train-header-name { font-family: var(--font-h); font-size: 16px; font-weight: 700; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .train-header-meta { display: flex; gap: 12px; font-family: var(--font-h); font-size: 11px; color: var(--text-dim); }
     .train-header-status { margin-top: 6px; }
     .train-header-status-btn { display: inline-block; font-family: var(--font-h); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 5px 14px; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; }
-    .train-header-status-btn.start { background: var(--cyan-15); color: var(--cyan); }
+    .train-header-status-btn.start { background: rgba(52,211,153,0.15); color: var(--green); }
     .train-header-status-btn.completed { background: rgba(52,211,153,0.12); color: var(--score-great); cursor: default; }
 
     /* Exercise Card Progress Bar */
     .ex-progress-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; margin-top: 6px; margin-bottom: 2px; }
-    .ex-progress-fill { height: 100%; background: var(--cyan); border-radius: 2px; transition: width 0.3s; box-shadow: 0 0 6px rgba(34,211,238,0.25); }
+    .ex-progress-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.3s; box-shadow: 0 0 6px rgba(52,211,153,0.25); }
 
     /* Previous Workout Row */
     .set-prev-highlight { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-h); font-size: 10px; font-weight: 500; color: var(--text-dim); background: rgba(255,255,255,0.03); padding: 2px 8px; border-radius: 6px; margin-top: 2px; }
@@ -767,7 +766,7 @@
     /* ============================================
        PROFILE UPGRADES
        ============================================ */
-    .profile-hero-days { font-family: var(--font-d); font-size: 3rem; color: var(--gold); text-align: center; line-height: 1; margin-bottom: 2px; text-shadow: 0 0 24px rgba(201,168,76,0.15); }
+    .profile-hero-days { font-family: var(--font-d); font-size: 3rem; color: var(--text); text-align: center; line-height: 1; margin-bottom: 2px; }
     .profile-hero-label { font-family: var(--font-h); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); text-align: center; margin-bottom: 16px; }
     .profile-kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
     .profile-kpi { background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--card-radius); padding: 14px; text-align: center; }
@@ -1049,14 +1048,8 @@
       <div class="score-card">
         <div class="score-ring">
           <svg viewBox="0 0 200 200" class="ring-svg">
-            <defs>
-              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#C9A84C"/>
-                <stop offset="100%" stop-color="#d4b55c"/>
-              </linearGradient>
-            </defs>
             <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="8"/>
-            <circle cx="100" cy="100" r="85" fill="none" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round" id="ringFill" style="stroke-dasharray:534;stroke-dashoffset:534;transition:stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1);transform:rotate(-90deg);transform-origin:center;"/>
+            <circle cx="100" cy="100" r="85" fill="none" stroke="var(--score-low)" stroke-width="8" stroke-linecap="round" id="ringFill" style="stroke-dasharray:534;stroke-dashoffset:534;transition:stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1);transform:rotate(-90deg);transform-origin:center;"/>
           </svg>
           <div class="ring-center">
             <div class="ring-value" id="ringValue">0<span class="ring-pct">%</span></div>
@@ -1070,7 +1063,7 @@
               <div class="score-metric-label">Nutrition</div>
               <div class="score-metric-bar-wrap"><div class="score-metric-bar green" id="nutritionBar" style="width:0%"></div></div>
             </div>
-            <div class="score-metric-val" id="nutritionMetricVal" style="color:#4CAF50;">0%</div>
+            <div class="score-metric-val" id="nutritionMetricVal" style="color:var(--score-low);">0%</div>
             <span class="score-metric-arrow">&#8250;</span>
           </div>
           <div class="score-metric" onclick="switchTab('fivefourfive')">
@@ -1078,7 +1071,7 @@
               <div class="score-metric-label">Streak</div>
               <div class="score-metric-bar-wrap"><div class="score-metric-bar gold" id="streakBar" style="width:0%"></div></div>
             </div>
-            <div class="score-metric-val" id="streakMetricVal" style="color:var(--gold);">0</div>
+            <div class="score-metric-val" id="streakMetricVal" style="color:var(--score-low);">0</div>
             <span class="score-metric-arrow">&#8250;</span>
           </div>
           <div class="score-metric" onclick="switchTab('fivefourfive')">
@@ -1102,7 +1095,7 @@
           <div class="checklist-mini-ring">
             <svg viewBox="0 0 44 44">
               <circle cx="22" cy="22" r="18" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="3"/>
-              <circle cx="22" cy="22" r="18" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" id="checklistRing" style="stroke-dasharray:113;stroke-dashoffset:113;transition:stroke-dashoffset 0.5s;transform:rotate(-90deg);transform-origin:center;"/>
+              <circle cx="22" cy="22" r="18" fill="none" stroke="var(--score-low)" stroke-width="3" stroke-linecap="round" id="checklistRing" style="stroke-dasharray:113;stroke-dashoffset:113;transition:stroke-dashoffset 0.5s;transform:rotate(-90deg);transform-origin:center;"/>
             </svg>
             <div class="checklist-mini-pct" id="checklistPct">0%</div>
           </div>
@@ -1146,9 +1139,9 @@
         <div class="heatmap-legend">
           <span class="heatmap-legend-label">Less</span>
           <div class="heatmap-legend-cell" style="background:rgba(255,255,255,0.03)"></div>
-          <div class="heatmap-legend-cell" style="background:rgba(239,83,80,0.2)"></div>
-          <div class="heatmap-legend-cell" style="background:rgba(251,191,36,0.25)"></div>
-          <div class="heatmap-legend-cell" style="background:rgba(163,230,53,0.3)"></div>
+          <div class="heatmap-legend-cell" style="background:rgba(239,83,80,0.25)"></div>
+          <div class="heatmap-legend-cell" style="background:rgba(251,191,36,0.35)"></div>
+          <div class="heatmap-legend-cell" style="background:rgba(163,230,53,0.45)"></div>
           <div class="heatmap-legend-cell" style="background:#34d399"></div>
           <span class="heatmap-legend-label">More</span>
         </div>
@@ -1472,7 +1465,7 @@
     <div class="rest-timer-ring">
       <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="5"/>
-        <circle cx="50" cy="50" r="42" fill="none" stroke="#22d3ee" stroke-width="5" stroke-linecap="round" id="restTimerRing" style="stroke-dasharray:264;stroke-dashoffset:0;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s linear;"/>
+        <circle cx="50" cy="50" r="42" fill="none" stroke="#34d399" stroke-width="5" stroke-linecap="round" id="restTimerRing" style="stroke-dasharray:264;stroke-dashoffset:0;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s linear;"/>
       </svg>
       <div class="rest-timer-value" id="restTimerValue">0</div>
     </div>
@@ -1968,6 +1961,7 @@
     var fill = $('ringFill');
     // Score-based ring color
     var ringColor = score >= 76 ? 'var(--score-great)' : score >= 51 ? 'var(--score-good)' : score >= 26 ? 'var(--score-mid)' : 'var(--score-low)';
+    var ringHex = score >= 76 ? '#34d399' : score >= 51 ? '#a3e635' : score >= 26 ? '#fbbf24' : '#ef5350';
     if (fill) {
       fill.style.strokeDashoffset = offset;
       fill.setAttribute('stroke', ringColor);
@@ -1976,7 +1970,7 @@
     if (val) {
       val.innerHTML = score + '<span class="ring-pct">%</span>';
       val.style.color = ringColor;
-      val.style.textShadow = '0 0 24px ' + ringColor.replace('var(', '').replace(')', '');
+      val.style.textShadow = '0 0 24px ' + ringHex;
     }
     // Hero status text
     var status = $('heroStatus');
@@ -2367,9 +2361,9 @@
     var html = '<div class="train-header-card">' +
       '<div class="train-header-ring"><svg viewBox="0 0 64 64">' +
       '<circle cx="32" cy="32" r="24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="4"/>' +
-      '<circle cx="32" cy="32" r="24" fill="none" stroke="' + (isCompleted ? '#34d399' : '#22d3ee') + '" stroke-width="4" stroke-linecap="round" ' +
+      '<circle cx="32" cy="32" r="24" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" ' +
       'style="stroke-dasharray:' + circumference.toFixed(1) + ';stroke-dashoffset:' + offset.toFixed(1) + ';transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 0.8s;"/>' +
-      '</svg><div class="train-header-ring-pct" style="color:' + (isCompleted ? 'var(--score-great)' : 'var(--cyan)') + ';">' + pct + '%</div></div>' +
+      '</svg><div class="train-header-ring-pct" style="color:' + (isCompleted ? 'var(--score-great)' : 'var(--green)') + ';">' + pct + '%</div></div>' +
       '<div class="train-header-info">' +
       '<div class="train-header-name">' + esc(dayName) + '</div>' +
       '<div class="train-header-meta">' +
@@ -2625,7 +2619,7 @@
   function spawnConfetti() {
     var container = document.createElement('div');
     container.className = 'confetti-container';
-    var colors = ['#34d399', '#22d3ee', '#a3e635', '#ffffff'];
+    var colors = ['#34d399', '#a3e635', '#fbbf24', '#ffffff'];
     for (var i = 0; i < 40; i++) {
       var piece = document.createElement('div');
       piece.className = 'confetti-piece';
@@ -2744,10 +2738,10 @@
     }
 
     var kpis = [
-      { label: 'Workouts', value: workouts, color: '#22d3ee', spark: null },
-      { label: 'Streak', value: streak, color: '#C9A84C', spark: null },
+      { label: 'Workouts', value: workouts, color: '#34d399', spark: null },
+      { label: 'Streak', value: streak, color: '#fbbf24', spark: null },
       { label: 'Days Logged', value: daysLogged, color: '#34d399', spark: sparkLogged },
-      { label: 'Days In', value: daysIn, color: '#ab47bc', spark: null }
+      { label: 'Days In', value: daysIn, color: '#a3e635', spark: null }
     ];
 
     var html = '';
@@ -2810,7 +2804,7 @@
           activities.push({
             text: 'Completed workout - ' + setsCompleted + ' sets',
             date: log.date,
-            color: 'var(--cyan)'
+            color: 'var(--green)'
           });
         }
       });
@@ -2822,7 +2816,7 @@
         activities.push({
           text: 'Daily check-in logged',
           date: l.date,
-          color: 'var(--blue)'
+          color: 'var(--score-mid)'
         });
       });
     }
@@ -3048,10 +3042,10 @@
     S.sparkExec = sparkExec;
 
     renderKPICards({
-      execution: { avg: w1Exec, prev: w2Exec, values: sparkExec, labels: sparkLabels, color: '#22d3ee' },
-      nutrition: { avg: w1Nut, prev: w2Nut, values: sparkNut, labels: sparkLabels, color: '#4caf50' },
-      energy: { avg: w1Energy, prev: w2Energy, values: sparkEnergy, labels: sparkLabels, color: '#42a5f5', scale: 5 },
-      mood: { avg: w1Mood, prev: w2Mood, values: sparkMood, labels: sparkLabels, color: '#ab47bc', scale: 5 }
+      execution: { avg: w1Exec, prev: w2Exec, values: sparkExec, labels: sparkLabels, color: '#34d399' },
+      nutrition: { avg: w1Nut, prev: w2Nut, values: sparkNut, labels: sparkLabels, color: '#34d399' },
+      energy: { avg: w1Energy, prev: w2Energy, values: sparkEnergy, labels: sparkLabels, color: '#fbbf24', scale: 5 },
+      mood: { avg: w1Mood, prev: w2Mood, values: sparkMood, labels: sparkLabels, color: '#a3e635', scale: 5 }
     });
 
     updateMetricsRow();
@@ -3135,11 +3129,11 @@
         labels: dayLabels,
         datasets: [{
           data: scores,
-          borderColor: '#22d3ee',
-          backgroundColor: 'rgba(34,211,238,0.06)',
+          borderColor: '#34d399',
+          backgroundColor: 'rgba(52,211,153,0.06)',
           borderWidth: 2,
           pointRadius: 3,
-          pointBackgroundColor: '#22d3ee',
+          pointBackgroundColor: '#34d399',
           pointBorderWidth: 0,
           tension: 0.4,
           fill: true
@@ -3268,14 +3262,14 @@
       var pct = Math.min(current / target, 1.5); // cap at 150%
       var ratio = current / target;
 
-      // Color: gold if within 20%, red if > 120%, muted if under 50%
+      // Color: green if within 20%, red if > 120%, muted if under 50%
       var color;
       if (ratio > 1.2) {
         color = '#ef5350';
       } else if (ratio < 0.5) {
         color = '#6e6e78';
       } else {
-        color = '#C9A84C';
+        color = '#34d399';
       }
 
       // SVG semi-circle arc
@@ -4062,10 +4056,10 @@
       totals.fat += (m.fat || 0);
     });
     var gauges = [
-      { key: 'calories', label: 'Cal', color: '#C9A84C' },
+      { key: 'calories', label: 'Cal', color: '#fbbf24' },
       { key: 'protein', label: 'Protein', color: '#42a5f5' },
       { key: 'carbs', label: 'Carbs', color: '#34d399' },
-      { key: 'fat', label: 'Fat', color: '#fbbf24' }
+      { key: 'fat', label: 'Fat', color: '#ef5350' }
     ];
     var html = '<div class="nut-macro-overview"><div class="nut-macro-gauges">';
     gauges.forEach(function(g) {
