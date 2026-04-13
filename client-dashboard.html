@@ -1183,6 +1183,7 @@
             <span id="ffsRoutineStatus" style="font-family:var(--font-h);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;"></span>
           </div>
           <div id="ffsRoutineChecklist"></div>
+          <div class="ffs-routine-progress" id="ffsRoutineProgress" style="display:none;"><div class="ffs-routine-progress-bar" id="ffsRoutineProgressBar" style="width:0%"></div></div>
           <div id="ffsRoutineEmpty" class="empty-state" style="padding:20px;display:none;">
             <p>Set up your 4-step morning routine in the "4-Step Routine" tab first.</p>
           </div>
@@ -3405,6 +3406,7 @@
     if (S.ffsRoutineSteps.length === 0) {
       $('ffsRoutineChecklist').innerHTML = '';
       $('ffsRoutineEmpty').style.display = 'block';
+      $('ffsRoutineProgress').style.display = 'none';
       $('ffsRoutineStatus').textContent = '';
     } else {
       $('ffsRoutineEmpty').style.display = 'none';
@@ -3423,13 +3425,8 @@
         '<span style="color:var(--text-dim);">' + doneCount + '/' + S.ffsDailyRoutine.length + '</span>';
       // Routine progress bar
       var routinePct = S.ffsDailyRoutine.length > 0 ? Math.round((doneCount / S.ffsDailyRoutine.length) * 100) : 0;
-      var existingBar = document.querySelector('#ffsRoutineChecklist + .ffs-routine-progress');
-      if (existingBar) existingBar.parentNode.removeChild(existingBar);
-      var barContainer = $('ffsRoutineChecklist').parentElement;
-      var pBar = document.createElement('div');
-      pBar.className = 'ffs-routine-progress';
-      pBar.innerHTML = '<div class="ffs-routine-progress-bar" style="width:' + routinePct + '%"></div>';
-      barContainer.appendChild(pBar);
+      $('ffsRoutineProgress').style.display = '';
+      $('ffsRoutineProgressBar').style.width = routinePct + '%';
     }
 
     var taskDone = 0;
