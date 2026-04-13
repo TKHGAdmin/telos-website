@@ -1921,7 +1921,7 @@
     $('dashboard').style.display = 'block';
     // Show FAB on Home tab (default active tab)
     var fabEl = $('fabWrap');
-    if (fabEl) fabEl.style.display = '';
+    if (fabEl) fabEl.style.display = 'block';
   }
 
   window.handleLogin = function(e) {
@@ -2064,7 +2064,7 @@
     haptic('light');
     // Show FAB only on Home tab
     var fabEl = $('fabWrap');
-    if (fabEl) fabEl.style.display = tab === 'home' ? '' : 'none';
+    if (fabEl) fabEl.style.display = tab === 'home' ? 'block' : 'none';
     closeFab();
     if (tab === 'fivefourfive') { load545(); }
     if (tab === 'nutrition') { loadNutritionTab(); }
