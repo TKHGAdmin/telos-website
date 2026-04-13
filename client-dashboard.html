@@ -1206,8 +1206,6 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-primary" onclick="save545Daily()" id="save545Btn">Save Today's Progress</button>
-        <div class="login-success" id="ffsSaved" style="margin-top:10px;">Saved!</div>
       </div>
 
       <!-- 5 GOALS sub-panel -->
@@ -3327,7 +3325,6 @@
 
   function load545() {
     $('ffsDateLabel').textContent = formatDate(S.ffsDate);
-    $('ffsSaved').style.display = 'none';
 
     api('five-four-five?date=' + S.ffsDate).then(function(data) {
       S.ffsGoals = (data.goals && data.goals.goals) || [];
@@ -3460,12 +3457,14 @@
     S.ffsDailyRoutine[i].completed = !S.ffsDailyRoutine[i].completed;
     haptic('light');
     render545Today();
+    save545Daily();
   };
 
   window.toggle545Task = function(i) {
     S.ffsDailyTasks[i].completed = !S.ffsDailyTasks[i].completed;
     haptic('light');
     render545Today();
+    save545Daily();
   };
 
   window.add545Task = function() {
@@ -3481,16 +3480,16 @@
     $('ffsTaskInput').value = '';
     $('ffsTaskGoal').value = '';
     render545Today();
+    save545Daily();
   };
 
   window.remove545Task = function(i) {
     S.ffsDailyTasks.splice(i, 1);
     render545Today();
+    save545Daily();
   };
 
-  window.save545Daily = function() {
-    var btn = $('save545Btn');
-    btn.disabled = true;
+  function save545Daily() {
     api('five-four-five', {
       method: 'POST',
       body: {
@@ -3500,18 +3499,8 @@
         routineSteps: S.ffsDailyRoutine,
         routineCompleted: S.ffsDailyRoutine.every(function(s) { return s.completed; })
       }
-    }).then(function() {
-      btn.disabled = false;
-      btn.classList.add('save-success');
-      btn.textContent = 'Saved!';
-      $('ffsSaved').style.display = 'block';
-      setTimeout(function() {
-        $('ffsSaved').style.display = 'none';
-        btn.classList.remove('save-success');
-        btn.textContent = "Save Today's Progress";
-      }, 2000);
-    }).catch(function() { btn.disabled = false; });
-  };
+    });
+  }
 
   // Goals
   function render545Goals() {
