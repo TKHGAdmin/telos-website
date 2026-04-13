@@ -53,11 +53,11 @@ function verifyClientToken(token) {
 
 function getClientSessionCookie(token) {
   var maxAge = SESSION_DURATION / 1000;
-  return COOKIE_NAME + '=' + token + '; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=' + maxAge;
+  return COOKIE_NAME + '=' + token + '; Path=/; HttpOnly; Secure; SameSite=None; Partitioned; Max-Age=' + maxAge;
 }
 
 function clearClientSessionCookie() {
-  return COOKIE_NAME + '=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0';
+  return COOKIE_NAME + '=; Path=/; HttpOnly; Secure; SameSite=None; Partitioned; Max-Age=0';
 }
 
 function verifyClientSession(req) {
