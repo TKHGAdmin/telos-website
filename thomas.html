@@ -397,6 +397,7 @@
           <button class="sub-tab" onclick="switchPortalSub('training')">Training Program</button>
           <button class="sub-tab" onclick="switchPortalSub('mindset')">Mindset</button>
           <button class="sub-tab" onclick="switchPortalSub('resources')">Resources</button>
+          <button class="sub-tab" onclick="switchPortalSub('supplements')">Supplements</button>
           <button class="sub-tab" onclick="switchPortalSub('sidemenu')">Side Menu</button>
           <button class="sub-tab" onclick="switchPortalSub('ffs')">545 Method</button>
           <button class="sub-tab" onclick="switchPortalSub('logs')">Client Logs</button>
@@ -481,6 +482,23 @@
             <button class="btn btn-gold" onclick="addPortalResource()" type="button">+ Add Resource</button>
           </div>
           <button class="btn btn-primary" onclick="savePortalResources()">Save Resources</button>
+        </div>
+
+        <!-- Supplements Editor -->
+        <div class="sub-panel" id="portal-supplements">
+          <div id="ps-list"></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:14px;">
+            <div class="field-row">
+              <div class="field"><label>Supplement Name</label><input id="ps-name" placeholder="e.g. Creatine Monohydrate"></div>
+              <div class="field"><label>Dose</label><input id="ps-dose" placeholder="e.g. 5g"></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Timing</label><input id="ps-timing" placeholder="e.g. Post-workout or with breakfast"></div>
+              <div class="field"><label>Notes (optional)</label><input id="ps-notes" placeholder="e.g. Mix with water"></div>
+            </div>
+            <button class="btn btn-gold" onclick="addPortalSupplement()" type="button">+ Add Supplement</button>
+          </div>
+          <button class="btn btn-primary" onclick="savePortalSupplements()">Save Supplement Plan</button>
         </div>
 
         <!-- Side Menu Editor -->
@@ -1449,15 +1467,18 @@
       portalData.trainingDays = (data.trainingProgram && data.trainingProgram.days) || defaultTrainingDays();
       portalData.sidemenuConfig = data.sidemenuConfig;
       portalData.sidemenuItems = (data.sidemenuConfig && data.sidemenuConfig.items) || getDefaultSidemenuItems();
+      portalData.supplementPlan = data.supplementPlan;
+      portalData.supplements = (data.supplementPlan && data.supplementPlan.supplements) || [];
       renderPortalNutrition();
       renderPortalMindset();
       renderPortalResources();
+      renderPortalSupplements();
       loadPortalLogs();
     });
   };
 
   window.switchPortalSub = function(sub) {
-    var subs = ['nutrition', 'training', 'mindset', 'resources', 'sidemenu', 'ffs', 'logs'];
+    var subs = ['nutrition', 'training', 'mindset', 'resources', 'supplements', 'sidemenu', 'ffs', 'logs'];
     document.querySelectorAll('#portal-subtabs .sub-tab').forEach(function(t, i) {
       t.classList.toggle('active', subs[i] === sub);
     });
@@ -1466,6 +1487,7 @@
       if (el) el.classList.toggle('active', s === sub);
     });
     if (sub === 'training') renderPortalTraining();
+    if (sub === 'supplements') renderPortalSupplements();
     if (sub === 'sidemenu') renderSidemenuEditor();
     if (sub === 'ffs') renderPortal545();
   };
@@ -1850,6 +1872,61 @@
       body: { clientId: clientId, sidemenuConfig: { items: portalData.sidemenuItems } }
     }).then(function() {
       alert('Side menu saved!');
+    }).catch(function(err) { alert('Error: ' + err.message); });
+  };
+
+  // Supplements Editor
+  portalData.supplements = [];
+
+  function renderPortalSupplements() {
+    var sups = portalData.supplements || [];
+    var html = '';
+    sups.forEach(function(s, i) {
+      html += '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px;">';
+      html += '<div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:600;color:var(--text);">' + esc(s.name) + '</div>';
+      html += '<div style="font-size:12px;color:var(--text-dim);">' + esc(s.dose || '') + (s.timing ? ' - ' + esc(s.timing) : '') + '</div>';
+      if (s.notes) html += '<div style="font-size:11px;color:var(--text-faint);margin-top:2px;">' + esc(s.notes) + '</div>';
+      html += '</div>';
+      html += '<button class="btn btn-sm" style="color:var(--red);border-color:var(--red);" onclick="removePortalSupplement(' + i + ')">Remove</button>';
+      html += '</div>';
+    });
+    if (sups.length === 0) {
+      html = '<div class="empty-state" style="margin-bottom:14px;"><p>No supplements added yet.</p></div>';
+    }
+    $('ps-list').innerHTML = html;
+  }
+
+  window.addPortalSupplement = function() {
+    var name = $('ps-name').value.trim();
+    if (!name) return;
+    portalData.supplements.push({
+      id: 'sup_' + Date.now().toString(36),
+      name: name,
+      dose: $('ps-dose').value.trim(),
+      timing: $('ps-timing').value.trim(),
+      notes: $('ps-notes').value.trim()
+    });
+    $('ps-name').value = '';
+    $('ps-dose').value = '';
+    $('ps-timing').value = '';
+    $('ps-notes').value = '';
+    renderPortalSupplements();
+  };
+
+  window.removePortalSupplement = function(i) {
+    if (!confirm('Remove this supplement?')) return;
+    portalData.supplements.splice(i, 1);
+    renderPortalSupplements();
+  };
+
+  window.savePortalSupplements = function() {
+    var clientId = $('portal-client-select').value;
+    if (!clientId) return;
+    api('client-portal', {
+      method: 'PUT',
+      body: { clientId: clientId, supplementPlan: { supplements: portalData.supplements } }
+    }).then(function() {
+      alert('Supplement plan saved!');
     }).catch(function(err) { alert('Error: ' + err.message); });
   };
 

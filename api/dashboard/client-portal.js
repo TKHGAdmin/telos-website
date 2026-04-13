@@ -26,6 +26,7 @@ module.exports = async function handler(req, res) {
         'client_545_routine:' + clientId,
         'client_training_program:' + clientId,
         'client_sidemenu:' + clientId,
+        'client_supplement_plan:' + clientId,
       ];
       var results = await Promise.all(keys.map(function (k) { return redis('GET', k); }));
 
@@ -39,6 +40,7 @@ module.exports = async function handler(req, res) {
         ffsRoutine: results[4] ? JSON.parse(results[4]) : null,
         trainingProgram: results[5] ? JSON.parse(results[5]) : null,
         sidemenuConfig: results[6] ? JSON.parse(results[6]) : null,
+        supplementPlan: results[7] ? JSON.parse(results[7]) : null,
       };
 
       // Fetch client logs if requested
@@ -179,6 +181,14 @@ module.exports = async function handler(req, res) {
         data.updatedAt = new Date().toISOString();
         data.updatedBy = 'coach';
         promises.push(redis('SET', 'client_sidemenu:' + body.clientId, JSON.stringify(data)));
+      }
+
+      if (body.supplementPlan !== undefined) {
+        var data = body.supplementPlan;
+        data.clientId = body.clientId;
+        data.updatedAt = new Date().toISOString();
+        data.updatedBy = 'coach';
+        promises.push(redis('SET', 'client_supplement_plan:' + body.clientId, JSON.stringify(data)));
       }
 
       await Promise.all(promises);

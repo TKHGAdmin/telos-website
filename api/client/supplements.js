@@ -1,0 +1,21 @@
+var { redis } = require('../lib/redis');
+var { verifyClientSession } = require('../lib/client-auth');
+
+module.exports = async function handler(req, res) {
+  var clientId = verifyClientSession(req);
+  if (!clientId) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  if (req.method === 'GET') {
+    try {
+      var raw = await redis('GET', 'client_supplement_plan:' + clientId);
+      return res.status(200).json({ plan: raw ? JSON.parse(raw) : null });
+    } catch (err) {
+      console.error('supplements GET error:', err);
+      return res.status(500).json({ error: 'Internal error' });
+    }
+  }
+
+  return res.status(405).json({ error: 'Method not allowed' });
+};
