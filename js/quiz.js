@@ -254,6 +254,20 @@ document.addEventListener('DOMContentLoaded', function() {
         completedAt: new Date().toISOString()
       }));
 
+      // Send to dashboard API
+      fetch('/api/submit-quiz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: quiz.userName,
+          email: quiz.userEmail,
+          phone: quiz.userPhone,
+          scores: quiz.scores,
+          totalScore: getTotalScore(),
+          page: window.location.pathname
+        })
+      }).catch(function() {});
+
       // Show results
       quizLeadCapture.style.display = 'none';
       quizResults.style.display = 'block';

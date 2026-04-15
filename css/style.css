@@ -521,6 +521,17 @@ nav.scrolled {
   color: var(--color-text-muted-light);
 }
 
+.nav-client-login {
+  font-size: 11px;
+  color: var(--color-text-muted-light) !important;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.nav-client-login:hover {
+  opacity: 1;
+  color: var(--color-accent-gold) !important;
+}
+
 .nav-cta {
   margin-left: var(--spacing-lg);
 }

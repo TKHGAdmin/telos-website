@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Shared Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="stylesheet" href="css/style.css?v=16">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>T</text></svg>">
@@ -483,12 +483,13 @@
       <ul class="nav-links">
         <li><a href="index.html#how-it-works">System</a></li>
         <li><a href="index.html#about">About</a></li>
-        <li><a href="pricing">Pricing</a></li>
+        <li><a href="chs">Charleston</a></li>
         <li><a href="index.html#quiz">Quiz</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
         <li><a href="protein-calculator" style="color: var(--color-accent-gold);">Protein Calc</a></li>
         <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
         <li><a href="resources">Resources</a></li>
+        <li><a href="client-dashboard" class="nav-client-login">Client Login</a></li>
         <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary nav-cta">Book a Call</a></li>
       </ul>
       <button class="hamburger" aria-label="Toggle menu">
@@ -500,10 +501,11 @@
     <div class="mobile-menu">
       <ul>
         <li><a href="index.html#how-it-works">System</a></li>
-        <li><a href="pricing">Pricing</a></li>
+        <li><a href="chs">Charleston</a></li>
         <li><a href="protein-calculator">Protein Calc</a></li>
         <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
         <li><a href="resources">Resources</a></li>
+        <li><a href="client-dashboard" class="nav-client-login">Client Login</a></li>
         <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Call</a></li>
       </ul>
     </div>
@@ -809,8 +811,15 @@
       e.preventDefault();
       const email = document.getElementById('gateEmail').value;
 
-      // Log lead (replace with API call to your email tool later)
+      // Log lead
       console.log('Protein Calculator Lead:', { email: email });
+
+      // Send to dashboard API
+      fetch('/api/submit-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'protein-calculator' })
+      }).catch(function() {});
 
       // Unlock the meal plan
       mealPlanWrapper.classList.remove('locked');

@@ -327,6 +327,7 @@
     <button class="dash-tab" data-tab="courses" onclick="switchTab('courses')">Course Builder</button>
     <button class="dash-tab" data-tab="revenue" onclick="switchTab('revenue')">Revenue</button>
     <button class="dash-tab" data-tab="leads" onclick="switchTab('leads')">Leads</button>
+    <button class="dash-tab" data-tab="charleston" onclick="switchTab('charleston')">Charleston</button>
     <button class="dash-tab" data-tab="analytics" onclick="switchTab('analytics')">Analytics</button>
     <button class="dash-tab" data-tab="content" onclick="switchTab('content')">Content</button>
     <button class="dash-tab" data-tab="ads" onclick="switchTab('ads')">Ad Spend</button>
@@ -614,7 +615,25 @@
       </div>
     </div>
 
-    <!-- TAB 8: ANALYTICS -->
+    <!-- TAB 8: CHARLESTON APPLICATIONS -->
+    <div class="tab-panel" id="panel-charleston">
+      <div class="section-header">
+        <h2 class="section-title">Charleston Applications</h2>
+        <div class="section-controls">
+          <button class="btn active" onclick="filterCHS('all')">All</button>
+          <button class="btn" onclick="filterCHS('new')">New</button>
+          <button class="btn" onclick="filterCHS('contacted')">Contacted</button>
+          <button class="btn" onclick="filterCHS('consultation')">Consultation</button>
+          <button class="btn" onclick="filterCHS('closed_won')">Won</button>
+          <button class="btn" onclick="filterCHS('closed_lost')">Lost</button>
+          <button class="btn" onclick="loadCharleston()">Refresh</button>
+        </div>
+      </div>
+      <div id="chs-loading" class="loading">Loading Charleston applications</div>
+      <div id="chs-table" style="display:none;"></div>
+    </div>
+
+    <!-- TAB 9: ANALYTICS -->
     <div class="tab-panel" id="panel-analytics">
       <div class="section-header">
         <h2 class="section-title">Website Analytics</h2>
@@ -696,6 +715,8 @@
     clientFilter: 'all',
     contentFilter: 'all',
     leadsSubTab: 'quiz',
+    chsFilter: 'all',
+    chsApplications: [],
     analyticsRange: '7d',
     contentItems: [],
     moduleFilterPillar: '',
@@ -929,6 +950,7 @@
         courses: loadCourses,
         revenue: loadRevenue,
         leads: loadLeads,
+        charleston: loadCharleston,
         analytics: loadAnalytics,
         content: loadContent,
         ads: loadAds
@@ -2610,7 +2632,116 @@
   };
 
   /* =========================================================
-     TAB 8: ANALYTICS
+     TAB 8: CHARLESTON APPLICATIONS
+     ========================================================= */
+  function loadCharleston() {
+    S.loaded.charleston = true;
+    $('chs-loading').style.display = 'block';
+    $('chs-table').style.display = 'none';
+    api('chs-applications').then(function(data) {
+      S.chsApplications = data.applications || [];
+      renderCharleston();
+    }).catch(function(err) {
+      $('chs-loading').innerHTML = '<div class="empty-state"><h3>Error</h3><p>' + esc(err.message) + '</p></div>';
+    });
+  }
+
+  function renderCharleston() {
+    var apps = S.chsApplications;
+    if (S.chsFilter !== 'all') {
+      apps = apps.filter(function(a) { return a.status === S.chsFilter; });
+    }
+    if (apps.length === 0) {
+      $('chs-table').innerHTML = '<div class="empty-state"><h3>No Charleston applications</h3><p>Applications submitted via /chs will appear here.</p></div>';
+    } else {
+      var html = '<div class="table-wrap"><div class="table-scroll"><table><thead><tr>';
+      html += '<th>Date</th><th>Name</th><th>Email</th><th>Phone</th><th>Services</th><th>Status</th><th></th>';
+      html += '</tr></thead><tbody>';
+      apps.forEach(function(a) {
+        var svcs = (a.services || []).join(', ') || '-';
+        html += '<tr>';
+        html += '<td class="td-mono">' + fmtDate(a.createdAt) + '</td>';
+        html += '<td class="td-name">' + esc(a.name || '-') + '</td>';
+        html += '<td class="td-email">' + esc(a.email || '') + '</td>';
+        html += '<td class="td-mono">' + esc(a.phone || '') + '</td>';
+        html += '<td style="font-size:0.85rem;color:var(--text-muted);">' + esc(svcs) + '</td>';
+        html += '<td>';
+        html += '<select class="chs-status-select" data-id="' + esc(a.id) + '" onchange="updateCHSStatus(this)">';
+        ['new','contacted','consultation','closed_won','closed_lost'].forEach(function(st) {
+          html += '<option value="' + st + '"' + (a.status === st ? ' selected' : '') + '>' + st + '</option>';
+        });
+        html += '</select>';
+        html += '</td>';
+        html += '<td><button class="btn btn-sm btn-gold" onclick="openCHSDetail(\'' + esc(a.id) + '\')">View</button></td>';
+        html += '</tr>';
+      });
+      html += '</tbody></table></div>';
+      html += '<div class="table-footer"><span class="table-count">' + fmt(apps.length) + ' ' + (S.chsFilter === 'all' ? 'total' : S.chsFilter) + '</span></div></div>';
+      $('chs-table').innerHTML = html;
+    }
+    $('chs-loading').style.display = 'none';
+    $('chs-table').style.display = 'block';
+  }
+
+  window.filterCHS = function(status) {
+    S.chsFilter = status;
+    var btns = document.querySelectorAll('#panel-charleston .section-controls .btn');
+    var labels = ['all','new','contacted','consultation','closed_won','closed_lost'];
+    for (var i = 0; i < btns.length; i++) {
+      if (i < labels.length) btns[i].classList.toggle('active', labels[i] === status);
+    }
+    if (S.loaded.charleston) renderCharleston();
+    else loadCharleston();
+  };
+
+  window.updateCHSStatus = function(selectEl) {
+    var id = selectEl.getAttribute('data-id');
+    var status = selectEl.value;
+    api('chs-applications', { method: 'PATCH', body: { id: id, status: status } }).then(function() {
+      var match = S.chsApplications.find(function(a) { return a.id === id; });
+      if (match) match.status = status;
+    }).catch(function(err) {
+      alert('Failed to update status: ' + err.message);
+    });
+  };
+
+  window.openCHSDetail = function(id) {
+    var app = S.chsApplications.find(function(a) { return a.id === id; });
+    if (!app) return;
+    var svcs = (app.services || []).join(', ') || '-';
+    var html = '';
+    html += '<div style="display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin-bottom:18px;">';
+    html += '<div style="color:var(--text-dim);font-size:0.85rem;">Submitted</div><div class="td-mono">' + fmtDateTime(app.createdAt) + '</div>';
+    html += '<div style="color:var(--text-dim);font-size:0.85rem;">Name</div><div>' + esc(app.name) + '</div>';
+    html += '<div style="color:var(--text-dim);font-size:0.85rem;">Email</div><div class="td-email">' + esc(app.email) + '</div>';
+    html += '<div style="color:var(--text-dim);font-size:0.85rem;">Phone</div><div class="td-mono">' + esc(app.phone) + '</div>';
+    html += '<div style="color:var(--text-dim);font-size:0.85rem;">Services</div><div>' + esc(svcs) + '</div>';
+    html += '</div>';
+    html += '<div style="margin-bottom:14px;"><div style="color:var(--text-dim);font-size:0.85rem;margin-bottom:6px;">Goals</div><div style="white-space:pre-wrap;line-height:1.5;">' + esc(app.goals) + '</div></div>';
+    html += '<div style="margin-bottom:14px;"><div style="color:var(--text-dim);font-size:0.85rem;margin-bottom:6px;">Training History</div><div style="white-space:pre-wrap;line-height:1.5;">' + esc(app.history) + '</div></div>';
+    html += '<div style="margin-bottom:18px;"><div style="color:var(--text-dim);font-size:0.85rem;margin-bottom:6px;">Availability</div><div style="white-space:pre-wrap;line-height:1.5;">' + esc(app.availability) + '</div></div>';
+    html += '<div style="margin-bottom:14px;"><label style="color:var(--text-dim);font-size:0.85rem;display:block;margin-bottom:6px;">Notes</label>';
+    html += '<textarea id="chs-notes" style="width:100%;min-height:100px;background:var(--card-elevated,#1a1a1f);border:1px solid rgba(255,255,255,0.07);color:var(--text,#F4F1EC);padding:10px;border-radius:6px;font-family:inherit;font-size:0.9rem;">' + esc(app.notes || '') + '</textarea></div>';
+    html += '<div style="display:flex;gap:10px;justify-content:flex-end;">';
+    html += '<button class="btn" onclick="closeModal()">Close</button>';
+    html += '<button class="btn btn-gold" onclick="saveCHSNotes(\'' + esc(id) + '\')">Save Notes</button>';
+    html += '</div>';
+    openModal('Application: ' + app.name, html, true);
+  };
+
+  window.saveCHSNotes = function(id) {
+    var notes = $('chs-notes') ? $('chs-notes').value : '';
+    api('chs-applications', { method: 'PATCH', body: { id: id, notes: notes } }).then(function() {
+      var match = S.chsApplications.find(function(a) { return a.id === id; });
+      if (match) match.notes = notes;
+      closeModal();
+    }).catch(function(err) {
+      alert('Failed to save notes: ' + err.message);
+    });
+  };
+
+  /* =========================================================
+     TAB 9: ANALYTICS
      ========================================================= */
   function loadAnalytics() {
     S.loaded.analytics = true;

@@ -12,10 +12,11 @@
 /
 ├── index.html              # Homepage (hero, how it works, about, pricing features, quiz, testimonials, FAQ)
 ├── pricing.html            # Quiz-gated pricing page (actual prices shown after quiz completion)
+├── chs.html                # Charleston in-person services landing page (hotel-site aesthetic, application-gated)
 ├── protein-calculator.html # Standalone tool page
 ├── hyrox-predictor.html    # Standalone tool page
 ├── resources.html          # Blog hub with category filters
-├── thomas.html             # Business dashboard (password-protected, noindex, 9 tabs incl. Client Portal)
+├── thomas.html             # Business dashboard (password-protected, noindex, 10 tabs incl. Client Portal)
 ├── client-dashboard.html   # Client portal (PWA, self-contained, dark minimal UI)
 ├── manifest.json           # PWA manifest for client portal (standalone mode, no URL bar)
 ├── blog/                   # 23 SEO-optimized articles (training, nutrition, recovery, mindset)
@@ -31,6 +32,7 @@
 │   │   └── redis.js        # Upstash Redis REST client (no npm deps)
 │   ├── submit-quiz.js      # Public: stores quiz submissions (called from quiz.js)
 │   ├── submit-email.js     # Public: stores email captures (protein-calc + hyrox)
+│   ├── submit-chs-application.js # Public: stores Charleston in-person service applications
 │   ├── cron/               # Vercel Cron Jobs (require CRON_SECRET)
 │   │   ├── weekly-summary.js   # Monday 9am ET: weekly summary email to active clients
 │   │   └── engagement-check.js # Daily: reminder email to clients inactive 3+ days
@@ -74,7 +76,8 @@
 │       ├── analytics.js    # GET: Vercel Web Analytics proxy (uses verifySession from lib/auth)
 │       ├── modules.js      # CRUD: learning modules management
 │       ├── upload-video.js  # POST: upload video to Vercel Blob
-│       └── delete-video.js  # DELETE: remove video from Vercel Blob
+│       ├── delete-video.js  # DELETE: remove video from Vercel Blob
+│       └── chs-applications.js # GET/PATCH/DELETE: Charleston applications (status, notes)
 ├── vercel.json             # cleanUrls, CORS headers, function config
 └── .vercel/                # Vercel project config
 ```
@@ -82,8 +85,8 @@
 ## Business Dashboard (/thomas)
 - **Password-protected**: Uses `DASHBOARD_PASSWORD` env var + HMAC-signed session cookies (timing-safe comparison)
 - **Self-contained**: thomas.html has all CSS/JS inline, does NOT load main.js or style.css
-- **9 tabs**: Overview, Pipeline, Clients, Revenue, Leads, Analytics, Content, Ad Spend, Client Portal
-- **Data stored in Upstash Redis**: Quiz submissions, email captures, pipeline leads, clients, content, ad spend
+- **10 tabs**: Overview, Pipeline, Clients, Revenue, Leads, Charleston, Analytics, Content, Ad Spend, Client Portal
+- **Data stored in Upstash Redis**: Quiz submissions, email captures, pipeline leads, clients, content, ad spend, Charleston applications
 - **Quiz/email forms POST to API**: quiz.js and tool pages send data to /api/submit-quiz and /api/submit-email (non-blocking, silent fail)
 - **Pipeline stages**: new, contacted, consultation, proposal, closed_won, closed_lost
 - **Client tiers**: rebuild ($1,497), growth ($1,997), lifestyle ($2,497), lifestyle_plus ($6,997)
@@ -136,6 +139,22 @@ client_activity_log:{clientId}:{YYYY-MM-DD}    # Daily activity log (array of ac
 client_activity_logs_index:{clientId}   # ZSET of activity dates
 ```
 
+## Charleston Landing Page (/chs)
+- **Purpose**: In-person services landing page for Charleston, SC (first in-person service location). Promotes 1-on-1 private training, semi-private, mobile (in-home) training, fitness events, corporate events, bachelor/bachelorette parties.
+- **Design**: High-end hotel aesthetic (Aman / Rosewood / The Edition inspiration) - same palette as online site (#080608 bg, #C9A84C gold) but sharper and more premium. Cormorant Garamond serif headlines, small-caps letter-spaced nav, Roman numeral services list, borderless form inputs with 1px bottom rule, asymmetric magazine-style sections, hairline dividers.
+- **Self-contained**: chs.html uses body class `chs-page` to scope all custom CSS via inline `<style>`. Loads shared `css/style.css?v=16` + `js/main.js` so hamburger/scroll behavior still works. Nav DOM is standard but visually overridden for this page only.
+- **Pricing**: Hidden - page is application-gated. Primary CTA is the application form.
+- **Form fields**: name, email, phone, goals, history (required), availability (required), services (multi-select: private / semi-private / mobile / event / corporate).
+- **Endpoints**:
+  - `POST /api/submit-chs-application` - public, rate-limited 5/hr per IP, validates required fields.
+  - `GET/PATCH/DELETE /api/dashboard/chs-applications` - admin-only (verifySession).
+- **Redis keys**:
+  - `chs_application:{id}` - JSON blob with all fields + createdAt + status + notes
+  - `chs_applications_index` - ZSET scored by timestamp for reverse-chronological pagination
+  - `ratelimit:chs:{ip}` - rate limit counter for submissions
+- **Statuses**: new, contacted, consultation, closed_won, closed_lost
+- **Admin view**: Charleston tab in `/thomas` dashboard (between Leads and Analytics). Table with status dropdown + detail modal showing goals/history/availability + notes textarea.
+
 ## Environment Variables (Vercel)
 ```
 DASHBOARD_PASSWORD              # Login password for /thomas
@@ -167,7 +186,7 @@ BLOB_READ_WRITE_TOKEN           # For Vercel Blob video uploads
 - **Client dashboard design**: Direct, clean, minimal. No decorative glows/gradients. Flat solid backgrounds (#131316 cards on #060608 bg). Gold (#C9A84C) for brand accents only (logo, tabs, buttons), red-to-green spectrum for all data/progress. Sharp 12px radius. No emojis in data. Typography-driven hierarchy using Outfit (headings/labels) and DM Sans (body).
 - **Client auth cookies**: Client sessions use `telos_client_session` cookie (separate from admin's `telos_dash_session`). Token format: `{clientId}.{expiry}.{signature}` (3 parts vs admin's 2 parts). Cookie uses `SameSite=None; Partitioned` to support Whop iframe embedding. Admin cookie stays `SameSite=Strict` (never embedded).
 - **Client Login nav link**: All 28 public pages (5 root + 23 blog) have a "Client Login" link before "Book a Call" in both desktop and mobile navs. Blog pages use `../client-dashboard` href.
-- **CSS version**: Currently `?v=15` on all pages. Bump when changing style.css.
+- **CSS version**: Currently `?v=16` on all pages. Bump when changing style.css.
 - **Training features**: Rest timer (circular countdown, parses "90s"/"2min"/"1:30"), progress bar, previous workout comparison (fetches last 14 logs), workout completion celebration with confetti + auto-save.
 - **FAB button (Home tab)**: Floating action button visible only on Home tab. CSS default is `display:none`; JS must set `display:'block'` (not empty string `''`) to show it. The FAB opens a popup with 3 modals: Daily Check-in, Food Search, Add Activity. All modals use class `.modal-panel` with `.open` to show (z-index 500). FAB is z-index 210, backdrop z-index 205.
 - **Food search**: Open Food Facts API proxy at /api/client/food-search.js. No API key needed. Recent foods stored in localStorage (`telos_recent_foods`, max 20). Food search UI is now in a full-screen modal (not inline in a tab).
