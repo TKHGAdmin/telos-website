@@ -206,7 +206,7 @@ BLOB_READ_WRITE_TOKEN           # For Vercel Blob video uploads
   - Lifestyle+: `https://calendly.com/tkern-y-m5/1-1-lifestyle-consultation-call-clone`
 - Whop: `https://whop.com/telosfitness` (community), `https://whop.com/checkout/plan_4XhPpAYVD2xQl` (Rebuild tier)
 - Open Food Facts: `https://world.openfoodfacts.org/cgi/search.pl` (food database, free, no key)
-- Instagram: @tomgetshybrid, @telos_fitness
+- Instagram: @telos_fitness
 - Email: telosfitnessllc@gmail.com
 
 ## Cron Jobs (vercel.json)
