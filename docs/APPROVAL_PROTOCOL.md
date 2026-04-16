@@ -2,13 +2,13 @@
 
 How your approve/deny decisions get back to the agent.
 
-## Phase 1 - Email (starting now)
+## Phase 1 — Email (starting now)
 
 Each morning, you receive an email with the day's report. To approve or deny bugs, **reply to the email** with this exact format:
 
 ```
 BUG-2026-04-16-001: approve
-BUG-2026-04-16-002: deny - false positive, that timeout is intentional for rate-limiting
+BUG-2026-04-16-002: deny — false positive, that timeout is intentional for rate-limiting
 BUG-2026-04-16-003: approve
 BUG-2026-04-16-004: fixed
 ```
@@ -25,8 +25,8 @@ BUG-2026-04-16-004: fixed
 ### Rules
 
 - One verdict per line
-- Anything after `-` or `#` on a verdict line is treated as a reason and logged (helpful for `deny` especially)
-- Bugs not mentioned in your reply default to **still-pending** - they'll appear in tomorrow's report as recurring
+- Anything after `—` or `#` on a verdict line is treated as a reason and logged (helpful for `deny` especially)
+- Bugs not mentioned in your reply default to **still-pending** — they'll appear in tomorrow's report as recurring
 - Subject line must start with `RE:` so the agent's inbox poller picks it up
 
 ### What the agent does with your replies
@@ -40,7 +40,7 @@ On each run, the agent checks the reply-to inbox for new responses, parses them,
 
 This file is the agent's training signal. More data = better agent.
 
-## Phase 2 - Dashboard (future)
+## Phase 2 — Dashboard (future)
 
 When `telosathleticclub.com/thomas` is ready, the agent POSTs the report to your endpoint instead of emailing. Payload:
 

@@ -10,7 +10,7 @@ Each entry has a date, a category, and a lesson. Oldest at top. When this file e
 
 ## Entries
 
-### 2026-04-16 - Initial state
+### 2026-04-16 — Initial state
 
 No prior runs. Starting conservatively:
 - Focus on high-confidence static analysis findings

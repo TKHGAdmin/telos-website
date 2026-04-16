@@ -4,7 +4,7 @@ Every daily report at `agent/reports/YYYY-MM-DD.md` MUST follow this exact struc
 
 ## File naming
 
-`agent/reports/YYYY-MM-DD.md` - ISO date of the run, in America/New_York time.
+`agent/reports/YYYY-MM-DD.md` — ISO date of the run, in America/New_York time.
 
 ## Top of file (frontmatter)
 
@@ -17,7 +17,7 @@ scan_duration_seconds: 412
 commit_scanned: abc123def456
 ---
 
-# Telos Bug Hunter - 2026-04-16
+# Telos Bug Hunter — 2026-04-16
 
 **Focus:** Functional
 **Bugs found:** 3 (1 P0, 1 P1, 1 P3)
@@ -57,7 +57,7 @@ navigate('/order-confirmed');
 
 ### Evidence
 
-- Code reference: `src/components/Checkout.tsx` lines 142-168
+- Code reference: `src/components/Checkout.tsx` lines 142–168
 - Related: no error handling for Stripe failures anywhere in the checkout flow
 ```
 
@@ -66,14 +66,14 @@ navigate('/order-confirmed');
 | Field | Required | Notes |
 |---|---|---|
 | `BUG-YYYY-MM-DD-NNN` heading | Yes | NNN is zero-padded 3-digit sequence, per-day |
-| Severity | Yes | P0, P1, P2, or P3 - nothing else |
+| Severity | Yes | P0, P1, P2, or P3 — nothing else |
 | Status | Yes | Always `pending-review` on first report |
 | Area | Yes | Functional grouping: "Auth", "Checkout", "Booking", etc. |
 | File(s) | Yes | With line numbers when applicable |
 | First seen | Yes | Date in ISO format |
-| What's wrong | Yes | 2-4 sentences, plain English |
+| What's wrong | Yes | 2–4 sentences, plain English |
 | How to reproduce | Yes | Numbered steps OR code trace |
-| Suggested fix | Yes | Concrete - code snippet when possible |
+| Suggested fix | Yes | Concrete — code snippet when possible |
 | Evidence | Yes | Links, line refs, scanner output |
 
 ## Zero-bugs day
@@ -89,7 +89,7 @@ scan_duration_seconds: 287
 commit_scanned: abc123def456
 ---
 
-# Telos Bug Hunter - 2026-04-16
+# Telos Bug Hunter — 2026-04-16
 
 **Focus:** Performance
 **Bugs found:** 0
@@ -114,7 +114,7 @@ Next focus: security. Will prioritize `npm audit` and scanning for hardcoded cre
 If a bug is still unresolved after 3+ days, reference the original ID:
 
 ```markdown
-## BUG-2026-04-19-001 (recurring - originally BUG-2026-04-16-001)
+## BUG-2026-04-19-001 (recurring — originally BUG-2026-04-16-001)
 
 - **Severity:** P0
 - **Status:** pending-review
