@@ -1,14 +1,4 @@
 {
-  "today": {
-    "date": "2026-04-17",
-    "focus": "visual",
-    "day_index": 1
-  },
-  "last_run": {
-    "date": "2026-04-16",
-    "focus": "functional",
-    "day_index": 0,
-    "bugs_found": 2
-  },
+  "next": "visual",
   "cycle": ["functional", "visual", "performance", "security"]
 }

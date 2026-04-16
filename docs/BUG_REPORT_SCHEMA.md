@@ -1,57 +1,126 @@
 # Bug Report Schema
 
-Every daily report produced by the Telos Bug Hunter must follow this exact structure. The orchestrator parses these files to build emails and decision records.
+Every daily report at `agent/reports/YYYY-MM-DD.md` MUST follow this exact structure. The email reporter and (future) dashboard parser depend on it.
 
-## File location
+## File naming
 
-`agent/reports/YYYY-MM-DD.md` (one file per run, ISO date, UTC).
+`agent/reports/YYYY-MM-DD.md` - ISO date of the run, in America/New_York time.
 
-## Required frontmatter
+## Top of file (frontmatter)
 
-```yaml
+```markdown
 ---
-date: YYYY-MM-DD
-focus: functional | visual | performance | security
-bugs_found: <integer>
+date: 2026-04-16
+focus: functional
+bugs_found: 3
+scan_duration_seconds: 412
+commit_scanned: abc123def456
 ---
+
+# Telos Bug Hunter - 2026-04-16
+
+**Focus:** Functional
+**Bugs found:** 3 (1 P0, 1 P1, 1 P3)
+**Commit scanned:** `abc123de`
 ```
 
-## Body structure
+## Each bug (repeat per finding)
 
-### 1. Summary (required)
+```markdown
+## BUG-2026-04-16-001
 
-A single paragraph (1-4 sentences) describing today's focus area and high-level outcome. If zero bugs were found, say so plainly here.
+- **Severity:** P0
+- **Status:** pending-review
+- **Area:** Checkout / Payment
+- **File(s):** `src/components/Checkout.tsx:142-168`
+- **First seen:** 2026-04-16
 
-### 2. Bugs (zero or more)
+### What's wrong
 
-Each bug is a level-2 heading in the form:
+The `handleSubmit` function in Checkout.tsx calls the Stripe API without awaiting the response, then immediately navigates to the success page. If the payment fails, the user sees a success confirmation for a charge that never happened.
 
+### How to reproduce
+
+1. Add an item to cart and proceed to checkout
+2. Enter a test card that will decline (e.g., `4000 0000 0000 0002`)
+3. Click "Place Order"
+4. Observe: user is routed to `/order-confirmed` despite the decline
+
+### Suggested fix
+
+Await the Stripe promise and branch on result:
+```tsx
+const result = await stripe.confirmPayment(...);
+if (result.error) { showError(result.error); return; }
+navigate('/order-confirmed');
 ```
-## BUG-YYYYMMDD-NN - <short title>
+
+### Evidence
+
+- Code reference: `src/components/Checkout.tsx` lines 142-168
+- Related: no error handling for Stripe failures anywhere in the checkout flow
 ```
 
-Where `NN` is a zero-padded sequence number (01, 02, ...) within the day.
+## Required fields per bug
 
-Each bug MUST contain the following fields in this order:
+| Field | Required | Notes |
+|---|---|---|
+| `BUG-YYYY-MM-DD-NNN` heading | Yes | NNN is zero-padded 3-digit sequence, per-day |
+| Severity | Yes | P0, P1, P2, or P3 - nothing else |
+| Status | Yes | Always `pending-review` on first report |
+| Area | Yes | Functional grouping: "Auth", "Checkout", "Booking", etc. |
+| File(s) | Yes | With line numbers when applicable |
+| First seen | Yes | Date in ISO format |
+| What's wrong | Yes | 2-4 sentences, plain English |
+| How to reproduce | Yes | Numbered steps OR code trace |
+| Suggested fix | Yes | Concrete - code snippet when possible |
+| Evidence | Yes | Links, line refs, scanner output |
 
-- **Severity**: P0 | P1 | P2 | P3
-- **Area**: free-text area/component (e.g., "client-dashboard", "api/submit-quiz", "pricing.html")
-- **File(s)**: absolute or repo-relative file paths, one per line
-- **Description**: 1-3 sentences explaining what is wrong and why it matters
-- **Reproduction**: numbered steps OR a code snippet pointing to the exact lines
-- **Expected**: what should happen
-- **Actual**: what actually happens
-- **Suggested fix**: 1-2 sentences (optional but encouraged)
+## Zero-bugs day
 
-### 3. Notes (optional)
+When no bugs are found:
 
-Free-form footer for context, caveats, or things the agent wants to flag but is not confident enough to file as bugs.
+```markdown
+---
+date: 2026-04-16
+focus: performance
+bugs_found: 0
+scan_duration_seconds: 287
+commit_scanned: abc123def456
+---
 
-## Rules
+# Telos Bug Hunter - 2026-04-16
 
-1. IDs must be globally unique. Use the date + sequence so two runs never collide.
-2. Severities must be one of P0/P1/P2/P3 exactly.
-3. Every bug must cite at least one file path.
-4. Zero-bug days are valid. The file still exists with `bugs_found: 0` and a Summary section.
-5. No emojis in reports.
-6. No fabricated findings. If confidence is low, use the Notes section instead.
+**Focus:** Performance
+**Bugs found:** 0
+**Commit scanned:** `abc123de`
+
+No new issues found in today's performance scan.
+
+## What I checked
+
+- Bundle size (main.js: 247KB, within budget of 300KB)
+- Lighthouse performance score on `/`, `/workouts`, `/book`: 94, 91, 89
+- Image optimization: all images in `/public` are under 200KB
+- No new render-blocking scripts since last performance scan (2026-04-12)
+
+## Notes for tomorrow
+
+Next focus: security. Will prioritize `npm audit` and scanning for hardcoded credentials.
+```
+
+## Recurring bugs
+
+If a bug is still unresolved after 3+ days, reference the original ID:
+
+```markdown
+## BUG-2026-04-19-001 (recurring - originally BUG-2026-04-16-001)
+
+- **Severity:** P0
+- **Status:** pending-review
+- **Recurring since:** 2026-04-16 (4 days)
+
+Still present as of this scan. No commits have touched `src/components/Checkout.tsx` since original report.
+```
+
+After 7 days unresolved, auto-escalate severity one step (P2 → P1, P1 → P0).
