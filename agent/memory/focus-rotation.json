@@ -1,0 +1,13 @@
+{
+  "today": {
+    "date": "2026-04-18",
+    "focus": "Visual/UX",
+    "dayIndex": 1
+  },
+  "tomorrow": {
+    "focus": "Performance",
+    "dayIndex": 2
+  },
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "lastRun": "2026-04-17"
+}
