@@ -1,0 +1,14 @@
+{
+  "today": {
+    "date": "2026-04-21",
+    "focus": "security",
+    "day_mod_4": 3
+  },
+  "tomorrow": {
+    "date": "2026-04-22",
+    "focus": "functional",
+    "day_mod_4": 0
+  },
+  "rotation": ["functional", "visual", "performance", "security"],
+  "notes": "First run - bootstrapped on 2026-04-21. Using day-of-year mod 4 for rotation."
+}
