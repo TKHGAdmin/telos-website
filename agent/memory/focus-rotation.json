@@ -1,0 +1,8 @@
+{
+  "currentFocusIndex": 0,
+  "currentFocus": "Functional",
+  "lastRunDate": "2026-04-22",
+  "nextFocusIndex": 1,
+  "nextFocus": "Visual/UX",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"]
+}
