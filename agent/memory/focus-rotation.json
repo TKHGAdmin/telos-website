@@ -1,0 +1,9 @@
+{
+  "last_run_date": "2026-04-24",
+  "last_run_focus": "performance",
+  "last_run_focus_index": 2,
+  "next_run_focus": "security",
+  "next_run_focus_index": 3,
+  "rotation": ["functional", "visual_ux", "performance", "security"],
+  "notes": "First run bootstrapped this file. Focus for 2026-04-24 was derived from day-of-year (114 mod 4 = 2 → performance). Next run should rotate to security (index 3), then back to functional (index 0). If the agent detects last_run_date == today when it wakes, use next_run_focus. Otherwise fall back to day-of-year mod 4."
+}
