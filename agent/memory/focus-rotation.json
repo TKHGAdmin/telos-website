@@ -1,0 +1,10 @@
+{
+  "today": "2026-04-26",
+  "focus_index": 1,
+  "focus_name": "Visual/UX",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "last_run_date": "2026-04-25",
+  "last_run_focus": "Functional",
+  "last_run_bug_count": 5,
+  "notes": "Bootstrapped 2026-04-25 with Functional. focus_index advanced to 1 (Visual/UX) for next run."
+}
