@@ -31,3 +31,16 @@ This file accumulates patterns the agent has learned across runs. Compress older
 ## Approval/denial history summary
 
 (empty — first run)
+
+## Run log
+
+### 2026-04-27 — security (first run)
+
+- Confirmed: every `api/dashboard/*` handler calls `verifySession`; every protected `api/client/*` handler calls `verifyClientSession`. No missing-auth bugs in current tree.
+- Confirmed: no IDOR — `clientId` is always derived from the session, never from request body/query.
+- Confirmed: PBKDF2(100k, SHA-512) for client passwords; HMAC-based admin auth; both use `crypto.timingSafeEqual`.
+- Confirmed: cron endpoints fail closed when `CRON_SECRET` unset.
+- Confirmed: no committed secrets; `food-search` proxy targets a hardcoded Open Food Facts URL (no SSRF).
+- Established `ratelimit:` Redis idiom is the project's rate-limit pattern. Public submission endpoints use it; auth endpoints do not.
+- Reported (3): missing rate limiting on `api/dashboard/login.js`, `api/client/login.js`, `api/client/reset-password.js`. All P1, all fixable with the existing limiter pattern.
+- Did NOT report (kept for next time, low confidence today): timing-channel email enumeration in `api/client/login.js` between the early `client_email:*` miss branch and the full PBKDF2 path. Worth quantifying before flagging.
