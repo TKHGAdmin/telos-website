@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-04-27",
+  "lastFocus": "security",
+  "rotation": ["functional", "visual", "performance", "security"],
+  "nextFocus": "functional",
+  "notes": "Day-of-month mod 4 used to seed initial run (27 mod 4 = 3 -> security). After bootstrap, advance sequentially each run."
+}
