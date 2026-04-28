@@ -1,0 +1,11 @@
+{
+  "lastRun": "2026-04-28",
+  "lastFocus": 0,
+  "lastFocusName": "Functional",
+  "nextFocus": 1,
+  "nextFocusName": "Visual/UX",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "history": [
+    { "date": "2026-04-28", "focus": "Functional", "bugsFound": 3 }
+  ]
+}
