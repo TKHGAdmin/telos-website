@@ -1,0 +1,9 @@
+{
+  "lastRunDate": "2026-04-30",
+  "lastFocus": "Functional",
+  "lastFocusIndex": 0,
+  "nextFocus": "Visual/UX",
+  "nextFocusIndex": 1,
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Index increments by 1 each run, mod 4. lastRunDate updated at end of run; next run reads nextFocus and shifts."
+}
