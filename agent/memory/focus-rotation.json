@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-05-01",
+  "lastFocus": "functional",
+  "nextFocus": "visual-ux",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Rotation cycles every day mod 4. Day 0=functional, 1=visual-ux, 2=performance, 3=security. Next run should focus on visual/UX (mobile responsive, contrast, alt text, axe checks)."
+}
