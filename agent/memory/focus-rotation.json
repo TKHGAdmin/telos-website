@@ -1,0 +1,13 @@
+{
+  "lastRunDate": "2026-05-02",
+  "lastRunFocus": 0,
+  "lastRunFocusName": "Functional",
+  "nextFocus": 1,
+  "nextFocusName": "Visual/UX",
+  "focusAreas": {
+    "0": "Functional",
+    "1": "Visual/UX",
+    "2": "Performance",
+    "3": "Security"
+  }
+}
