@@ -1,0 +1,8 @@
+{
+  "today": "visual-ux",
+  "today_date": "2026-05-04",
+  "previous_run": "2026-05-03",
+  "previous_focus": "functional",
+  "next": "performance",
+  "cycle": ["functional", "visual-ux", "performance", "security"]
+}
