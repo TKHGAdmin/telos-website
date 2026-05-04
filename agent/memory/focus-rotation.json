@@ -1,0 +1,11 @@
+{
+  "today": "Visual/UX",
+  "next_index": 2,
+  "last_completed": {
+    "date": "2026-05-04",
+    "focus": "Functional",
+    "bugs_found": 3
+  },
+  "order": ["Functional", "Visual/UX", "Performance", "Security"],
+  "last_updated": "2026-05-04"
+}
