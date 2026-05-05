@@ -1,0 +1,14 @@
+{
+  "today": {
+    "date": "2026-05-06",
+    "focus": "performance",
+    "cycle_day": 2
+  },
+  "previous_run": {
+    "date": "2026-05-05",
+    "focus": "visual_ux",
+    "cycle_day": 1,
+    "findings_count": 4
+  },
+  "rotation": ["functional", "visual_ux", "performance", "security"]
+}
