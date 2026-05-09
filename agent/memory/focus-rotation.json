@@ -1,0 +1,7 @@
+{
+  "today": "Visual/UX",
+  "next": "Performance",
+  "cycle": ["Functional", "Visual/UX", "Performance", "Security"],
+  "lastRunDate": "2026-05-09",
+  "lastFocus": "Functional"
+}
