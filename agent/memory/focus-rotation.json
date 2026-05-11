@@ -1,0 +1,8 @@
+{
+  "todayFocus": "visual",
+  "nextFocus": "performance",
+  "rotation": ["functional", "visual", "performance", "security"],
+  "lastRun": "2026-05-11",
+  "lastRunFocus": "functional",
+  "bootstrap": false
+}
