@@ -1,0 +1,11 @@
+{
+  "lastRunDate": "2026-05-12",
+  "lastFocus": 0,
+  "nextFocus": 1,
+  "focusMap": {
+    "0": "Functional",
+    "1": "Visual/UX",
+    "2": "Performance",
+    "3": "Security"
+  }
+}
