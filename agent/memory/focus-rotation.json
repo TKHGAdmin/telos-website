@@ -1,0 +1,10 @@
+{
+  "today": "visual",
+  "today_index": 1,
+  "next": "performance",
+  "next_index": 2,
+  "rotation": ["functional", "visual", "performance", "security"],
+  "last_run": "2026-05-13",
+  "last_focus": "functional",
+  "notes": "Rotated after 2026-05-13 (Functional) run. Tomorrow: Visual/UX."
+}
