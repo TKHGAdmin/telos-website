@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-05-14",
+  "lastFocus": "Performance",
+  "nextFocus": "Security",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "note": "Cycle by day-of-year mod 4 if state is lost. 2026-05-14 is day-of-year 134 (mod 4 = 2 = Performance). Next run advances index by 1."
+}
