@@ -1,0 +1,7 @@
+{
+  "last_run_date": "2026-05-17",
+  "last_focus_index": 0,
+  "next_focus_index": 1,
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Index increments by 1 each run and wraps mod 4. Tomorrow: visual-ux."
+}
