@@ -1,0 +1,6 @@
+{
+  "last_run_date": "2026-05-20",
+  "last_focus": "functional",
+  "next_focus": "visual_ux",
+  "rotation": ["functional", "visual_ux", "performance", "security"]
+}
