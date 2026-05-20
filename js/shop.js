@@ -157,10 +157,21 @@ async function loadProductDetail() {
     // Update page title
     document.title = product.title + ' - Telos Athletic Club';
 
-    // Image
+    // Image gallery
     var imageEl = document.getElementById('productImage');
-    if (image) {
-      imageEl.innerHTML = '<img src="' + image + '" alt="' + escapeHtml(product.title) + '">';
+    var thumbsEl = document.getElementById('productThumbs');
+    var allImages = product.images || [];
+
+    if (allImages.length > 0) {
+      imageEl.innerHTML = '<img src="' + allImages[0].src + '" alt="' + escapeHtml(product.title) + '">';
+
+      if (allImages.length > 1 && thumbsEl) {
+        thumbsEl.innerHTML = allImages.map(function(img, idx) {
+          return '<div class="product-thumb' + (idx === 0 ? ' active' : '') + '" onclick="switchProductImage(this, \'' + img.src + '\')">' +
+            '<img src="' + img.src + '" alt="Image ' + (idx+1) + '">' +
+            '</div>';
+        }).join('');
+      }
     } else {
       imageEl.innerHTML = '<svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>';
     }
@@ -473,6 +484,17 @@ function goToCheckout() {
   if (cart.checkoutUrl) {
     window.location.href = cart.checkoutUrl;
   }
+}
+
+
+// ===== IMAGE GALLERY =====
+function switchProductImage(thumb, src) {
+  var imageEl = document.getElementById('productImage');
+  imageEl.querySelector('img').src = src;
+  document.querySelectorAll('.product-thumb').forEach(function(t) {
+    t.classList.remove('active');
+  });
+  thumb.classList.add('active');
 }
 
 
