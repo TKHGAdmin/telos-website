@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - Telos Athletic Club | Guides, Programs & Resources</title>
+  <meta name="description" content="Premium training guides, nutrition templates, and performance resources from Telos Athletic Club. Evidence-based tools to accelerate your results.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shop - Telos Athletic Club">
+  <meta property="og:description" content="Premium training guides, nutrition templates, and performance resources.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.telosathleticclub.com/shop">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.telosathleticclub.com/shop">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=16">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>T</text></svg>">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Telos Athletic Club Shop",
+    "description": "Premium training guides, nutrition templates, and performance resources.",
+    "url": "https://www.telosathleticclub.com/shop",
+    "brand": {
+      "@type": "Brand",
+      "name": "Telos Athletic Club"
+    }
+  }
+  </script>
+
+  <style>
+    /* ========================================
+       SHOP PAGE STYLES
+       ======================================== */
+
+    .shop-page {
+      min-height: 100vh;
+      padding-top: 70px;
+    }
+
+    .shop-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    .shop-header {
+      text-align: center;
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .shop-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .shop-header p {
+      color: var(--color-text-muted-light);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Loading State */
+    .shop-loading {
+      text-align: center;
+      padding: var(--spacing-4xl) 0;
+    }
+
+    .shop-loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--color-border-subtle);
+      border-top-color: var(--color-accent-gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto var(--spacing-lg);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .shop-loading p {
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Empty State */
+    .shop-empty {
+      text-align: center;
+      padding: var(--spacing-4xl) 0;
+      color: var(--color-text-muted);
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--spacing-2xl);
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Product Card */
+    .product-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(201, 168, 76, 0.05);
+    }
+
+    .product-card-image {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .product-card:hover .product-card-image img {
+      transform: scale(1.05);
+    }
+
+    .product-card-image .product-placeholder-icon {
+      width: 48px;
+      height: 48px;
+      color: var(--color-accent-gold);
+      opacity: 0.3;
+    }
+
+    .product-card-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to top, var(--color-bg-card), transparent);
+      pointer-events: none;
+    }
+
+    .product-card-body {
+      padding: var(--spacing-xl);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-card-type {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .product-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.3;
+    }
+
+    .product-card-description {
+      font-size: 0.9rem;
+      color: var(--color-text-muted-light);
+      line-height: 1.6;
+      flex-grow: 1;
+      margin-bottom: var(--spacing-lg);
+      /* Clamp to 3 lines */
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-md);
+    }
+
+    .product-card-price {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .product-card-price .price-compare {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+
+    .product-card-price .price-free {
+      color: var(--color-accent-gold);
+    }
+
+    .btn-add-cart {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      background-color: var(--color-accent-gold);
+      color: #000;
+      box-shadow: 0 4px 12px rgba(201, 168, 76, 0.2);
+      white-space: nowrap;
+    }
+
+    .btn-add-cart:hover {
+      background-color: #dbb955;
+      box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-add-cart:active {
+      transform: translateY(0);
+    }
+
+    .btn-add-cart.added {
+      background-color: #2a9d5c;
+      pointer-events: none;
+    }
+
+    .btn-add-cart svg {
+      width: 16px;
+      height: 16px;
+    }
+
+
+    /* ========================================
+       SLIDE-OUT CART
+       ======================================== */
+
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .cart-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 420px;
+      max-width: 90vw;
+      background: var(--color-bg-primary);
+      border-left: 1px solid var(--color-border-card);
+      z-index: 9999;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-drawer.active {
+      transform: translateX(0);
+    }
+
+    .cart-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-xl);
+      border-bottom: 1px solid var(--color-border-card);
+      flex-shrink: 0;
+    }
+
+    .cart-drawer-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .cart-drawer-count {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
+      margin-left: 8px;
+    }
+
+    .cart-close-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+    }
+
+    .cart-close-btn:hover {
+      border-color: var(--color-text-muted);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .cart-drawer-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--spacing-lg);
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: var(--spacing-3xl) var(--spacing-lg);
+      color: var(--color-text-muted);
+    }
+
+    .cart-empty svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.3;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .cart-empty p {
+      font-size: 0.95rem;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .cart-empty span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--color-text-muted-dark);
+    }
+
+    /* Cart Item */
+    .cart-item {
+      display: flex;
+      gap: var(--spacing-md);
+      padding: var(--spacing-lg) 0;
+      border-bottom: 1px solid var(--color-border-card);
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item-image {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--color-bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cart-item-image svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-accent-gold);
+      opacity: 0.3;
+    }
+
+    .cart-item-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cart-item-price {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 8px;
+    }
+
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-item-qty button {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all var(--transition-fast);
+    }
+
+    .cart-item-qty button:hover {
+      border-color: var(--color-accent-gold);
+      color: var(--color-accent-gold);
+    }
+
+    .cart-item-qty span {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .cart-item-remove {
+      color: var(--color-text-muted-dark);
+      cursor: pointer;
+      padding: 4px;
+      align-self: flex-start;
+      transition: color var(--transition-fast);
+    }
+
+    .cart-item-remove:hover {
+      color: #e74c3c;
+    }
+
+    /* Cart Footer */
+    .cart-drawer-footer {
+      padding: var(--spacing-xl);
+      border-top: 1px solid var(--color-border-card);
+      flex-shrink: 0;
+    }
+
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .cart-subtotal-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .cart-subtotal-amount {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .btn-checkout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 28px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      background-color: var(--color-accent-gold);
+      color: #000;
+      box-shadow: 0 4px 12px rgba(201, 168, 76, 0.2);
+      text-decoration: none;
+    }
+
+    .btn-checkout:hover {
+      background-color: #dbb955;
+      box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-checkout:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .cart-note {
+      text-align: center;
+      margin-top: var(--spacing-md);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--color-text-muted-dark);
+    }
+
+
+    /* ========================================
+       CART ICON IN NAV
+       ======================================== */
+
+    .nav-cart-btn {
+      position: relative;
+      background: none;
+      border: none;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-cart-btn:hover {
+      color: var(--color-accent-gold);
+    }
+
+    .nav-cart-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -4px;
+      right: -6px;
+      min-width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      background: var(--color-accent-gold);
+      color: #000;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cart-badge.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+
+    /* ========================================
+       SHOP CTA SECTION
+       ======================================== */
+
+    .shop-cta {
+      text-align: center;
+      margin-top: var(--spacing-4xl);
+      padding: var(--spacing-3xl);
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-lg);
+    }
+
+    .shop-cta h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .shop-cta p {
+      color: var(--color-text-muted-light);
+      margin-bottom: var(--spacing-xl);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">TELOS FITNESS</a>
+      <ul class="nav-links">
+        <li><a href="index.html#how-it-works">System</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="chs">Charleston</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle">Tools <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px; vertical-align: middle;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="protein-calculator">Protein Calculator</a></li>
+            <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
+          </ul>
+        </li>
+        <li><a href="resources">Resources</a></li>
+        <li><a href="shop" style="color: var(--color-accent-gold);">Shop</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="client-dashboard" class="nav-client-login">Client Login</a></li>
+        <li>
+          <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Shopping cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary nav-cta">Book a Call</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <ul>
+        <li><a href="index.html#how-it-works">System</a></li>
+        <li><a href="chs">Charleston</a></li>
+        <li><a href="protein-calculator">Protein Calc</a></li>
+        <li><a href="hyrox-predictor">Hyrox Predictor</a></li>
+        <li><a href="resources">Resources</a></li>
+        <li><a href="shop" style="color: var(--color-accent-gold);">Shop</a></li>
+        <li>
+          <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Shopping cart" style="margin: 0 auto;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span class="cart-badge" id="cartBadgeMobile">0</span>
+          </button>
+        </li>
+        <li><a href="client-dashboard" class="nav-client-login">Client Login</a></li>
+        <li><a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div>
+        <span class="cart-drawer-title">Cart</span>
+        <span class="cart-drawer-count" id="cartDrawerCount"></span>
+      </div>
+      <button class="cart-close-btn" onclick="toggleCart()" aria-label="Close cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="cart-drawer-items" id="cartItems">
+      <!-- Populated by JS -->
+    </div>
+
+    <div class="cart-drawer-footer" id="cartFooter" style="display: none;">
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Subtotal</span>
+        <span class="cart-subtotal-amount" id="cartSubtotal">$0</span>
+      </div>
+      <button class="btn-checkout" id="checkoutBtn" onclick="goToCheckout()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        Checkout
+      </button>
+      <p class="cart-note">Secure checkout powered by Shopify</p>
+    </div>
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="shop-page">
+    <div class="shop-container">
+
+      <div class="shop-header animate-on-scroll">
+        <span class="section-label">Premium Resources</span>
+        <h1>Shop</h1>
+        <p>Evidence-based guides, templates, and tools built from the same systems used with 1:1 coaching clients.</p>
+      </div>
+
+      <!-- Loading State -->
+      <div class="shop-loading" id="shopLoading">
+        <div class="shop-loading-spinner"></div>
+        <p>Loading products</p>
+      </div>
+
+      <!-- Product Grid (populated by JS) -->
+      <div class="product-grid" id="productGrid" style="display: none;"></div>
+
+      <!-- Empty State -->
+      <div class="shop-empty" id="shopEmpty" style="display: none;">
+        <p>Products coming soon. Check back shortly.</p>
+      </div>
+
+      <!-- CTA -->
+      <div class="shop-cta animate-on-scroll">
+        <h3>Want the Full System?</h3>
+        <p>These resources are built from the same frameworks used in our premium 1:1 coaching. Get the complete, personalized experience.</p>
+        <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Free Consultation</a>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer id="footer" class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span style="font-family: var(--font-display); font-size: 1.25rem; letter-spacing: 1px; text-transform: uppercase;">TELOS FITNESS</span>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-top: var(--spacing-md); max-width: 280px; line-height: 1.6;">
+            Premium 1:1 online coaching for former athletes. Structure builds discipline. Discipline builds identity.
+          </p>
+        </div>
+        <div class="footer-links">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Quick Links</span>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm);">
+            <li><a href="index.html#how-it-works" style="color: var(--color-text-muted); font-size: 0.9rem;">How It Works</a></li>
+            <li><a href="pricing" style="color: var(--color-text-muted); font-size: 0.9rem;">Programs</a></li>
+            <li><a href="shop" style="color: var(--color-text-muted); font-size: 0.9rem;">Shop</a></li>
+            <li><a href="index.html#faq" style="color: var(--color-text-muted); font-size: 0.9rem;">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Connect</span>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--spacing-sm);">
+            <li>
+              <a href="https://instagram.com/telos_fitness" target="_blank" style="color: var(--color-text-muted); font-size: 0.9rem; display: flex; align-items: center; gap: var(--spacing-xs);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                @telos_fitness
+              </a>
+            </li>
+            <li>
+              <a href="mailto:telosfitnessllc@gmail.com" style="color: var(--color-text-muted); font-size: 0.9rem; display: flex; align-items: center; gap: var(--spacing-xs);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                telosfitnessllc@gmail.com
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-cta">
+          <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-accent-gold); display: block; margin-bottom: var(--spacing-md);">Ready?</span>
+          <a href="https://calendly.com/tkern-y-m5/1-1-growth-consultation-call-clone" target="_blank" class="btn btn-primary">Book a Free Consultation</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p style="color: var(--color-text-muted-dark); font-size: 0.75rem; font-family: var(--font-mono); letter-spacing: 1px;">&copy; 2026 Telos Fitness. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=2"></script>
+
+  <!-- Shopify Buy SDK -->
+  <script src="https://sdks.shopifycdn.com/js-buy-sdk/2.22.0/shopify-buy.umd.polyfilled.min.js"></script>
+  <script src="js/shop.js?v=1"></script>
+</body>
+</html>
