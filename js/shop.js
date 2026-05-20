@@ -60,7 +60,12 @@ document.addEventListener('DOMContentLoaded', async function () {
       await createFreshCheckout();
     }
 
-    await loadProducts();
+    // Detect which page and load accordingly
+    if (document.getElementById('productDetail')) {
+      await loadProductDetail();
+    } else if (document.getElementById('productGrid')) {
+      await loadProducts();
+    }
   } catch (err) {
     console.error('[Telos Shop] Init error:', err);
     showEmpty();
@@ -115,6 +120,123 @@ async function loadProducts() {
   }
 }
 
+
+// ===== PRODUCT DETAIL PAGE =====
+async function loadProductDetail() {
+  var loading = document.getElementById('productLoading');
+  var notFound = document.getElementById('productNotFound');
+  var detail = document.getElementById('productDetail');
+
+  // Get handle from URL
+  var params = new URLSearchParams(window.location.search);
+  var handle = params.get('p');
+
+  if (!handle) {
+    loading.style.display = 'none';
+    notFound.style.display = 'block';
+    return;
+  }
+
+  try {
+    var product = await shopifyClient.product.fetchByHandle(handle);
+
+    if (!product) {
+      loading.style.display = 'none';
+      notFound.style.display = 'block';
+      return;
+    }
+
+    var variant = product.variants[0];
+    var price = parseFloat(variant.price.amount || variant.price);
+    var comparePrice = variant.compareAtPrice
+      ? parseFloat(variant.compareAtPrice.amount || variant.compareAtPrice)
+      : null;
+    var image = product.images[0] ? product.images[0].src : null;
+    var productType = product.productType || 'Digital Product';
+
+    // Update page title
+    document.title = product.title + ' - Telos Athletic Club';
+
+    // Image
+    var imageEl = document.getElementById('productImage');
+    if (image) {
+      imageEl.innerHTML = '<img src="' + image + '" alt="' + escapeHtml(product.title) + '">';
+    } else {
+      imageEl.innerHTML = '<svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>';
+    }
+
+    // Type
+    document.getElementById('productType').textContent = productType;
+
+    // Title
+    document.getElementById('productTitle').textContent = product.title;
+
+    // Price
+    var priceEl = document.getElementById('productPrice');
+    if (price === 0) {
+      priceEl.innerHTML = '<span class="price-free">Free</span>';
+    } else {
+      priceEl.innerHTML = '$' + price.toFixed(2);
+      if (comparePrice) {
+        priceEl.innerHTML += '<span class="price-compare">$' + comparePrice.toFixed(2) + '</span>';
+      }
+    }
+
+    // Description (render HTML)
+    var descEl = document.getElementById('productDescription');
+    if (product.descriptionHtml && product.descriptionHtml.trim()) {
+      descEl.innerHTML = product.descriptionHtml;
+    } else if (product.description && product.description.trim()) {
+      descEl.textContent = product.description;
+    } else {
+      descEl.innerHTML = '<p style="color: var(--color-text-muted-dark); font-style: italic;">No description available.</p>';
+    }
+
+    // Add to cart button
+    var addBtn = document.getElementById('productAddBtn');
+    addBtn.addEventListener('click', function () {
+      addToCartFromDetail(addBtn, variant.id);
+    });
+
+    // Show
+    loading.style.display = 'none';
+    detail.classList.add('loaded');
+
+  } catch (err) {
+    console.error('[Telos Shop] Product detail error:', err);
+    loading.style.display = 'none';
+    notFound.style.display = 'block';
+  }
+}
+
+async function addToCartFromDetail(btnElement, variantId) {
+  if (!shopifyClient || !checkoutId) return;
+
+  btnElement.disabled = true;
+  var origHTML = btnElement.innerHTML;
+  btnElement.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20" /></svg> Adding...';
+
+  try {
+    var checkout = await shopifyClient.checkout.addLineItems(checkoutId, [
+      { variantId: variantId, quantity: 1 }
+    ]);
+    syncCartFromCheckout(checkout);
+
+    btnElement.classList.add('added');
+    btnElement.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Added to Cart';
+
+    setTimeout(function () {
+      btnElement.classList.remove('added');
+      btnElement.disabled = false;
+      btnElement.innerHTML = origHTML;
+    }, 2500);
+  } catch (err) {
+    console.error('[Telos Shop] Add to cart error:', err);
+    btnElement.disabled = false;
+    btnElement.innerHTML = 'Error — Retry';
+  }
+}
+
 function createProductCard(product) {
   const variant = product.variants[0];
   const price = parseFloat(variant.price.amount || variant.price);
@@ -131,6 +253,12 @@ function createProductCard(product) {
 
   const card = document.createElement('div');
   card.className = 'product-card';
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', function (e) {
+    // Don't navigate if clicking the add-to-cart button
+    if (e.target.closest('.btn-add-cart')) return;
+    window.location.href = 'product?p=' + encodeURIComponent(product.handle);
+  });
   card.innerHTML = `
     <div class="product-card-image">
       ${image
