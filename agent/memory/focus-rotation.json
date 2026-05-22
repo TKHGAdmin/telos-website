@@ -1,0 +1,7 @@
+{
+  "last_run_date": "2026-05-22",
+  "last_focus": "functional",
+  "next_focus": "visual",
+  "rotation_order": ["functional", "visual", "performance", "security"],
+  "notes": "Day 0 of rotation is Functional. Index advances by 1 (mod 4) each run."
+}
