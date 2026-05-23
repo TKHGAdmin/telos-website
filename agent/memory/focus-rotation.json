@@ -1,0 +1,9 @@
+{
+  "today": "visual-ux",
+  "today_index": 1,
+  "tomorrow": "performance",
+  "tomorrow_index": 2,
+  "last_run": "2026-05-23",
+  "last_focus": "functional",
+  "rotation": ["functional", "visual-ux", "performance", "security"]
+}
