@@ -1,0 +1,8 @@
+{
+  "lastRunDate": "2026-05-25",
+  "lastFocus": "Functional",
+  "nextFocus": "Visual/UX",
+  "nextFocusIndex": 1,
+  "focusAreas": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Index advances by 1 (mod 4) after each successful run. After Visual/UX comes Performance, then Security, then back to Functional."
+}
