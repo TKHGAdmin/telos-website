@@ -1,0 +1,7 @@
+{
+  "todayIndex": 1,
+  "todayFocus": "Visual/UX",
+  "lastRunDate": "2026-05-28",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Bootstrapped 2026-05-28. Day 0 (Functional) completed 2026-05-28 with 2 findings. Next: Day 1 = Visual/UX. After each run, increment todayIndex modulo 4 and set lastRunDate."
+}
