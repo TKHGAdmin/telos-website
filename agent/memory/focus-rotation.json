@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-05-31",
+  "lastFocus": "security",
+  "nextFocus": "functional",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Day 0 = functional, 1 = visual/ux, 2 = performance, 3 = security. 2026-05-31 is day-of-year 151, 151 % 4 = 3 -> security. Tomorrow rotates to functional."
+}
