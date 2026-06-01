@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-06-01",
+  "lastFocus": "functional",
+  "nextFocus": "visual",
+  "rotation": ["functional", "visual", "performance", "security"],
+  "note": "Set on first run. Day index = day-of-year mod 4. 2026-06-01 is DOY 152, 152 mod 4 = 0 -> functional. Next run rotates to visual."
+}
