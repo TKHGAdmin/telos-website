@@ -1,0 +1,12 @@
+{
+  "next_focus_day": 1,
+  "next_focus": "Visual/UX",
+  "last_run_date": "2026-06-04",
+  "last_focus": "Functional",
+  "rotation": {
+    "0": "Functional",
+    "1": "Visual/UX",
+    "2": "Performance",
+    "3": "Security"
+  }
+}
