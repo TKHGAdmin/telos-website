@@ -1,0 +1,15 @@
+{
+  "_comment": "Today's focus area for the Bug Hunter. Cycles through 0..3 each run. Rotate AFTER writing each report so the next run reads the new 'today'.",
+  "today": "Visual/UX",
+  "today_index": 1,
+  "tomorrow": "Performance",
+  "tomorrow_index": 2,
+  "last_rotated": "2026-06-05",
+  "previous_focus": "Functional",
+  "schedule": [
+    "Functional",
+    "Visual/UX",
+    "Performance",
+    "Security"
+  ]
+}
