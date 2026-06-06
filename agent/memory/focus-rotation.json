@@ -1,0 +1,14 @@
+{
+  "today": {
+    "day_index": 1,
+    "focus": "visual-ux"
+  },
+  "tomorrow": {
+    "day_index": 2,
+    "focus": "performance"
+  },
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "history": [
+    { "date": "2026-06-06", "focus": "functional" }
+  ]
+}
