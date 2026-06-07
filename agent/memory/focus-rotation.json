@@ -1,0 +1,9 @@
+{
+  "next_focus": "Visual/UX",
+  "next_day_index": 1,
+  "last_focus": "Functional",
+  "last_day_index": 0,
+  "last_run": "2026-06-07",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Read 'next_focus' at the start of a run. After producing the report, advance: next_day_index = (last_day_index + 1) mod 4, next_focus = rotation[next_day_index], and update last_run."
+}
