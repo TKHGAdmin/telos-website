@@ -1,0 +1,22 @@
+{
+  "today": {
+    "date": "2026-06-10",
+    "focus": "visual-ux",
+    "dayMod4": 1
+  },
+  "tomorrow": {
+    "date": "2026-06-11",
+    "focus": "performance",
+    "dayMod4": 2
+  },
+  "lastRun": {
+    "date": "2026-06-09",
+    "focus": "functional",
+    "findings": 2,
+    "p0": 0,
+    "p1": 2,
+    "p2": 0,
+    "p3": 0
+  },
+  "rotation": ["functional", "visual-ux", "performance", "security"]
+}
