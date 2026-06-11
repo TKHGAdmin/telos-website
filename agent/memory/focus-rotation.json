@@ -1,0 +1,8 @@
+{
+  "lastRunDate": "2026-06-11",
+  "lastRunFocusIndex": 0,
+  "lastRunFocusName": "Functional",
+  "nextRunFocusIndex": 1,
+  "nextRunFocusName": "Visual/UX",
+  "focusCycle": ["Functional", "Visual/UX", "Performance", "Security"]
+}
