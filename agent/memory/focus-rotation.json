@@ -1,0 +1,7 @@
+{
+  "last_run_date": "2026-06-17",
+  "last_run_focus": "functional",
+  "next_focus": "visual_ux",
+  "rotation": ["functional", "visual_ux", "performance", "security"],
+  "notes": "Rotation cycles in the order listed. Updated at the end of each run to point at tomorrow's focus."
+}
