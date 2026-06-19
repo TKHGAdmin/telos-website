@@ -1,0 +1,10 @@
+{
+  "today": "visual-ux",
+  "today_date": "2026-06-20",
+  "last_run": {
+    "date": "2026-06-19",
+    "focus": "functional"
+  },
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Rotates one step each run. Today's date and focus are read at the start of each run; the agent must update this file before exiting so the NEXT run picks up the next focus."
+}
