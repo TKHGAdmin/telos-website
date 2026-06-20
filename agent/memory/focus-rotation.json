@@ -1,0 +1,6 @@
+{
+  "today": "functional",
+  "tomorrow": "visual",
+  "cycle": ["functional", "visual", "performance", "security"],
+  "lastRunDate": "2026-06-20"
+}
