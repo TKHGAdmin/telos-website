@@ -1,0 +1,8 @@
+{
+  "today": "visual-ux",
+  "history": [
+    { "date": "2026-06-21", "focus": "functional" }
+  ],
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "note": "Run 2026-06-21 used 'functional' as bootstrap focus. Tomorrow rotates to visual-ux."
+}
