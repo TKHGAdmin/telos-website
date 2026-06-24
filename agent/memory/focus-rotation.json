@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-06-24",
+  "lastFocusIndex": 0,
+  "nextFocusIndex": 1,
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Index advances by 1 each run, wraps mod 4. Bootstrapped 2026-06-24 with Functional focus."
+}
