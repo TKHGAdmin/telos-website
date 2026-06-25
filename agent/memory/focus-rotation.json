@@ -1,0 +1,7 @@
+{
+  "today": "Visual/UX",
+  "lastRunDate": "2026-06-25",
+  "lastRunFocus": "Functional",
+  "rotationOrder": ["Functional", "Visual/UX", "Performance", "Security"],
+  "nextIndex": 2
+}
