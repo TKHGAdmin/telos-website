@@ -1,0 +1,8 @@
+{
+  "lastRunDate": "2026-06-30",
+  "lastFocusIndex": 0,
+  "nextFocusIndex": 1,
+  "focusAreas": ["Functional", "Visual/UX", "Performance", "Security"],
+  "rotationStartedAt": "2026-06-30",
+  "notes": "Bootstrap run on 2026-06-30 - no prior reports. Day 0 = Functional. Rotate to 1 (Visual/UX) tomorrow."
+}
