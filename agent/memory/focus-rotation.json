@@ -1,0 +1,10 @@
+{
+  "today": 1,
+  "today_focus": "visual",
+  "tomorrow": 2,
+  "tomorrow_focus": "performance",
+  "cycle": ["functional", "visual", "performance", "security"],
+  "last_updated": "2026-07-01",
+  "last_run_date": "2026-07-01",
+  "last_run_focus": "functional"
+}
