@@ -1,0 +1,14 @@
+{
+  "lastRunDate": "2026-07-03",
+  "lastFocusIndex": 0,
+  "nextFocusIndex": 1,
+  "focusMap": {
+    "0": "Functional",
+    "1": "Visual/UX",
+    "2": "Performance",
+    "3": "Security"
+  },
+  "history": [
+    { "date": "2026-07-03", "focusIndex": 0, "focus": "Functional", "bugsFound": 1 }
+  ]
+}
