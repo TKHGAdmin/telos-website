@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-07-05",
+  "lastFocusIndex": 0,
+  "nextFocusIndex": 1,
+  "focuses": ["Functional", "Visual/UX", "Performance", "Security"],
+  "note": "Rotate nextFocusIndex → lastFocusIndex on the next run. lastRunDate is written when the report is emitted."
+}
