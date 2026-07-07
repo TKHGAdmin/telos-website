@@ -1,0 +1,7 @@
+{
+  "today": 1,
+  "labels": ["Functional", "Visual/UX", "Performance", "Security"],
+  "history": [
+    { "date": "2026-07-07", "focus": 0, "label": "Functional", "findings": 1 }
+  ]
+}
