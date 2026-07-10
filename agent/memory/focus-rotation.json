@@ -1,0 +1,13 @@
+{
+  "todayFocus": "functional",
+  "todayDay": 0,
+  "lastRunDate": "2026-07-10",
+  "nextDay": 1,
+  "nextFocus": "visual-ux",
+  "rotation": [
+    { "day": 0, "focus": "functional" },
+    { "day": 1, "focus": "visual-ux" },
+    { "day": 2, "focus": "performance" },
+    { "day": 3, "focus": "security" }
+  ]
+}
