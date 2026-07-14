@@ -1,0 +1,13 @@
+{
+  "today": {
+    "date": "2026-07-14",
+    "focus": "Functional",
+    "index": 0
+  },
+  "next": {
+    "focus": "Visual/UX",
+    "index": 1
+  },
+  "cycle": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "First run. Started with Functional to audit recent shop/product/cart commits. Rotate to Visual/UX tomorrow."
+}
