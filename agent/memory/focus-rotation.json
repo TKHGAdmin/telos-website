@@ -5,6 +5,6 @@
   "last_focus_run": "Functional",
   "cycle": ["Functional", "Visual/UX", "Performance", "Security"],
   "history": [
-    { "date": "2026-07-16", "focus": "Functional", "findings": 2 }
+    { "date": "2026-07-16", "focus": "Functional", "findings": 5 }
   ]
 }
