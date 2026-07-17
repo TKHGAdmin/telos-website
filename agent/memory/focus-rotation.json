@@ -1,0 +1,7 @@
+{
+  "last_focus": "security",
+  "last_run_date": "2026-07-17",
+  "next_focus": "functional",
+  "rotation_order": ["functional", "visual-ux", "performance", "security"],
+  "notes": "First run picked security by intent (highest-signal on a first pass over undocumented recent additions like shop.html/product.html). Next run should be functional per the rotation order."
+}
