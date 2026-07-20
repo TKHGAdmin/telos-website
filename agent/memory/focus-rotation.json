@@ -1,0 +1,9 @@
+{
+  "today": "visual",
+  "today_index": 1,
+  "last_updated": "2026-07-20",
+  "rotation": ["functional", "visual", "performance", "security"],
+  "history": [
+    { "date": "2026-07-20", "focus": "functional" }
+  ]
+}
