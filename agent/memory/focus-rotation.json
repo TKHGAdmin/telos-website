@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-07-23",
+  "lastRunFocus": "functional",
+  "nextFocus": "visual",
+  "focusCycle": ["functional", "visual", "performance", "security"],
+  "notes": "First run — no history. Started rotation at 'functional' (day 0). Cycle advances by one each day. If a day is skipped, resume where the cycle left off rather than jumping ahead."
+}
