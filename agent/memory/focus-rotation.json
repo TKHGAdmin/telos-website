@@ -1,13 +1,16 @@
 {
   "today": {
-    "date": "2026-07-24",
-    "run": 1,
-    "day_mod": 0,
-    "focus": "Functional"
-  },
-  "next": {
+    "date": "2026-07-25",
+    "run": 2,
     "day_mod": 1,
     "focus": "Visual/UX"
   },
-  "rotation": ["Functional", "Visual/UX", "Performance", "Security"]
+  "next": {
+    "day_mod": 2,
+    "focus": "Performance"
+  },
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "history": [
+    { "date": "2026-07-24", "run": 1, "focus": "Functional", "findings": 4 }
+  ]
 }
