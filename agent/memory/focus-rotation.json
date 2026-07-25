@@ -1,7 +1,9 @@
 {
   "last_run": "2026-07-25",
   "last_focus": 0,
+  "last_focus_name": "Functional",
   "next_focus": 1,
+  "next_focus_name": "Visual/UX",
   "focuses": {
     "0": "Functional",
     "1": "Visual/UX",
