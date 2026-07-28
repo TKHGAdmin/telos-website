@@ -1,0 +1,8 @@
+{
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "last_run": {
+    "date": "2026-07-28",
+    "focus": "visual-ux"
+  },
+  "next_focus": "performance"
+}
