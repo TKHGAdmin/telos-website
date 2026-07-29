@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-07-29",
+  "lastFocus": "functional",
+  "nextFocus": "visual-ux",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Day 0=functional, Day 1=visual-ux, Day 2=performance, Day 3=security. Bump nextFocus to next in rotation each run."
+}
