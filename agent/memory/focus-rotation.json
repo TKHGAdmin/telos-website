@@ -1,0 +1,12 @@
+{
+  "today": 1,
+  "tomorrow": 2,
+  "map": {
+    "0": "functional",
+    "1": "visual-ux",
+    "2": "performance",
+    "3": "security"
+  },
+  "lastRun": "2026-07-30",
+  "notes": "Bootstrap run. Started rotation at 1 (visual/ux) because the day's finding was a layout bug on the new product detail page."
+}
