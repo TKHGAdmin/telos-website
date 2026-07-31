@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-07-31",
+  "lastFocusIndex": 0,
+  "nextFocusIndex": 1,
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Index rotates lastFocusIndex = (lastFocusIndex + 1) % 4 after each run. Day 0 = Functional; day 1 = Visual/UX; day 2 = Performance; day 3 = Security."
+}
