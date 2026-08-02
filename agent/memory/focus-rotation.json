@@ -1,0 +1,12 @@
+{
+  "lastRun": "2026-08-02",
+  "lastFocusDayMod4": 0,
+  "nextFocusDayMod4": 1,
+  "focusMap": {
+    "0": "functional",
+    "1": "visual-ux",
+    "2": "performance",
+    "3": "security"
+  },
+  "note": "First run bootstrap. Started at Day 0 (Functional). Rotate to 1 (Visual/UX) tomorrow."
+}
