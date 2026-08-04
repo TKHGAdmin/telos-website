@@ -1,0 +1,6 @@
+{
+  "cycle": ["Functional", "Visual/UX", "Performance", "Security"],
+  "today": "Visual/UX",
+  "todaySetOn": "2026-08-04",
+  "note": "2026-08-04 ran Functional. Rotated to Visual/UX for the next run."
+}
