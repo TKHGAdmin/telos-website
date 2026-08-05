@@ -1,0 +1,8 @@
+{
+  "lastRunDate": "2026-08-05",
+  "lastRunFocus": "functional",
+  "lastRunFocusIndex": 0,
+  "nextRunFocus": "visual-ux",
+  "nextRunFocusIndex": 1,
+  "cycleOrder": ["functional", "visual-ux", "performance", "security"]
+}
