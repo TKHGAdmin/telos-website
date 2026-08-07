@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-08-07",
+  "lastFocus": "security",
+  "nextFocus": "functional",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Day 0 bootstrap. Focus chosen deterministically from day-of-year mod 4 (219 mod 4 = 3 → security). Next run rotates to functional."
+}
