@@ -1,0 +1,7 @@
+{
+  "last_run": "2026-08-08",
+  "last_focus": "Functional",
+  "next_focus": "Visual/UX",
+  "rotation_order": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Day 1 bootstrap run. Starting at Functional; next run should be Visual/UX. Focus cycles every day."
+}
