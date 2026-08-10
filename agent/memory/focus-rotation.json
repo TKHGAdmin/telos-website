@@ -1,0 +1,7 @@
+{
+  "last_run_date": "2026-08-10",
+  "last_focus": "functional",
+  "next_focus": "visual-ux",
+  "cycle": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Rotate 'next_focus' at end of each run: cycle[(cycle.indexOf(next_focus) + 1) % 4]."
+}
