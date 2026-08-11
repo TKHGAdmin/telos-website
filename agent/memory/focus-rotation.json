@@ -1,7 +1,7 @@
 {
-  "lastRunDate": null,
-  "lastFocus": null,
-  "nextFocus": "Functional",
+  "lastRunDate": "2026-08-11",
+  "lastFocus": "Functional+Security (first run — dual sweep)",
+  "nextFocus": "Visual/UX",
   "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
   "notes": "Order maps to Day mod 4 = 0..3 in AGENTS.md. Bug Hunter updates lastRunDate and advances nextFocus by one slot on every completed run."
 }

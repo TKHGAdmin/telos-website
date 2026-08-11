@@ -51,3 +51,37 @@ a summary once this file exceeds 2000 lines.
   the coach can set (mindset, resources, side-menu custom items) — that's
   admin-authored, not attacker-controlled, but worth watching.
 - Cron endpoints without `CRON_SECRET` — fail-closed is required.
+
+## 2026-08-11 — Run notes
+
+- Confirmed rate-limit gaps on THREE POST endpoints not caught by earlier
+  audits: `api/dashboard/login.js`, `api/client/login.js`,
+  `api/client/reset-password.js`. All three are worth checking again next
+  run to see if the auth-hardening PR landed.
+- `api/lib/auth.js` uses plain `!==` on the HMAC signature (line 27) and
+  early-returns on password length mismatch (line 55) — both are
+  non-constant-time. `api/lib/client-auth.js` gets the same operations
+  right. If auth.js is fixed, mirror the client-auth.js patterns.
+- `api/client/push-subscribe.js` accepts an unvalidated `subscription`
+  blob; `api/client/notify.js` fetches whatever URL is stored. Client-
+  authenticated blind SSRF. Fix is a host allowlist in `push-subscribe`.
+- `js/quiz.js:setupLeadCapture` re-binds a click handler on every retake
+  — pattern to watch: any function that installs listeners AND is called
+  more than once in a page lifecycle.
+- Product-detail regression from commit f5cb8c4: adding a third child to
+  a 2-column CSS grid without wrapping. Pattern to watch: any
+  `display:grid` container whose children are edited without adjusting
+  `grid-template-columns` or wrapping.
+
+### Not bugs (verified, don't re-report)
+
+- `api/client/food-search.js` uses `encodeURIComponent` against a fixed
+  Open Food Facts URL — not SSRF-able.
+- `api/client/notify.js` correctly uses admin `verifySession` (it is
+  admin-triggered, not client-triggered).
+- Every `/api/dashboard/*` endpoint I checked calls `verifySession`; every
+  non-public `/api/client/*` endpoint derives `clientId` from the signed
+  cookie (no IDOR).
+- Both cron endpoints check `CRON_SECRET` with fail-closed behavior.
+- Session cookies have `HttpOnly; Secure; SameSite`. The client cookie
+  correctly uses `SameSite=None; Partitioned` for Whop iframe embedding.
