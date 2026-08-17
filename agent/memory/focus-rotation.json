@@ -1,0 +1,7 @@
+{
+  "today": "functional",
+  "next": "visual-ux",
+  "cycle": ["functional", "visual-ux", "performance", "security"],
+  "last_run_date": "2026-08-17",
+  "notes": "Day 1 of the bug hunter routine. Focus chosen manually (functional) rather than by day-of-year mod 4, to earn trust with the highest-signal category first. Tomorrow rotates to visual-ux."
+}
