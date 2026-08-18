@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-08-18",
+  "lastFocus": "performance",
+  "nextFocus": "security",
+  "cycle": ["functional", "visual", "performance", "security"],
+  "rationale": "Cycle rotates each day: functional -> visual -> performance -> security -> functional. Today's focus was performance (day-of-year 230 mod 4 = 2). Tomorrow rotates to security."
+}
