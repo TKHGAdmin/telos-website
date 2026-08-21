@@ -1,0 +1,8 @@
+{
+  "_comment": "Focus cycles daily: 0=functional, 1=visual, 2=performance, 3=security. `next` fires next run; agent rotates on exit.",
+  "next": 1,
+  "labels": ["functional", "visual", "performance", "security"],
+  "history": [
+    { "date": "2026-08-21", "focus": "functional" }
+  ]
+}
