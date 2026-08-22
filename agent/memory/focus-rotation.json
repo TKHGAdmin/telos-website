@@ -1,0 +1,9 @@
+{
+  "lastRunDate": "2026-08-22",
+  "lastFocusIndex": 2,
+  "lastFocusName": "Performance",
+  "nextFocusIndex": 3,
+  "nextFocusName": "Security",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Bootstrap run. Rotation increments by 1 each run, wrapping mod 4."
+}
