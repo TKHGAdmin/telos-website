@@ -1,0 +1,12 @@
+{
+  "lastRunDate": "2026-08-23",
+  "lastFocus": 0,
+  "nextFocus": 1,
+  "focusMap": {
+    "0": "Functional",
+    "1": "Visual/UX",
+    "2": "Performance",
+    "3": "Security"
+  },
+  "notes": "Rotation increments each run, mod 4. On 2026-08-24 the run should use focus 1 (Visual/UX)."
+}
