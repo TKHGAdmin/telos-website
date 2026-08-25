@@ -1,0 +1,14 @@
+{
+  "last_focus_day": 0,
+  "next_focus_day": 1,
+  "focus_map": {
+    "0": "functional",
+    "1": "visual",
+    "2": "performance",
+    "3": "security"
+  },
+  "history": [
+    { "date": "2026-08-25", "focus_day": 0, "focus": "functional" }
+  ],
+  "notes": "next_focus_day drives tomorrow's hunt. After each run, set last_focus_day = today's focus_day and next_focus_day = (today's + 1) mod 4."
+}
