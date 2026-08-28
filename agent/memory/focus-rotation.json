@@ -1,0 +1,13 @@
+{
+  "today": {
+    "date": "2026-08-28",
+    "focus": "functional",
+    "index": 0
+  },
+  "next": {
+    "date": "2026-08-29",
+    "focus": "visual-ux",
+    "index": 1
+  },
+  "cycle": ["functional", "visual-ux", "performance", "security"]
+}
