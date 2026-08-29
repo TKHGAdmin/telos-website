@@ -31,3 +31,30 @@ Keep under 2000 lines; compress older entries into a summary when exceeded.
 ## False-positive patterns to avoid
 
 - (none yet — populated from denials in `decisions.jsonl`)
+
+## Run log
+
+### 2026-08-29 (Functional, bootstrap run)
+
+Areas confirmed clean (do not re-cover unless code changes):
+- Auth checks: every `dashboard/*` and `client/*` data endpoint gates on the right
+  session verifier. No IDOR in the reviewed handlers.
+- Cron `CRON_SECRET` gating: fail-closed in both cron handlers.
+- Public form → endpoint wiring: quiz, protein calc, hyrox, chs all point at
+  endpoints that exist and rate-limit per-IP.
+- Redis key drift: dashboard writer keys match client reader keys across all
+  documented namespaces.
+
+Patterns worth remembering:
+- The repo has two auth libs. `client-auth.js` is the modern one (timing-safe,
+  PBKDF2, SameSite=None+Partitioned); `auth.js` is older and slightly weaker.
+  When reviewing auth-related code, check both against each other for regressions.
+- Rate-limit pattern (INCR + EXPIRE per-IP) is spelled out three times in
+  `api/submit-*.js`. Any *new* public POST endpoint that doesn't follow it is
+  a legitimate finding.
+- `verifyClientSession(req)` returns the client's own id — endpoints that derive
+  their Redis key from it are IDOR-safe. Endpoints that read an id from
+  request body/query are worth a look.
+- The `todayStr()` UTC bug in `client-dashboard.html:1840` is real and affects
+  ~26 downstream sites plus server-side defaults in six `/api/client/*.js` files.
+  Fix will need coordinated client + server change.
