@@ -1,0 +1,7 @@
+{
+  "last_run_utc": "2026-08-29",
+  "last_focus_index": 0,
+  "next_focus_index": 1,
+  "focus_order": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Bootstrapped on 2026-08-29. Day 0 = Functional. Rotate by +1 each run, wrap at 4."
+}
