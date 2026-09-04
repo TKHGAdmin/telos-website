@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-09-04",
+  "lastFocus": "Functional",
+  "nextFocus": "Visual/UX",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Day 0 (Functional) done 2026-09-04. Tomorrow: Day 1 (Visual/UX) - fetch live pages, check responsive breakpoints, alt/aria, contrast."
+}
