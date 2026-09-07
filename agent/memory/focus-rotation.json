@@ -1,0 +1,9 @@
+{
+  "lastRun": "2026-09-07",
+  "lastFocus": 0,
+  "lastFocusName": "Functional",
+  "nextFocus": 1,
+  "nextFocusName": "Visual/UX",
+  "cycle": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Bootstrapped on 2026-09-07. First run - started at Functional (0). Increment nextFocus by 1 (mod 4) each day."
+}
