@@ -1,0 +1,12 @@
+{
+  "lastRunDate": "2026-09-08",
+  "lastFocus": 0,
+  "nextFocus": 1,
+  "focusMap": {
+    "0": "Functional",
+    "1": "Visual/UX",
+    "2": "Performance",
+    "3": "Security"
+  },
+  "note": "Rotation advances by 1 (mod 4) each run. First run bootstrapped on 2026-09-08 at focus 0 (Functional). Next scheduled run should use nextFocus."
+}
