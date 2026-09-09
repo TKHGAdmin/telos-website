@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-09-09",
+  "lastFocus": "functional",
+  "nextFocus": "visual",
+  "rotation": ["functional", "visual", "performance", "security"],
+  "notes": "Rotation cycles daily through Functional (0), Visual/UX (1), Performance (2), Security (3). On 2026-09-09 (first run) ran Functional + opportunistic Security since infrastructure was being bootstrapped and highest-signal bugs were surfacing across both categories."
+}
