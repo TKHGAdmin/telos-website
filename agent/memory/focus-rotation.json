@@ -1,0 +1,16 @@
+{
+  "today": {
+    "date": "2026-09-11",
+    "focus": "visual_ux"
+  },
+  "next": {
+    "focus": "performance"
+  },
+  "rotation": ["functional", "visual_ux", "performance", "security"],
+  "index": 1,
+  "last_run": {
+    "date": "2026-09-10",
+    "focus": "functional",
+    "findings_count": 4
+  }
+}
