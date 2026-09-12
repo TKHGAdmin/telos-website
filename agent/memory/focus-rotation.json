@@ -1,0 +1,7 @@
+{
+  "areas": ["Functional", "Visual/UX", "Performance", "Security"],
+  "today_index": 0,
+  "today_area": "Functional",
+  "last_updated": "2026-09-12",
+  "note": "Rotate today_index = (today_index + 1) % 4 at end of each run"
+}
