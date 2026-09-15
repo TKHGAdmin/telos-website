@@ -1,0 +1,8 @@
+{
+  "focuses": ["functional", "visual-ux", "performance", "security"],
+  "last_run_date": "2026-09-15",
+  "last_focus": "functional",
+  "next_focus": "visual-ux",
+  "focus_index": 1,
+  "notes": "Rotation cycles daily. Bootstrapped 2026-09-15 with focus 0 (functional). On next run, load focuses[focus_index], run, then set last_run_date, last_focus, and advance focus_index = (focus_index + 1) % 4."
+}
