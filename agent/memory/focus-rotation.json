@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-09-19",
+  "lastFocus": "functional",
+  "nextFocus": "visual-ux",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Bootstrapped on 2026-09-19. Rotation cycles daily in order above."
+}
