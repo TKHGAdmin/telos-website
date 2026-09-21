@@ -1,7 +1,7 @@
 {
-  "last_run_date": "2026-09-20",
-  "last_focus_index": 0,
+  "last_run_date": "2026-09-21",
+  "last_focus_index": 1,
   "focus_order": ["functional", "visual", "performance", "security"],
-  "next_focus_index": 1,
+  "next_focus_index": 2,
   "notes": "Index 0 = functional, 1 = visual, 2 = performance, 3 = security. Advance next_focus_index by 1 mod 4 on each run and copy it to last_focus_index."
 }

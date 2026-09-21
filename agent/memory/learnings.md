@@ -2,6 +2,18 @@
 
 Accumulated knowledge from daily runs. Keep under 2000 lines. Prepend newest at top.
 
+## 2026-09-21 - Visual/UX pass
+- 9 bugs filed. 4 P1 (client dashboard a11y - FAB, modal close, login link, tab contrast), 4 P2 (form labels missing across every lead-gen page), 1 P3 (CHS form label contrast).
+- Client dashboard is huge (~280KB inline) and does a lot with `<div onclick>` instead of `<button>`. That pattern shows up in FAB menu, login links, and probably elsewhere. Worth grepping `<div[^>]*onclick` for a follow-up sweep next visual pass.
+- Every public lead-gen form uses placeholder-as-label. Same shape: `<input placeholder="Email address">` with no `<label>` and no `aria-label`. If this recurs on new pages, it will be a persistent pattern.
+- hyrox-predictor.html has `<label for="fiveKTime">` pointing at an ID that does not exist. Pattern to watch: when two inputs form a compound value (min:sec, dollars.cents), a single label often points at neither. Worth grepping `for="[^"]*"` against all `id="..."` on future runs to catch orphan `for`s.
+- CHS page uses its own scoped palette (`--chs-text-dim: #6b6660`) that is dimmer than the shared palette. When a page overrides shared design tokens, contrast should be re-checked page-by-page.
+
+### False positives to avoid (visual)
+- `<button>` inside a `<form>` without `type="button"` is a common a11y flag, but on the Telos public forms most such buttons are inside forms that either have `onsubmit="return handleFoo(event)"` returning false or use `type="submit"` explicitly. Verify per file; do not report as a class.
+- Arrow character (&#8592; / &#8594;) inside a button provides its own accessible name via the character. Do NOT flag those as unlabeled the way we flag SVG-only buttons.
+- The pricing quiz overlay has no submit button. Browsers do NOT implicit-submit a form that has more than one text input and no submit control (per HTML spec). Pressing Enter is a no-op, not a page reload. Do not file.
+
 ## 2026-09-20 - Bootstrap run (focus: functional)
 - First run. `agent/`, `docs/BUG_REPORT_SCHEMA.md`, and `focus-rotation.json` did not exist. Bootstrapped scaffolding.
 - CLAUDE.md lists 11 top-level HTML files but `product.html` and `shop.html` are present in the repo and NOT documented in CLAUDE.md. Recent commits (f5cb8c4, a3b1e87, 4b1bd3c, e08b007, 21cc926) all touch shop/product/cart - these are the newest, least-battle-tested code paths and deserve extra scrutiny in future functional runs.
