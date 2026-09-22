@@ -1,0 +1,8 @@
+{
+  "todayFocusIndex": 1,
+  "todayFocus": "Visual/UX",
+  "lastRun": "2026-09-22",
+  "lastRunFocus": "Functional",
+  "cycle": ["Functional", "Visual/UX", "Performance", "Security"],
+  "note": "This file names the focus for the NEXT run. Increment todayFocusIndex modulo 4 at the end of every run and update lastRun."
+}
