@@ -1,0 +1,7 @@
+{
+  "todayFocus": "visual-ux",
+  "lastRunDate": "2026-09-29",
+  "lastRunFocus": "functional",
+  "cycle": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Cycle rotates one step per successful run. After 2026-09-29 (functional) the next run should target visual-ux."
+}
