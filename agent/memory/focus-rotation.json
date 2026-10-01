@@ -1,0 +1,12 @@
+{
+  "lastRun": "2026-10-01",
+  "lastFocus": "multi-focus",
+  "nextFocus": "visual",
+  "schedule": {
+    "0": "functional",
+    "1": "visual",
+    "2": "performance",
+    "3": "security"
+  },
+  "notes": "First run was multi-focus because no scaffolding existed yet. Starting the rotation at day 1 (visual) for the next run."
+}
