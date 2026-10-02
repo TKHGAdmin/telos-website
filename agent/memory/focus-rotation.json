@@ -1,0 +1,6 @@
+{
+  "lastRun": "2026-10-02",
+  "lastFocus": "functional",
+  "nextFocus": "visual",
+  "cycle": ["functional", "visual", "performance", "security"]
+}
