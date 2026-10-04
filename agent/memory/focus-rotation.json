@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-10-04",
+  "lastFocus": "functional",
+  "nextFocus": "visual-ux",
+  "order": ["functional", "visual-ux", "performance", "security"],
+  "note": "The focus rotates once per run. Pick nextFocus on the next run, then advance it."
+}
