@@ -1,0 +1,22 @@
+{
+  "schema": "focus-rotation/v1",
+  "today": {
+    "date": "2026-10-05",
+    "day_mod_4": 0,
+    "focus": "Functional"
+  },
+  "next": {
+    "day_mod_4": 1,
+    "focus": "Visual/UX"
+  },
+  "rotation": {
+    "0": "Functional",
+    "1": "Visual/UX",
+    "2": "Performance",
+    "3": "Security"
+  },
+  "history": [
+    { "date": "2026-10-05", "focus": "Functional", "report": "agent/reports/2026-10-05.md" }
+  ],
+  "notes": "First run - no prior focus-rotation.json existed. Bootstrapping at Day 0 (Functional). After each run, increment day_mod_4 by 1 (wrap at 4) and set focus accordingly."
+}
