@@ -1,0 +1,7 @@
+{
+  "today": 1,
+  "today_label": "visual",
+  "last_run": "2026-10-08",
+  "last_run_focus": "functional",
+  "note": "Next run should hunt Visual/UX. Thomas.jpeg (~1.9 MB) and the known .html-in-internal-links issue intersect visual/perf — leave the former for performance (focus 2), the latter is already backlogged."
+}
