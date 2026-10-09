@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-10-09",
+  "lastFocus": "Security",
+  "nextFocus": "Functional",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "notes": "Rotation seeded from day-of-epoch mod 4 on first run (2026-10-09 -> 3 -> Security). Subsequent runs advance by one slot."
+}
