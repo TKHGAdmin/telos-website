@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-10-12",
+  "lastFocus": "visual-ux",
+  "nextFocus": "performance",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Day-of-year 285 mod 4 = 1 -> visual-ux. Next run should use index 2 (performance)."
+}
