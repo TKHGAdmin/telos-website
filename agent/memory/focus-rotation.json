@@ -1,0 +1,12 @@
+{
+  "lastRunDate": "2026-10-17",
+  "lastFocus": 0,
+  "nextFocus": 1,
+  "focusLabels": {
+    "0": "Functional",
+    "1": "Visual/UX",
+    "2": "Performance",
+    "3": "Security"
+  },
+  "notes": "Bootstrap run on 2026-10-17. Started at focus 0 (Functional). Next run uses focus 1 (Visual/UX)."
+}
