@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-10-18",
+  "lastFocus": "security",
+  "nextFocus": "functional",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "nextIndex": 0
+}
