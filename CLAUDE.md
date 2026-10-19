@@ -16,6 +16,8 @@
 ├── protein-calculator.html # Standalone tool page
 ├── hyrox-predictor.html    # Standalone tool page
 ├── resources.html          # Blog hub with category filters
+├── privacy.html            # Privacy Policy for the Telos member app (App Store listing links here; /privacy)
+├── terms.html              # Terms of Service for the member app (/terms). Source drafts live in the member-app repo, docs/launch/
 ├── thomas.html             # Business dashboard (password-protected, noindex, 10 tabs incl. Client Portal)
 ├── client-dashboard.html   # Client portal (PWA, self-contained, dark minimal UI)
 ├── manifest.json           # PWA manifest for client portal (standalone mode, no URL bar)
