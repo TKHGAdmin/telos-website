@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-10-19",
+  "lastFocusIndex": 0,
+  "nextFocusIndex": 1,
+  "focusAreas": ["Functional", "Visual/UX", "Performance", "Security"],
+  "note": "Index increments each run; today 2026-10-19 ran Functional (0). Tomorrow should run Visual/UX (1)."
+}
