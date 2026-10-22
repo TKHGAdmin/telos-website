@@ -1,0 +1,7 @@
+{
+  "last_run_date": "2026-10-22",
+  "last_run_focus": "Security",
+  "next_focus": "Functional",
+  "focus_cycle": ["Functional", "Visual/UX", "Performance", "Security"],
+  "note": "Focus is also computable from day-of-year mod 4 (0=Functional, 1=Visual/UX, 2=Performance, 3=Security). This file records what the last run actually did."
+}
