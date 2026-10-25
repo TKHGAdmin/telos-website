@@ -1,0 +1,8 @@
+{
+  "lastRunDate": "2026-10-25",
+  "lastRunFocus": "functional",
+  "lastRunFocusIndex": 0,
+  "nextFocusIndex": 1,
+  "rotation": ["functional", "visual_ux", "performance", "security"],
+  "notes": "First run. Infrastructure (agent/ directories, docs/BUG_REPORT_SCHEMA.md) did not exist on arrival; agent/ created, schema inferred. Starting rotation at index 0 (functional) regardless of calendar modulo so the four areas each get a turn in order."
+}
