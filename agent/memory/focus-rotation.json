@@ -1,0 +1,8 @@
+{
+  "last_focus_index": 0,
+  "last_focus_name": "functional",
+  "last_run_date": "2026-10-29",
+  "next_focus_index": 1,
+  "next_focus_name": "visual-ux",
+  "cycle": ["functional", "visual-ux", "performance", "security"]
+}
