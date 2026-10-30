@@ -1,0 +1,10 @@
+{
+  "today": 1,
+  "today_label": "Visual/UX",
+  "tomorrow": 2,
+  "tomorrow_label": "Performance",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "last_run": "2026-10-30",
+  "last_focus": "Functional",
+  "run_count": 1
+}
