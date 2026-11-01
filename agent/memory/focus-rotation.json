@@ -1,0 +1,7 @@
+{
+  "today": "functional",
+  "tomorrow": "visual-ux",
+  "nextIndex": 1,
+  "lastRun": "2026-11-01",
+  "cycle": ["functional", "visual-ux", "performance", "security"]
+}
