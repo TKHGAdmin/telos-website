@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-11-02",
+  "lastFocus": "Security",
+  "nextFocus": "Functional",
+  "rotation": ["Functional", "Visual/UX", "Performance", "Security"],
+  "note": "First run - no prior state existed. Picked Security on day 0 since initial scan surfaced auth-endpoint issues worth flagging. Future runs: cycle through rotation daily."
+}
