@@ -1,0 +1,11 @@
+{
+  "next_focus_day": 1,
+  "last_run_date": "2026-11-04",
+  "last_run_focus": "functional",
+  "rotation": {
+    "0": "functional",
+    "1": "visual",
+    "2": "performance",
+    "3": "security"
+  }
+}
