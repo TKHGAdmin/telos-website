@@ -1,0 +1,15 @@
+{
+  "today": {
+    "date": "2026-11-06",
+    "focus": "functional",
+    "day_mod_4": 0
+  },
+  "next_day_mod_4": 1,
+  "legend": {
+    "0": "functional",
+    "1": "visual-ux",
+    "2": "performance",
+    "3": "security"
+  },
+  "notes": "First run bootstrapped 2026-11-06. Chose 'functional' as day 0 to start the rotation on a broad baseline sweep."
+}
