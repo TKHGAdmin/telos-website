@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-11-08",
+  "lastFocus": "functional",
+  "nextFocus": "visual-ux",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Seeded on first run. Functional chosen because 2026-11-08 day-of-year 312 mod 4 = 0."
+}
