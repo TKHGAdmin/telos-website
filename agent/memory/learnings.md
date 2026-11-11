@@ -21,5 +21,11 @@ This file is the agent's memory across runs. Append new learnings; compress old 
 - Internal `.html` extensions — these are tracked as known tech debt per CLAUDE.md. Only flag a NEW instance on a recently-changed file.
 
 ### Open-question patterns worth confirming next run
-- Shopify Buy SDK v3 integration on product.html and shop.html — was recently updated (commit `c1e3162`). Worth another review once decisions start coming in.
-- Scroll-scene logic on /coaches — recent (commits `1ac858d`, `5a75f3d`). Watch for resize/reduced-motion regressions once Thomas reviews.
+- Shopify Buy SDK v3 integration on product.html and shop.html — was recently updated (commit `c1e3162`). Reviewed this run; wiring held up. Worth re-checking if Thomas changes product data.
+- Scroll-scene logic on /coaches — recent (commits `1ac858d`, `5a75f3d`). Reviewed this run; no bugs found. Watch for resize regressions after any future scroll-scene edit.
+
+### Patterns noticed in first run (worth folding into the hunt next time)
+- **Dashboard contract drift:** `/thomas` client code uses snake_case field names (`monthly_rate`, `follow_up_date`, `scheduled_date`, `amount`/`campaign`, `created_at`, `score`) while every `/api/dashboard/*` route uses camelCase (`monthlyRate`, `followUpDate`, `scheduledDate`, `spend`/`campaignName`, `createdAt`, `quizScore`). This single style split caused 5 of today's findings. Next run (any focus), grep `thomas.html` for any new snake_case fetch bodies or reads — likely more lurking.
+- **Dashboard id-routing split:** every PUT handler under `/api/dashboard/*` requires `body.id`; every DELETE handler accepts `req.query.id || body.id`. The client always builds the path as `?id=X` and omits `id` from PUT bodies. Four of today's findings stem from this one asymmetry. Any new PUT route or edit button is a candidate.
+- **Silent `.catch()`:** `thomas.html:1242` swallows errors without logging — masking the Convert-to-Client failure. Grep for `\.catch\(function\(\)\s*\{\}\)` on next pass to find more hidden failures.
+- **Grid layouts with new siblings:** `product.html` introduced a third child into a two-column grid (image + thumbs + info) and the info column dropped to row 2. Any new grid-child insertion is worth a layout sanity check.
