@@ -1,0 +1,9 @@
+{
+  "last_run": "2026-11-11",
+  "last_focus_index": 0,
+  "last_focus": "functional",
+  "next_focus_index": 1,
+  "next_focus": "visual-ux",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Bootstrapped on first run (2026-11-11). Started at Functional for the conservative first pass. Rotates daily."
+}
