@@ -3,5 +3,5 @@
   "last_focus": "functional",
   "next_focus": "visual_ux",
   "rotation": ["functional", "visual_ux", "performance", "security"],
-  "notes": "Set up on first run 2026-11-12. The focus cycles in the order listed; next_focus is what tomorrow's run should pick up."
+  "notes": "Tomorrow: visual_ux. After that: performance, then security. Security day should pick up the parked api/lib/auth.js:52-58 verifyPassword length-leak item from 2026-11-12."
 }

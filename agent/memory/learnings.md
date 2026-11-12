@@ -86,6 +86,40 @@ Parser contract: H1 starts with "Telos Bug Hunter", each finding is an H3 whose
 line starts with `### [P<0-3>]`. File:line reference in backticks after an em-dash
 or hyphen. Keep this stable — the email orchestrator reads it.
 
+## Parked findings (not reported in the day they were found)
+
+- **verifyPassword length leak** — `api/lib/auth.js:52-58`. Early-return
+  on `inputStr.length !== expected.length` before `crypto.timingSafeEqual`
+  leaks the admin password length through response-time percentiles. No
+  app-level rate limit on `/api/dashboard/login`. Found on 2026-11-12
+  functional day; belongs on security day — report it then unless it's
+  already fixed.
+
+## Patterns worth watching
+
+- **Lifecycle of secondary indexes in Redis.** The clients CRUD maintains
+  three stores for an enabled client: `client:{id}`, `clients_index`, and
+  `client_email:{normalizedEmail}` — and a whole family of
+  `client_*:{id}:*` sub-records per CLAUDE.md. Delete currently only
+  handles the first two. Whenever a new secondary index gets added
+  anywhere in `api/dashboard/`, check its delete path too.
+- **Cross-page anchors on non-index pages.** Nav menus on
+  `privacy.html`, `terms.html`, `set-password.html` (and probably
+  anything else that isn't the homepage) use `/#section` to jump to
+  index. `main.js` only hooks `a[href^="#"]`. Watch for recurrence on any
+  new top-level page.
+- **Cache-buster drift.** JS main.js is currently `?v=2` on every public
+  page EXCEPT chs.html (reported P3 on 2026-11-12). Any new public page
+  needs the same suffix. CLAUDE.md's "?v=16" line refers to CSS style.css,
+  not JS main.js — two separate cadences.
+- **Shopify Buy SDK IDs are base64 GIDs** — in practice they don't contain
+  quotes, so inline `onclick="…'${id}'…"` is not a reportable bug today.
+  If you ever observe a quote character in a real GID, revisit.
+
 ## Run history
 
-- 2026-11-12 — First run. Focus: functional. See report.
+- 2026-11-12 — First run. Focus: functional. 5 findings: 1 P1 (client delete
+  orphans email lookup), 2 P2 (quiz double-tap, cross-page anchor nav),
+  2 P3 (chs cache-buster, SW opaque font cache). One finding parked for
+  security day. One speculative lead (shop.js inline onclicks) cut under
+  the high-confidence gate.
