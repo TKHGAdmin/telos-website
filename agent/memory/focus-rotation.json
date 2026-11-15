@@ -1,0 +1,7 @@
+{
+  "lastRunDate": "2026-11-15",
+  "lastFocus": "functional",
+  "nextFocus": "visual-ux",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "note": "Day 0 of rotation. 2026-11-15 ran Functional. Next: Visual/UX on 2026-11-16."
+}
