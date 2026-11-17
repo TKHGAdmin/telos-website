@@ -1,0 +1,19 @@
+{
+  "formula": "day_of_year % 4",
+  "map": {
+    "0": "functional",
+    "1": "visual-ux",
+    "2": "performance",
+    "3": "security"
+  },
+  "today": {
+    "date": "2026-11-17",
+    "day_of_year": 321,
+    "focus": "visual-ux"
+  },
+  "next": {
+    "date": "2026-11-18",
+    "day_of_year": 322,
+    "focus": "performance"
+  }
+}
