@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-11-19",
+  "lastFocus": "security",
+  "nextFocus": "functional",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Rotation computed from (day-of-year mod 4). 2026-11-19 = day 323, 323%4=3 => security. First run bootstrapped agent/ infrastructure."
+}
