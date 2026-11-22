@@ -1,0 +1,10 @@
+{
+  "today": 1,
+  "todayLabel": "Visual/UX",
+  "nextRotation": 2,
+  "nextLabel": "Performance",
+  "cycle": ["Functional", "Visual/UX", "Performance", "Security"],
+  "lastRunDate": "2026-11-22",
+  "lastRunFocus": "Functional",
+  "firstRunDate": "2026-11-22"
+}
