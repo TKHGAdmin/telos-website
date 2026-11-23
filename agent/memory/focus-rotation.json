@@ -1,0 +1,7 @@
+{
+  "lastRun": "2026-11-23",
+  "lastFocus": "security",
+  "nextFocus": "functional",
+  "rotation": ["functional", "visual-ux", "performance", "security"],
+  "notes": "Rotation seeded by day-of-year mod 4. 2026-11-23 = DoY 327, 327 % 4 = 3 -> security. Advance one step per run."
+}
