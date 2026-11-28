@@ -1,0 +1,16 @@
+{
+  "_comment": "Day index mod 4 picks focus: 0=Functional, 1=Visual/UX, 2=Performance, 3=Security. Advance after each run.",
+  "today": {
+    "date": "2026-11-28",
+    "focus_index": 0,
+    "focus": "Functional"
+  },
+  "next": {
+    "date": "2026-11-29",
+    "focus_index": 1,
+    "focus": "Visual/UX"
+  },
+  "history": [
+    { "date": "2026-11-28", "focus": "Functional", "run_status": "bootstrap", "findings": 3, "p0": 0, "p1": 1, "p2": 2, "p3": 0 }
+  ]
+}
